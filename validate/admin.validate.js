@@ -29,5 +29,28 @@ module.exports = {
             return;
         }
         next();
+    },
+    postCreateCourseCategory: function (req, res, next) {
+        var error = [];
+        if (!req.body.code) {
+            error.push('Code of subject is required !')
+        }
+        if (!req.body.language) {
+            error.push('Language of subject is required !')
+        }
+        if (req.body.trainer == 'Choose a trainer') {
+            error.push('Code of subject is required !')
+        }
+        if (error.length) {
+            var account = db.get('accounts').filter({ role: 'trainer'}).value();
+            res.render('admin/createCourseCategory', {
+                trainers: account,
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+
     }
 }

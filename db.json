@@ -19,7 +19,7 @@
       "name": "Nguyen Thanh An",
       "username": "nguyenthanhan",
       "password": "123456",
-      "role": "trainer",
+      "role": "admin",
       "id": "070J9-1t8"
     },
     {
@@ -49,11 +49,6 @@
       "code": "1639",
       "language": "Nodejs",
       "trainer": "Pham Duc Anh"
-    },
-    {
-      "code": "965",
-      "language": "",
-      "trainer": "Chon 1 trainer"
     },
     {
       "code": "6913",
