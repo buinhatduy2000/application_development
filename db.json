@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "name": "Bui Nhat Duy",
+      "id": "vjueYgP99",
+      "username": "BuiNhatDuy",
+      "password": "123456"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Bui Nhat Duy",
+      "username": "buinhatduy",
+      "password": "123456",
+      "role": "admin",
+      "id": "rxCH83Op5"
+    },
+    {
+      "name": "Nguyen Thanh An",
+      "username": "nguyenthanhan",
+      "password": "123456",
+      "role": "trainer",
+      "id": "070J9-1t8"
+    },
+    {
+      "name": "Nguyen Van Luc",
+      "username": "nguyenvanluc",
+      "password": "123456",
+      "role": "trainer",
+      "id": "Qtx6nmLhx"
+    },
+    {
+      "name": "Pham Duc Anh",
+      "username": "phamducanh",
+      "password": "123456",
+      "role": "trainer",
+      "id": "FBlTCY6xp"
+    },
+    {
+      "name": "",
+      "username": "",
+      "password": "",
+      "id": "YFiOFQilk"
+    }
+  ],
+  "courseCategory": [
+    {
+      "code": "1639",
+      "language": "Nodejs",
+      "trainer": "Pham Duc Anh"
+    },
+    {
+      "code": "965",
+      "language": "",
+      "trainer": "Chon 1 trainer"
+    },
+    {
+      "code": "6913",
+      "language": "html&css",
+      "trainer": "Nguyen Thanh An"
+    }
+  ]
+}

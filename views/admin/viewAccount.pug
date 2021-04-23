@@ -1,0 +1,23 @@
+extends ../layouts/adminMenu
+block content
+
+    h1 List account
+    table.table 
+        tr 
+            th Name
+            th User Name 
+            th Password
+            th Role
+            th Actions 
+        each account in accounts
+            tr
+                td= account.name
+                td= account.username
+                td= account.password
+                td= account.role
+                td
+                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-danger.ml-4(href='#') Delete 
+
+
+    a.btn.btn-primary(href = '/admin/createAccount') Create new account 
