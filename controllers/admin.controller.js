@@ -29,23 +29,8 @@ module.exports = {
     },
     // post method
     postCreateAccount: function (req, res) {
-        var username = req.body.username;
-        req.body.id = shortid.generate();
-
-        var account = db.get('accounts').find({ username: username }).value();
-        if (account) {
-            res.render('admin/createAccount', {
-                errors: [
-                    'Ten tai khoan nay da ton tai'
-                ],
-                values: req.body
-            });
-            return;
-        }
-        else if (!account) {
-            db.get('accounts').push(req.body).write();
-            res.redirect('viewAccount');
-        }
+        db.get('accounts').push(req.body).write();
+        res.redirect('viewAccount');
     },
     postCreateCourseCategory: function (req, res) {
         db.get('courseCategory').push(req.body).write();
