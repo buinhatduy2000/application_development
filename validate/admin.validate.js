@@ -31,20 +31,36 @@ module.exports = {
         next();
     },
     postCreateCourseCategory: function (req, res, next) {
+
+        var category = db.get('courseCategory').find({ category: req.body.category }).value();
         var error = [];
-        if (!req.body.code) {
-            error.push('Code of subject is required !')
+        if (!req.body.category) {
+            error.push('Category name is required!')
         }
-        if (!req.body.language) {
-            error.push('Language of subject is required !')
-        }
-        if (req.body.trainer == 'Choose a trainer') {
-            error.push('Code of subject is required !')
+        if (category) {
+            error.push('Category nay da ton tai')
         }
         if (error.length) {
-            var account = db.get('accounts').filter({ role: 'trainer'}).value();
             res.render('admin/createCourseCategory', {
-                trainers: account,
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateCourse: function (req, res, next) {
+        var error = [];
+        if (!req.body.courseName) {
+            error.push('Name of Course is required !')
+        }
+        if (req.body.courseCategory == 'Choose a category') {
+            error.push('Course Category is required !')
+        }
+        if (error.length) {
+            var categorys = db.get('courseCategory').value();
+            res.render('admin/createCourse', {
+                categorys: categorys,
                 errors: error,
                 values: req.body
             });

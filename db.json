@@ -46,14 +46,27 @@
   ],
   "courseCategory": [
     {
-      "code": "1639",
-      "language": "Nodejs",
-      "trainer": "Pham Duc Anh"
+      "category": "Computing"
     },
     {
-      "code": "6913",
-      "language": "html&css",
-      "trainer": "Nguyen Thanh An"
+      "category": "Bussiness"
+    },
+    {
+      "category": "Grapich design"
+    }
+  ],
+  "Course": [
+    {
+      "courseName": "AAAAAAA",
+      "courseCategory": "Computing"
+    },
+    {
+      "courseName": "BBBBB",
+      "courseCategory": "Bussiness"
+    },
+    {
+      "courseName": "CCCCC",
+      "courseCategory": "Grapich design"
     }
   ]
 }

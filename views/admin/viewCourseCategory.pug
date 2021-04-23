@@ -4,15 +4,11 @@ block content
     h1 List Course Category
     table.table 
         tr 
-            th Code
-            th Language 
-            th Trainer
-            th Actions 
-        each account in accounts
+            th Course Category Name
+            th Option
+        each category in categorys
             tr
-                td= account.code
-                td= account.language
-                td= account.trainer
+                td= category.category
                 td
                     a.btn.btn-success(href='#') Update 
                     a.btn.btn-danger.ml-4(href='#') Delete 

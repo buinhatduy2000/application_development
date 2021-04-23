@@ -9,17 +9,7 @@ block content
     .align-items-center
         form(action="/admin/createCourseCategory" method="POST")
             .form-group 
-                label Code
-                input.form-control(name="code", type='text', value= values ? values.code : '') 
-
-                label Language
-                input.form-control(name="language", type='text', value= values ? values.language : '') 
-
-                label Trainer
-                select.form-control(name="trainer")
-                    option(selected='') Choose a trainer
-                    each trainer in trainers
-                        option= trainer.name
-
+                label Course Category name
+                input.form-control(name="category", type='text', value= values ? values.code : '') 
 
             button.btn.btn-success Create

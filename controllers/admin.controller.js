@@ -15,6 +15,12 @@ module.exports = {
             trainers: account
         })
     },
+    getCreateCourse: function (req, res) {
+        var categorys = db.get('courseCategory').value();
+        res.render('admin/createCourse',{
+            categorys: categorys
+        });
+    },
 
     viewAccount: function (req, res) {
         res.render('admin/viewAccount', {
@@ -22,9 +28,15 @@ module.exports = {
         });
     },
     viewCourseCategory: function (req, res) {
-        var account = db.get('courseCategory').value();
+        var category = db.get('courseCategory').value();
         res.render('admin/viewCourseCategory',{
-            accounts: account
+            categorys: category
+        });
+    },
+    viewCourse: function (req, res) {
+        var course = db.get('Course').value();
+        res.render('admin/viewCourse',{
+            courses: course
         });
     },
     // post method
@@ -35,5 +47,9 @@ module.exports = {
     postCreateCourseCategory: function (req, res) {
         db.get('courseCategory').push(req.body).write();
         res.redirect('viewCourseCategory');
+    },
+    postCreateCourse: function (req, res) {
+        db.get('Course').push(req.body).write();
+        res.redirect('viewCourse');
     },
 };

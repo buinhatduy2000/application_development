@@ -1,0 +1,19 @@
+extends ../layouts/adminMenu
+block content
+
+    h1 List Course
+    table.table 
+        tr 
+            th Course Name
+            th Course Category
+            th Actions 
+        each course in courses
+            tr
+                td= course.courseName
+                td= course.courseCategory
+                td
+                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-danger.ml-4(href='#') Delete 
+
+
+    a.btn.btn-primary(href = '/admin/createCourse') Create new Course Category 
