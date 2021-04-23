@@ -30,6 +30,6 @@ app.use('/staff', authMiddleware.requireAuth, staffRoutes);
 app.use('/users', authMiddleware.requireAuth, userRoutes);
 app.use('/auth', authRoutes);
 
-app.listen(3000, function () {
-    console.log('Server listening on: ' + port);
-});
+var PORT = process.env.Port || 8000
+app.listen(PORT);
+console.debug("Server is running on port: " + PORT);
