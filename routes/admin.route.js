@@ -40,6 +40,15 @@ router.post('/createTopic', controller.postCreateTopic),
 
 router.get('/deleteTopic/:id', controller.deleteTopic);
 
+// Trainer to Course
+router.get('/viewTrainer', controller.viewTrainerToCourse);
+
+router.get('/addTrainerToCourse', controller.addTrainer);
+
+router.post('/addTrainerToCourse', controller.postAddTrainer);
+
+router.get('/deleteTrainer/:id', controller.deleteTrainer);
+
 router.get('/', controller.index);
 
 module.exports = router;

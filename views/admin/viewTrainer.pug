@@ -1,0 +1,20 @@
+extends ../layouts/adminMenu
+block content
+
+    h1 List Trainer with Course
+    table.table 
+        tr 
+            th Course
+            th Trainer Name
+            th Action
+            th Action
+        each view in viewTrainers
+            tr
+                td= view.course
+                td= view.trainer
+                td
+                    a.btn.btn-success(href='#') Update
+                td 
+                    a.btn.btn-danger.ml-4(href='/admin/deleteTrainer/'+ view.id) Delete 
+
+    a.btn.btn-primary(href = '/admin/addTrainerToCourse') Add new Trainer to Course

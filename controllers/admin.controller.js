@@ -101,6 +101,33 @@ module.exports = {
         console.log(id);
     },
 
+    // Assign trainer to Course
+    viewTrainerToCourse: function(req, res){
+        var viewTrainer = db.get('trainerToCourse').value();
+        res.render('admin/viewTrainer',{
+            viewTrainers: viewTrainer
+        });
+    },
+
+    addTrainer: function(req, res){
+        var course = db.get('Course').value();
+        var trainer = db.get('accounts').filter({role: 'trainer'}).value();
+        res.render('admin/trainerCourse',{
+            courses: course, trainers: trainer 
+        });
+    },
+    postAddTrainer: function(req, res){
+        req.body.id = shortid.generate();
+        db.get('trainerToCourse').push(req.body).write();
+        res.redirect('viewTrainer');
+    },
+    deleteTrainer: function(req, res){
+        var id = req.params.id;
+        db.get('trainerToCourse').remove({id : id}).write();
+        res.redirect('/admin/viewTrainer');
+        console.log(id);
+    },
+
     //Home Page================================================================
     index: function (req, res) {
         res.render('admin/index');

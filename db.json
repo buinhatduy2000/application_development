@@ -68,5 +68,28 @@
       "id": "3ycoYOXJv"
     }
   ],
-  "topic": []
+  "topic": [
+    {
+      "topic": "WBS",
+      "id": "srM4KIgPe"
+    }
+  ],
+  "trainerToCourse": [
+    {
+      "course": "SDLC",
+      "trainer": "Luc dep trai",
+      "id": "CEQn7ExGr"
+    },
+    {
+      "course": "Python-Ruby",
+      "trainer": "Pham Duc Anh",
+      "id": "RHW-Y6-Ye"
+    },
+    {
+      "course": "Web design",
+      "trainer": "Luc dep trai",
+      "id": "7et6uZvys"
+    }
+  ],
+  "traineeToCourse": []
 }
