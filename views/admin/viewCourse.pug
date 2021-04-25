@@ -13,7 +13,7 @@ block content
                 td= course.courseCategory
                 td
                     a.btn.btn-success(href='#') Update 
-                    a.btn.btn-danger.ml-4(href='#') Delete 
+                    a.btn.btn-danger.ml-4(href='/admin/deleteCourse/'+ course.id) Delete 
 
 
     a.btn.btn-primary(href = '/admin/createCourse') Create new Course Category 

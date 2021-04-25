@@ -11,8 +11,8 @@ block content
             tr
                 td= topic.topic
                 td
-                    a.btn.btn-success(href='updateTopic') Update
+                    a.btn.btn-success(href='/updateTopic/:name') Update
                 td 
-                    a.btn.btn-danger.ml-4 Delete 
+                    a.btn.btn-danger.ml-4(href='/admin/deleteTopic/' + topic.id) Delete 
 
     a.btn.btn-primary(href = '/admin/createTopic') Create Topic
