@@ -1,0 +1,17 @@
+extends ../layouts/staffMenu
+block content
+
+    h1 List Course Category
+    table.table 
+        tr 
+            th Course Category Name
+            th Option
+        each category in categorys
+            tr
+                td= category.category
+                td
+                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-danger.ml-4(href='/admin/deleteCourseCategory/'+ category.id) Delete 
+
+
+    a.btn.btn-primary(href = '/admin/createCourseCategory') Create new Course Category 

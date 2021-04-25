@@ -19,43 +19,22 @@
       "name": "Nguyen Thanh An",
       "username": "nguyenthanhan",
       "password": "123456",
-      "role": "admin",
-      "id": "070J9-1t8"
-    },
-    {
-      "name": "Nguyen Van Luc",
-      "username": "nguyenvanluc",
-      "password": "123456",
-      "role": "trainer",
-      "id": "Qtx6nmLhx"
+      "role": "manager",
+      "id": "XT4ZiGRmf"
     },
     {
       "name": "Pham Duc Anh",
       "username": "phamducanh",
       "password": "123456",
       "role": "trainer",
-      "id": "FBlTCY6xp"
-    },
-    {
-      "name": "Nguyen Thanh An",
-      "username": "nguyenthanhan12",
-      "password": "123456",
-      "role": "admin",
-      "id": "uwKj2MmMq"
-    },
-    {
-      "name": "Ngo Quoc Cuong",
-      "username": "ngoquoccuong",
-      "password": "123456",
-      "role": "trainee",
-      "id": "vnS5dQ02s"
+      "id": "WklQfoEhm"
     },
     {
       "name": "Luc dep trai",
-      "username": "adasdsa",
-      "password": "aaaaaaa",
-      "role": "trainee",
-      "id": "3_bOvaJol"
+      "username": "nguyenvanluc",
+      "password": "123456",
+      "role": "trainer",
+      "id": "QSnk1YpT8"
     }
   ],
   "courseCategory": [
@@ -74,24 +53,20 @@
   ],
   "Course": [
     {
-      "courseName": "AAAAAAA",
+      "courseName": "Web design",
       "courseCategory": "Computing",
-      "id": "MkBrjbXGC"
+      "id": "BJCyn7rN8"
     },
     {
-      "courseName": "BBBBB",
-      "courseCategory": "Bussiness",
-      "id": "0eb2jUCjQ"
+      "courseName": "SDLC",
+      "courseCategory": "Computing",
+      "id": "kQrtZ5hrZ"
+    },
+    {
+      "courseName": "Python-Ruby",
+      "courseCategory": "Computing",
+      "id": "3ycoYOXJv"
     }
   ],
-  "topic": [
-    {
-      "topic": "ABCD",
-      "id": "0onxv7V9g"
-    },
-    {
-      "topic": "WBS",
-      "id": "qg0YvOLNp"
-    }
-  ]
+  "topic": []
 }
