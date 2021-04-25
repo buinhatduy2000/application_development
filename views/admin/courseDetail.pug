@@ -1,0 +1,13 @@
+extends ../layouts/adminMenu
+block content
+    h1 Course Detail
+    table.table.mt-4 
+        tr 
+            th Topic
+            th Actions 
+
+            tr
+                td course.courseCategory
+                td
+                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-danger.ml-4(href='#') Delete 

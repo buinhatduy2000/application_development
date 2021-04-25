@@ -42,6 +42,13 @@
       "password": "123456",
       "role": "admin",
       "id": "uwKj2MmMq"
+    },
+    {
+      "name": "Ngo Quoc Cuong",
+      "username": "ngoquoccuong",
+      "password": "123456",
+      "role": "trainee",
+      "id": "vnS5dQ02s"
     }
   ],
   "courseCategory": [
@@ -57,16 +64,30 @@
   ],
   "Course": [
     {
+      "courseName": "DDDD",
+      "courseCategory": "Grapich design"
+    },
+    {
       "courseName": "AAAAAAA",
       "courseCategory": "Computing"
     },
     {
       "courseName": "BBBBB",
       "courseCategory": "Bussiness"
+    }
+  ],
+  "topic": [
+    {
+      "topic": "asm 1"
     },
     {
-      "courseName": "CCCCC",
-      "courseCategory": "Grapich design"
+      "topic": "asm 1 draft"
+    },
+    {
+      "topic": "asm 2"
+    },
+    {
+      "topic": "WBS"
     }
   ]
 }

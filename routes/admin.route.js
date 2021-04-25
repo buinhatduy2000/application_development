@@ -25,6 +25,13 @@ router.get('/createCourse', controller.getCreateCourse);
 
 router.post('/createCourse',validate.postCreateCourse ,controller.postCreateCourse);
 
+//Topic
+router.get('/viewTopic', controller.viewTopic);
+
+router.get('/createTopic', controller.createTopic);
+
+router.post('/createTopic', controller.postCreateTopic),
+
 
 router.get('/', controller.index);
 

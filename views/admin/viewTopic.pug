@@ -1,0 +1,18 @@
+extends ../layouts/adminMenu
+block content
+
+    h1 List Course
+    table.table 
+        tr 
+            th Topic name
+            th Action
+            th Action
+        each topic in topics
+            tr
+                td= topic.topic
+                td
+                    a.btn.btn-success(href='updateTopic') Update
+                td 
+                    a.btn.btn-danger.ml-4 Delete 
+
+    a.btn.btn-primary(href = '/admin/createTopic') Create Topic
