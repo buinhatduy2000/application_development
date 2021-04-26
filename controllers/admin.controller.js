@@ -21,16 +21,18 @@ module.exports = {
 
     deleteAccount: function (req, res) {
         var id = req.params.id;
-        db.get('account').remove({ id: id }).write();
+        db.get('accounts').remove({ id: id }).write();
         res.redirect('/admin/viewAccount');
         console.log(id);
     },
 
     getUpdateAccount: function (req, res) {
         var id = req.params.id;
+        var change = db.get('accounts').find({ id: id }).value();
         res.render('admin/updateAccount', {
-            accounts: db.get('account').find({ id: id }).value()
+            changes: change
         });
+        console.log(id);
     },
 
     postUpdateAccount: function (req, res) {

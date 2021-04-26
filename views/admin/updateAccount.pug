@@ -10,13 +10,13 @@ block content
         form(action="/admin/updateAccount" method="POST")
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value='' + accounts.name ) 
+                input.form-control(name="name", type='text', value='' + changes.name ) 
 
                 label User Name
-                input.form-control(name="username", type='text', value='' + accounts.username) 
+                input.form-control(name="username", type='text', value='' + changes.username) 
 
                 label Password
-                input.form-control(name="password", type='password', value='' + accounts.password)
+                input.form-control(name="password", type='password', value='' + changes.password)
 
                 label Role
                 br
