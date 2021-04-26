@@ -9,10 +9,10 @@
   ],
   "accounts": [
     {
-      "name": "Bui Nhat Duy",
-      "username": "buinhatduy",
+      "name": "abc",
+      "username": "abc",
       "password": "123456",
-      "role": "admin",
+      "role": "manager",
       "id": "rxCH83Op5"
     },
     {
@@ -30,11 +30,11 @@
       "id": "WklQfoEhm"
     },
     {
-      "name": "Luc dep trai",
+      "name": "nguyen van luc",
       "username": "nguyenvanluc",
       "password": "123456",
-      "role": "trainer",
-      "id": "QSnk1YpT8"
+      "role": "trainee",
+      "id": "Ycy5S0UKb"
     }
   ],
   "courseCategory": [

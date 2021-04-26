@@ -34,12 +34,14 @@ module.exports = {
     },
 
     postUpdateAccount: function (req, res) {
+        var id = req.params.id;
         var name = req.body.name;
         var username = req.body.username;
         var password = req.body.password;
         var role = req.body.role;
-        db.get('account').find({ id: id }).assign({ name: name, username: username, password: password, role: role }).write()
-        res.redirect('viewAccount');
+        db.get('accounts').find({ id: id }).assign({ name: name} , {username: username}, {password: password}, {role: role }).write();
+        res.redirect('/admin/viewAccount');
+        console.log(id, name, username, password, role)
     },
 
 
