@@ -9,9 +9,13 @@ router.get('/viewAccount', controller.viewAccount);
 
 router.get('/createAccount', controller.getCreateAccount);
 
-router.post('/createAccount',validate.postCreateAccount ,controller.postCreateAccount);
+router.post('/createAccount', validate.postCreateAccount ,controller.postCreateAccount);
 
 router.get('/deleteAccount/:id', controller.deleteAccount);
+
+router.get('/updateAccount/:id', controller.getUpdateAccount);
+
+router.post('/updateAccount/:id', controller.postUpdateAccount);
 
 //Course Category
 router.get('/viewCourseCategory', controller.viewCourseCategory);

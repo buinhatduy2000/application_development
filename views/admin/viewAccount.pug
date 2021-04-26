@@ -16,7 +16,7 @@ block content
                 td= account.password
                 td= account.role
                 td
-                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
                     a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete 
 
 

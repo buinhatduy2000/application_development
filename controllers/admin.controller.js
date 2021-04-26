@@ -18,12 +18,30 @@ module.exports = {
         db.get('accounts').push(req.body).write();
         res.redirect('viewAccount');
     },
-    deleteAccount: function(req, res){
+
+    deleteAccount: function (req, res) {
         var id = req.params.id;
-        db.get('account').remove({id : id}).write();
+        db.get('account').remove({ id: id }).write();
         res.redirect('/admin/viewAccount');
         console.log(id);
     },
+
+    getUpdateAccount: function (req, res) {
+        var id = req.params.id;
+        res.render('admin/updateAccount', {
+            accounts: db.get('account').find({ id: id }).value()
+        });
+    },
+
+    postUpdateAccount: function (req, res) {
+        var name = req.body.name;
+        var username = req.body.username;
+        var password = req.body.password;
+        var role = req.body.role;
+        db.get('account').find({ id: id }).assign({ name: name, username: username, password: password, role: role }).write()
+        res.redirect('viewAccount');
+    },
+
 
     //Course Category======================================================
     viewCourseCategory: function (req, res) {
@@ -45,9 +63,9 @@ module.exports = {
         db.get('courseCategory').push(req.body).write();
         res.redirect('viewCourseCategory');
     },
-    deleteCourseCategory: function(req, res){
+    deleteCourseCategory: function (req, res) {
         var id = req.params.id;
-        db.get('courseCategory').remove({id : id}).write();
+        db.get('courseCategory').remove({ id: id }).write();
         res.redirect('/admin/viewCourseCategory');
         console.log(id);
     },
@@ -72,9 +90,9 @@ module.exports = {
         db.get('Course').push(req.body).write();
         res.redirect('viewCourse');
     },
-    deleteCourse: function(req, res){
+    deleteCourse: function (req, res) {
         var id = req.params.id;
-        db.get('Course').remove({id : id}).write();
+        db.get('Course').remove({ id: id }).write();
         res.redirect('/admin/viewCourse');
         console.log(id);
     },
@@ -94,36 +112,36 @@ module.exports = {
         db.get('topic').push(req.body).write();
         res.redirect('viewTopic');
     },
-    deleteTopic: function(req, res){
+    deleteTopic: function (req, res) {
         var id = req.params.id;
-        db.get('topic').remove({id : id}).write();
+        db.get('topic').remove({ id: id }).write();
         res.redirect('/admin/viewTopic');
         console.log(id);
     },
 
     // Assign trainer to Course
-    viewTrainerToCourse: function(req, res){
+    viewTrainerToCourse: function (req, res) {
         var viewTrainer = db.get('trainerToCourse').value();
-        res.render('admin/viewTrainer',{
+        res.render('admin/viewTrainer', {
             viewTrainers: viewTrainer
         });
     },
 
-    addTrainer: function(req, res){
+    addTrainer: function (req, res) {
         var course = db.get('Course').value();
-        var trainer = db.get('accounts').filter({role: 'trainer'}).value();
-        res.render('admin/trainerCourse',{
-            courses: course, trainers: trainer 
+        var trainer = db.get('accounts').filter({ role: 'trainer' }).value();
+        res.render('admin/trainerCourse', {
+            courses: course, trainers: trainer
         });
     },
-    postAddTrainer: function(req, res){
+    postAddTrainer: function (req, res) {
         req.body.id = shortid.generate();
         db.get('trainerToCourse').push(req.body).write();
         res.redirect('viewTrainer');
     },
-    deleteTrainer: function(req, res){
+    deleteTrainer: function (req, res) {
         var id = req.params.id;
-        db.get('trainerToCourse').remove({id : id}).write();
+        db.get('trainerToCourse').remove({ id: id }).write();
         res.redirect('/admin/viewTrainer');
         console.log(id);
     },
