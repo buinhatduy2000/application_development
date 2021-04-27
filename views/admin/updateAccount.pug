@@ -7,7 +7,7 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/updateAccount" method="POST")
+        form(action="/admin/updateAccount/"+ changes.id method="POST")
             .form-group 
                 label Name
                 input.form-control(name="name", type='text', value='' + changes.name ) 

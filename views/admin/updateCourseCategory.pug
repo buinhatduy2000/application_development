@@ -7,9 +7,9 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/createCourseCategory" method="POST")
+        form(action="/admin/updateCourseCategory/"+ courseCategorys.id method="POST")
             .form-group 
                 label Course Category name
-                input.form-control(name="category", type='text', value= values ? values.code : '') 
+                input.form-control(name="category", type='text', value='' + courseCategorys.category) 
 
             button.btn.btn-success Create

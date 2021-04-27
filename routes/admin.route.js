@@ -26,6 +26,10 @@ router.post('/createCourseCategory',validate.postCreateCourseCategory, controlle
 
 router.get('/deleteCourseCategory/:id', controller.deleteCourseCategory);
 
+router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
+
+router.post('/updateCourseCategory/:id', controller.POSTupdateCourseCategory);
+
 //Course
 router.get('/viewCourse', controller.viewCourse);
 

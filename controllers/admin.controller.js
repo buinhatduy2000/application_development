@@ -5,7 +5,7 @@ module.exports = {
     //Account=============================================================
     viewAccount: function (req, res) {
         res.render('admin/viewAccount', {
-            accounts: db.get('accounts').value()
+            accounts: db.get('accounts').cloneDeep().value()
         });
     },
 
@@ -28,7 +28,7 @@ module.exports = {
 
     getUpdateAccount: function (req, res) {
         var id = req.params.id;
-        var change = db.get('accounts').find({ id: id }).value();
+        var change = db.get('accounts').find({ id: id }).cloneDeep().value();
         res.render('admin/updateAccount', {
             changes: change
         });
@@ -36,25 +36,30 @@ module.exports = {
     },
 
     postUpdateAccount: function (req, res) {
+        var id = req.params.id;
         var name = req.body.name;
         var username = req.body.username;
         var password = req.body.password;
         var role = req.body.role;
-        db.get('account').find({ id: id }).assign({ name: name, username: username, password: password, role: role }).write()
-        res.redirect('viewAccount');
+        db.get('accounts').find({ id: id }).assign({ name: name}).write();
+        db.get('accounts').find({ id: id }).assign({ username: username}).write();
+        db.get('accounts').find({ id: id }).assign({ password: password}).write();
+        db.get('accounts').find({ id: id }).assign({ role: role}).write();
+        res.redirect('/admin/viewAccount');
+        console.log(id, name, username, password, role);
     },
 
 
     //Course Category======================================================
     viewCourseCategory: function (req, res) {
-        var category = db.get('courseCategory').value();
+        var category = db.get('courseCategory').cloneDeep().value();
         res.render('admin/viewCourseCategory', {
             categorys: category
         });
     },
 
     getCreateCourseCategory: function (req, res) {
-        var account = db.get('accounts').filter({ role: 'trainer' }).value();
+        var account = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
         res.render('admin/createCourseCategory', {
             trainers: account
         })
@@ -71,18 +76,31 @@ module.exports = {
         res.redirect('/admin/viewCourseCategory');
         console.log(id);
     },
+    updateCourseCategory: function (req, res) {
+        var id = req.params.id;
+        var courseCategory = db.get('courseCategory').find({ id: id }).value();
+        res.render('admin/updateCourseCategory', {
+            courseCategorys: courseCategory
+        });
+    },
+    POSTupdateCourseCategory: function (req, res) {
+        var id = req.params.id;
+        var category = req.body.category;
+        db.get('courseCategory').find({ id: id }).assign({ category: category }).write();
+        res.redirect('/admin/viewCourseCategory');
+    },
 
     //Course================================================================
 
     viewCourse: function (req, res) {
-        var course = db.get('Course').value();
+        var course = db.get('Course').cloneDeep().value();
         res.render('admin/viewCourse', {
             courses: course
         });
     },
 
     getCreateCourse: function (req, res) {
-        var categorys = db.get('courseCategory').value();
+        var categorys = db.get('courseCategory').cloneDeep().value();
         res.render('admin/createCourse', {
             categorys: categorys
         });
@@ -101,7 +119,7 @@ module.exports = {
 
     //Topic==================================================================
     viewTopic: function (req, res) {
-        var topic = db.get('topic').value();
+        var topic = db.get('topic').cloneDeep().value();
         res.render('admin/viewTopic', {
             topics: topic
         });
@@ -123,7 +141,7 @@ module.exports = {
 
     // Assign trainer to Course
     viewTrainerToCourse: function (req, res) {
-        var viewTrainer = db.get('trainerToCourse').value();
+        var viewTrainer = db.get('trainerToCourse').cloneDeep().value();
         res.render('admin/viewTrainer', {
             viewTrainers: viewTrainer
         });
@@ -131,7 +149,7 @@ module.exports = {
 
     addTrainer: function (req, res) {
         var course = db.get('Course').value();
-        var trainer = db.get('accounts').filter({ role: 'trainer' }).value();
+        var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
         res.render('admin/trainerCourse', {
             courses: course, trainers: trainer
         });

@@ -16,13 +16,6 @@
       "id": "rxCH83Op5"
     },
     {
-      "name": "Nguyen Thanh An",
-      "username": "nguyenthanhan",
-      "password": "123456",
-      "role": "manager",
-      "id": "XT4ZiGRmf"
-    },
-    {
       "name": "Pham Duc Anh",
       "username": "phamducanh",
       "password": "123456",
@@ -30,11 +23,18 @@
       "id": "WklQfoEhm"
     },
     {
-      "name": "Luc dep trai",
+      "name": "Vui Van Luc",
       "username": "nguyenvanluc",
       "password": "123456",
-      "role": "trainer",
-      "id": "QSnk1YpT8"
+      "role": "trainee",
+      "id": "sb1JdUZub"
+    },
+    {
+      "name": "Luc Vui VL",
+      "username": "adjkasjhkkasd",
+      "password": "adjkasjhkkasd",
+      "role": "trainee",
+      "id": "DDqt00yKt"
     }
   ],
   "courseCategory": [
@@ -47,7 +47,7 @@
       "id": "SDX9C44wk"
     },
     {
-      "category": "Grapich design",
+      "category": "Computing",
       "id": "UKperquSQ"
     }
   ],

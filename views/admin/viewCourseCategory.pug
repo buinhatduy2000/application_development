@@ -10,7 +10,7 @@ block content
             tr
                 td= category.category
                 td
-                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-success(href='/admin/updateCourseCategory/' + category.id) Update 
                     a.btn.btn-danger.ml-4(href='/admin/deleteCourseCategory/'+ category.id) Delete 
 
 
