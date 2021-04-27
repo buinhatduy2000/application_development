@@ -9,10 +9,10 @@
   ],
   "accounts": [
     {
-      "name": "Bui Nhat Duy",
-      "username": "buinhatduy",
+      "name": "abc",
+      "username": "abc",
       "password": "123456",
-      "role": "admin",
+      "role": "manager",
       "id": "rxCH83Op5"
     },
     {

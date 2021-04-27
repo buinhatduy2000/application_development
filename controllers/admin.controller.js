@@ -28,11 +28,9 @@ module.exports = {
 
     getUpdateAccount: function (req, res) {
         var id = req.params.id;
-        var change = db.get('accounts').find({ id: id }).cloneDeep().value();
         res.render('admin/updateAccount', {
-            changes: change
+            accounts: db.get('accounts').find({ id: id }).value()
         });
-        console.log(id);
     },
 
     postUpdateAccount: function (req, res) {
@@ -47,6 +45,7 @@ module.exports = {
         db.get('accounts').find({ id: id }).assign({ role: role}).write();
         res.redirect('/admin/viewAccount');
         console.log(id, name, username, password, role);
+
     },
 
 
