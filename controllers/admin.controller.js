@@ -116,6 +116,20 @@ module.exports = {
         console.log(id);
     },
 
+    updateCourse: function (req, res) {
+        var id = req.params.id;
+        var course = db.get('Course').find({ id: id }).value();
+        res.render('admin/updateCourse', {
+            course: course
+        });
+    },
+    postUpdateCourse: function (req, res) {
+        var id = req.params.id;
+        var courseName = req.body.courseName;
+        db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
+        res.redirect('/admin/viewCourseCategory');
+    },
+
     //Topic==================================================================
     viewTopic: function (req, res) {
         var topic = db.get('topic').cloneDeep().value();

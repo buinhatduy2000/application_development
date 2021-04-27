@@ -17,16 +17,16 @@
     },
     {
       "name": "Pham Duc Anh",
-      "username": "phamducanh",
-      "password": "123456",
-      "role": "trainee",
+      "username": "phamducanh123",
+      "password": "123456123",
+      "role": "manager",
       "id": "WklQfoEhm"
     },
     {
       "name": "Nguyen Van Luc",
       "username": "nguyenvanluc",
       "password": "123456",
-      "role": "manager",
+      "role": "trainer",
       "id": "sb1JdUZub"
     },
     {
@@ -47,7 +47,7 @@
       "id": "SDX9C44wk"
     },
     {
-      "category": "Computing",
+      "category": "Graphic Design",
       "id": "UKperquSQ"
     }
   ],

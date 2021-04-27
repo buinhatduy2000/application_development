@@ -9,13 +9,13 @@ router.get('/viewAccount', controller.viewAccount);
 
 router.get('/createAccount', controller.getCreateAccount);
 
-router.post('/createAccount', validate.postCreateAccount ,controller.postCreateAccount);
+router.post('/createAccount', validate.postCreateAccount, controller.postCreateAccount);
 
 router.get('/deleteAccount/:id', controller.deleteAccount);
 
 router.get('/updateAccount/:id', controller.getUpdateAccount);
 
-router.post('/updateAccount/:id', controller.postUpdateAccount);
+router.post('/updateAccount/:id', validate.postCreateAccount, controller.postUpdateAccount);
 
 //Course Category
 router.get('/viewCourseCategory', controller.viewCourseCategory);
@@ -28,16 +28,20 @@ router.get('/deleteCourseCategory/:id', controller.deleteCourseCategory);
 
 router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
 
-router.post('/updateCourseCategory/:id', controller.POSTupdateCourseCategory);
+router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.POSTupdateCourseCategory);
 
 //Course
 router.get('/viewCourse', controller.viewCourse);
 
 router.get('/createCourse', controller.getCreateCourse);
 
-router.post('/createCourse',validate.postCreateCourse ,controller.postCreateCourse);
+router.post('/createCourse',validate.postCreateCourse, controller.postCreateCourse);
 
 router.get('/deleteCourse/:id', controller.deleteCourse);
+
+router.get('/updateCourse/:id', controller.updateCourse);
+
+router.post('/updateCourse/:id',validate.postCreateCourse, controller.postUpdateCourse);
 
 //Topic
 router.get('/viewTopic', controller.viewTopic);

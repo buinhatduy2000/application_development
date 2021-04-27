@@ -12,7 +12,7 @@ block content
                 td= course.courseName
                 td= course.courseCategory
                 td
-                    a.btn.btn-success(href='#') Update 
+                    a.btn.btn-success(href='/admin/updateCourse/'+ course.id) Update 
                     a.btn.btn-danger.ml-4(href='/admin/deleteCourse/'+ course.id) Delete 
 
 
