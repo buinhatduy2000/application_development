@@ -8,7 +8,8 @@ block content
             th Option
         each category in categorys
             tr
-                td= category.category
+                td
+                    a(href='/admin/viewCourse/' + category.category)= category.category
                 td
                     a.btn.btn-success(href='/admin/updateCourseCategory/' + category.id) Update 
                     a.btn.btn-danger.ml-4(href='/admin/deleteCourseCategory/'+ category.id) Delete 

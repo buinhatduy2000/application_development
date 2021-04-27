@@ -53,7 +53,7 @@
   ],
   "Course": [
     {
-      "courseName": "SDLC",
+      "courseName": "Software Development Life Cycle",
       "courseCategory": "Computing",
       "id": "kQrtZ5hrZ"
     },
@@ -61,6 +61,21 @@
       "courseName": "Web design",
       "courseCategory": "Computing",
       "id": "95Q7IKXMR"
+    },
+    {
+      "courseName": "Research Business project",
+      "courseCategory": "Bussiness",
+      "id": "vayySOyfy"
+    },
+    {
+      "courseName": "Basic View of Design",
+      "courseCategory": "Graphic Design",
+      "id": "uBWbtGbM1"
+    },
+    {
+      "courseName": "Advanced programming",
+      "courseCategory": "Computing",
+      "id": "OVAJUAQo5"
     }
   ],
   "topic": [

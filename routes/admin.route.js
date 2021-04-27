@@ -31,15 +31,15 @@ router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
 router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.POSTupdateCourseCategory);
 
 //Course
-router.get('/viewCourse', controller.viewCourse);
+router.get('/viewCourse/:category', controller.viewCourse);
 
-router.get('/createCourse', controller.getCreateCourse);
+router.get('/createCourse/:category', controller.getCreateCourse);
 
-router.post('/createCourse',validate.postCreateCourse, controller.postCreateCourse);
+router.post('/createCourse/:category',validate.postCreateCourse, controller.postCreateCourse);
 
 router.get('/deleteCourse/:id', controller.deleteCourse);
 
-router.get('/updateCourse/:id', controller.updateCourse);
+router.get('/updateCourse/:id', controller.getUpdateCourse);
 
 router.post('/updateCourse/:id',validate.postCreateCourse, controller.postUpdateCourse);
 

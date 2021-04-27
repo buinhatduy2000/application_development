@@ -11,6 +11,6 @@ block content
             .form-group 
                 label Course name
                 input.form-control(name="courseName", type='text', value= values ? values.code : '' + course.courseName)
-                
+                input(name='courseCategory', type='hidden', value='' + course.courseCategory)
 
             button.btn.btn-success Update
