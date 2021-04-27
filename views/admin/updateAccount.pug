@@ -7,17 +7,17 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/updateAccount/"+ changes.id method="POST")
+        form(action="/admin/updateAccount/"+ accounts.id method="POST")
 
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value='' + changes.name ) 
+                input.form-control(name="name", type='text', value='' + accounts.name ) 
 
                 label User Name
-                input.form-control(name="username", type='text', value='' + changes.username) 
+                input.form-control(name="username", type='text', value='' + accounts.username) 
 
                 label Password
-                input.form-control(name="password", type='password', value='' + changes.password)
+                input.form-control(name="password", type='password', value='' + accounts.password)
 
                 label Role
                 br

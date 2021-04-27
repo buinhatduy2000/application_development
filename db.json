@@ -9,32 +9,32 @@
   ],
   "accounts": [
     {
-      "name": "abc",
-      "username": "abc",
-      "password": "123456",
-      "role": "manager",
+      "name": "Bui Nhat Duy",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin",
       "id": "rxCH83Op5"
     },
     {
       "name": "Pham Duc Anh",
       "username": "phamducanh",
       "password": "123456",
-      "role": "trainer",
+      "role": "trainee",
       "id": "WklQfoEhm"
     },
     {
-      "name": "Vui Van Luc",
+      "name": "Nguyen Van Luc",
       "username": "nguyenvanluc",
       "password": "123456",
-      "role": "trainee",
+      "role": "manager",
       "id": "sb1JdUZub"
     },
     {
-      "name": "Luc Vui VL",
-      "username": "adjkasjhkkasd",
-      "password": "adjkasjhkkasd",
-      "role": "trainee",
-      "id": "DDqt00yKt"
+      "name": "Nguyen Thanh An",
+      "username": "nguyenthanhan",
+      "password": "nguyenthanhan",
+      "role": "admin",
+      "id": "Pe8KpX1Sd"
     }
   ],
   "courseCategory": [
