@@ -127,7 +127,7 @@ module.exports = {
         var id = req.params.id;
         var courseName = req.body.courseName;
         db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
-        res.redirect('/admin/viewCourseCategory');
+        res.redirect('/admin/viewCourse');
     },
 
     //Topic==================================================================

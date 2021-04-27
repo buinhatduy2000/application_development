@@ -53,14 +53,14 @@
   ],
   "Course": [
     {
-      "courseName": "Web design",
-      "courseCategory": "Computing",
-      "id": "BJCyn7rN8"
-    },
-    {
       "courseName": "SDLC",
       "courseCategory": "Computing",
       "id": "kQrtZ5hrZ"
+    },
+    {
+      "courseName": "Web design",
+      "courseCategory": "Computing",
+      "id": "95Q7IKXMR"
     }
   ],
   "topic": [
