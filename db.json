@@ -23,13 +23,6 @@
       "id": "WklQfoEhm"
     },
     {
-      "name": "Nguyen Van Luc",
-      "username": "nguyenvanluc",
-      "password": "123456",
-      "role": "trainer",
-      "id": "sb1JdUZub"
-    },
-    {
       "name": "Nguyen Thanh An",
       "username": "nguyenthanhan",
       "password": "nguyenthanhan",
@@ -66,16 +59,6 @@
       "courseName": "Research Business project",
       "courseCategory": "Bussiness",
       "id": "vayySOyfy"
-    },
-    {
-      "courseName": "Basic View of Design",
-      "courseCategory": "Graphic Design",
-      "id": "uBWbtGbM1"
-    },
-    {
-      "courseName": "Advanced programming",
-      "courseCategory": "Computing",
-      "id": "OVAJUAQo5"
     }
   ],
   "topic": [

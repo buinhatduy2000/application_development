@@ -116,9 +116,10 @@ module.exports = {
 
     deleteCourse: function (req, res) {
         var id = req.params.id;
+        var category = req.body.courseCategory;
         db.get('Course').remove({ id: id }).write();
-        res.redirect('/admin/viewCourse');
-        console.log(id);
+        res.redirect('/admin/viewCourseCategory');
+        console.log(category);
     },
 
     getUpdateCourse: function (req, res) {
