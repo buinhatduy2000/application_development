@@ -17,8 +17,8 @@
     },
     {
       "name": "Pham Duc Anh",
-      "username": "phamducanh",
-      "password": "123456",
+      "username": "phamducanh123",
+      "password": "123456123",
       "role": "manager",
       "id": "WklQfoEhm"
     },
@@ -26,7 +26,7 @@
       "name": "Nguyen Van Luc",
       "username": "nguyenvanluc",
       "password": "123456",
-      "role": "manager",
+      "role": "trainer",
       "id": "sb1JdUZub"
     },
     {
@@ -47,20 +47,35 @@
       "id": "SDX9C44wk"
     },
     {
-      "category": "Computing",
+      "category": "Graphic Design",
       "id": "UKperquSQ"
     }
   ],
   "Course": [
     {
-      "courseName": "Web design",
-      "courseCategory": "Computing",
-      "id": "BJCyn7rN8"
-    },
-    {
-      "courseName": "SDLC",
+      "courseName": "Software Development Life Cycle",
       "courseCategory": "Computing",
       "id": "kQrtZ5hrZ"
+    },
+    {
+      "courseName": "Web design",
+      "courseCategory": "Computing",
+      "id": "95Q7IKXMR"
+    },
+    {
+      "courseName": "Research Business project",
+      "courseCategory": "Bussiness",
+      "id": "vayySOyfy"
+    },
+    {
+      "courseName": "Basic View of Design",
+      "courseCategory": "Graphic Design",
+      "id": "uBWbtGbM1"
+    },
+    {
+      "courseName": "Advanced programming",
+      "courseCategory": "Computing",
+      "id": "OVAJUAQo5"
     }
   ],
   "topic": [

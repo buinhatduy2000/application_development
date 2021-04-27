@@ -7,15 +7,12 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/createCourse" method="POST")
+        form(action="/admin/createCourse/" + category  method="POST")
             .form-group 
                 label Course name
                 input.form-control(name="courseName", type='text', value= values ? values.code : '')
+                input(name="courseCategory", type='hidden', value='' + category)
 
-                label Course Category
-                select.form-control(name="courseCategory")
-                    option(selected='') Choose a category
-                    each category in categorys 
-                        option= category.category
+               
 
             button.btn.btn-success Create

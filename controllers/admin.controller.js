@@ -92,28 +92,48 @@ module.exports = {
     //Course================================================================
 
     viewCourse: function (req, res) {
-        var course = db.get('Course').cloneDeep().value();
+        var category = req.params.category;
+        var course = db.get('Course').filter({courseCategory: category}).value();
         res.render('admin/viewCourse', {
-            courses: course
+            courses: course,
+            category: category
         });
     },
 
     getCreateCourse: function (req, res) {
-        var categorys = db.get('courseCategory').cloneDeep().value();
+        var category = req.params.category;
         res.render('admin/createCourse', {
-            categorys: categorys
+            category: category
         });
     },
     postCreateCourse: function (req, res) {
         req.body.id = shortid.generate();
+        var category = req.body.courseCategory;
         db.get('Course').push(req.body).write();
-        res.redirect('viewCourse');
+        res.redirect('/admin/viewCourse/' + category);
+        console.log(category)
     },
+
     deleteCourse: function (req, res) {
         var id = req.params.id;
         db.get('Course').remove({ id: id }).write();
         res.redirect('/admin/viewCourse');
         console.log(id);
+    },
+
+    getUpdateCourse: function (req, res) {
+        var id = req.params.id;
+        var course = db.get('Course').find({ id: id }).value();
+        res.render('admin/updateCourse', {
+            course: course
+        });
+    },
+    postUpdateCourse: function (req, res) {
+        var id = req.params.id;
+        var courseName = req.body.courseName;
+        db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
+        res.redirect('/admin/viewCourse/' + req.body.courseCategory);
+        console.log(req.body.courseCategory);
     },
 
     //Topic==================================================================

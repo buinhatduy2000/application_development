@@ -1,21 +1,16 @@
 extends ../layouts/adminMenu
 block content
-    h1 Create Course
+    h1 Update Course
 
     if errors
         each error in errors
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/createCourse" method="POST")
+        form(action="/admin/updateCourse/" + course.id method="POST")
             .form-group 
                 label Course name
-                input.form-control(name="courseName", type='text', value= values ? values.code : '')
+                input.form-control(name="courseName", type='text', value= values ? values.code : '' + course.courseName)
+                input(name='courseCategory', type='hidden', value='' + course.courseCategory)
 
-                label Course Category
-                select.form-control(name="courseCategory")
-                    option(selected='') Choose a category
-                    each category in categorys 
-                        option= category.category
-
-            button.btn.btn-success Create
+            button.btn.btn-success Update
