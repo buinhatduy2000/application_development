@@ -6,13 +6,11 @@ block content
         tr 
             th Topic name
             th Action
-            th Action
         each topic in topics
             tr
                 td= topic.topic
                 td
                     a.btn.btn-success(href='/updateTopic/:name') Update
-                td 
                     a.btn.btn-danger.ml-4(href='/admin/deleteTopic/' + topic.id) Delete 
 
-    a.btn.btn-primary(href = '/admin/createTopic') Create Topic
+    a.btn.btn-primary(href = '/admin/createTopic/' + course) Add new Topic

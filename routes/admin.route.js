@@ -44,11 +44,11 @@ router.get('/updateCourse/:id', controller.getUpdateCourse);
 router.post('/updateCourse/:id',validate.postCreateCourse, controller.postUpdateCourse);
 
 //Topic
-router.get('/viewTopic', controller.viewTopic);
+router.get('/viewTopic/:course', controller.viewTopic);
 
-router.get('/createTopic', controller.createTopic);
+router.get('/createTopic/:course', controller.getCreateTopic);
 
-router.post('/createTopic', controller.postCreateTopic),
+router.post('/createTopic/:course', controller.postCreateTopic),
 
 router.get('/deleteTopic/:id', controller.deleteTopic);
 
