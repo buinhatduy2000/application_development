@@ -99,14 +99,17 @@
   "topic": [
     {
       "topic": "WBS",
+      "courseName": "Research Business project",
       "id": "S9zN-qLHR"
     },
     {
       "topic": "ASM 1",
+      "courseName": "Software Development Life Cycle",
       "id": "ZvzflJ3WY"
     },
     {
       "topic": "ASM 2",
+      "courseName": "Software Development Life Cycle",
       "id": "vDMhxWFCB"
     }
   ],
