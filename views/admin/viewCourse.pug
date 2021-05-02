@@ -8,8 +8,7 @@ block content
             th Actions 
         each course in courses
             tr
-                td
-                    a(href='/admin/viewTopic/' + course.courseName)= course.courseName
+                td= course.courseName
                 td
                     a.btn.btn-success(href='/admin/updateCourse/'+ course.id) Update 
                     a.btn.btn-danger.ml-4(href='/admin/deleteCourse/'+ course.id) Delete 
