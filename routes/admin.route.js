@@ -15,7 +15,7 @@ router.get('/deleteAccount/:id', controller.deleteAccount);
 
 router.get('/updateAccount/:id', controller.getUpdateAccount);
 
-router.post('/updateAccount/:id', validate.postCreateAccount, controller.postUpdateAccount);
+router.post('/updateAccount/:id', controller.postUpdateAccount);
 
 //Course Category
 router.get('/viewCourseCategory', controller.viewCourseCategory);
@@ -60,6 +60,15 @@ router.get('/addTrainerToCourse', controller.addTrainer);
 router.post('/addTrainerToCourse', controller.postAddTrainer);
 
 router.get('/deleteTrainer/:id', controller.deleteTrainer);
+
+//Trainee to Course
+router.get('/viewTrainee', controller.viewTraineeToCourse);
+
+router.get('/addTraineeToCourse', controller.addTrainee);
+
+router.post('/addTraineeToCourse', controller.postAddTrainee);
+
+router.get('/deleteTrainee/:id', controller.deleteTrainee);
 
 router.get('/', controller.index);
 

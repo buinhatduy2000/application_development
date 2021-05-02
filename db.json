@@ -23,11 +23,39 @@
       "id": "WklQfoEhm"
     },
     {
-      "name": "Nguyen Thanh An",
-      "username": "nguyenthanhan",
-      "password": "nguyenthanhan",
-      "role": "admin",
-      "id": "Pe8KpX1Sd"
+      "name": "Doan Trung Tung",
+      "username": "tungdt",
+      "password": "123@123a",
+      "role": "trainer",
+      "id": "BJJi_jS-O"
+    },
+    {
+      "name": "Pham Duc Anh",
+      "username": "anhpd",
+      "password": "123@123a",
+      "role": "trainee",
+      "id": "6p01r5iUz"
+    },
+    {
+      "name": "Nguyen Van Luc",
+      "username": "lucnv",
+      "password": "123@123a",
+      "role": "trainee",
+      "id": "hDR-FJlFd"
+    },
+    {
+      "name": "Ngo Quoc Cuong",
+      "username": "cuongnq",
+      "password": "123@123a",
+      "role": "trainee",
+      "id": "eW2JNWvcj"
+    },
+    {
+      "name": "Cuong Muoi Ty",
+      "username": "staff",
+      "password": "staff",
+      "role": "manager",
+      "id": "--LMEB5ai"
     }
   ],
   "courseCategory": [
@@ -65,6 +93,14 @@
     {
       "topic": "WBS",
       "id": "S9zN-qLHR"
+    },
+    {
+      "topic": "ASM 1",
+      "id": "ZvzflJ3WY"
+    },
+    {
+      "topic": "ASM 2",
+      "id": "vDMhxWFCB"
     }
   ],
   "trainerToCourse": [
@@ -82,7 +118,33 @@
       "course": "Web design",
       "trainer": "Luc dep trai",
       "id": "7et6uZvys"
+    },
+    {
+      "course": "Research Business project",
+      "trainer": "Doan Trung Tung",
+      "id": "33pg4CTU_"
     }
   ],
-  "traineeToCourse": []
+  "traineeToCourse": [
+    {
+      "course": "Python-Ruby | Pham Duc Anh",
+      "trainee": "Pham Duc Anh",
+      "id": "NGee2MDVw"
+    },
+    {
+      "course": "Python-Ruby | Pham Duc Anh",
+      "trainee": "Pham Duc Anh",
+      "id": "NdVV9FV1H"
+    },
+    {
+      "course": "Web design | Luc dep trai",
+      "trainee": "Pham Duc Anh",
+      "id": "_q-qsstvc"
+    },
+    {
+      "course": "Research Business project | Doan Trung Tung",
+      "trainee": "Ngo Quoc Cuong",
+      "id": "9fwseBc3B"
+    }
+  ]
 }

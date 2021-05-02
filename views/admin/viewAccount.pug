@@ -1,23 +1,81 @@
 extends ../layouts/adminMenu
 block content
 
-    h1 List account
-    table.table 
+    h1(style='text-align:center;',) List admin accounts
+    table.table.mt-4 
         tr 
             th Name
             th User Name 
             th Password
-            th Role
             th Actions 
-        each account in accounts
+        each account in accountAdmin
             tr
                 td= account.name
                 td= account.username
                 td **********
-                td= account.role
                 td
-                    a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                    a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete 
-
+                    .dropdown
+                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | Action
+                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                            a.dropdown-item.alert.alert-success(href='/admin/updateAccount/'+ account.id) Update 
+                            a.dropdown-item.alert.alert-danger(href='/admin/deleteAccount/'+ account.id) Delete
+    h1(style='text-align:center;') List staff accounts
+    table.table.mt-4 
+        tr 
+            th Name
+            th User Name 
+            th Password
+            th Actions 
+        each account in accountStaff
+            tr
+                td= account.name
+                td= account.username
+                td **********
+                td
+                    .dropdown
+                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | Action
+                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                            a.dropdown-item.alert.alert-success(href='/admin/updateAccount/'+ account.id) Update 
+                            a.dropdown-item.alert.alert-danger(href='/admin/deleteAccount/'+ account.id) Delete
+    h1(style='text-align:center;') List trainer account
+    table.table.mt-4 
+        tr 
+            th Name
+            th User Name 
+            th Password
+            th Actions 
+        each account in accountTrainer
+            tr
+                td= account.name
+                td= account.username
+                td **********
+                td
+                    .dropdown
+                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | Action
+                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                            a.dropdown-item.alert.alert-success(href='/admin/updateAccount/'+ account.id) Update 
+                            a.dropdown-item.alert.alert-danger(href='/admin/deleteAccount/'+ account.id) Delete
+    h1(style='text-align:center;') List trainee account
+    table.table.mt-4 
+        tr 
+            th Name
+            th User Name 
+            th Password
+            th Actions 
+        each account in accountTrainee
+            tr
+                td= account.name
+                td= account.username
+                td **********
+                td
+                    .dropdown
+                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | Action
+                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                            a.dropdown-item.alert.alert-success(href='/admin/updateAccount/'+ account.id) Update 
+                            a.dropdown-item.alert.alert-danger(href='/admin/deleteAccount/'+ account.id) Delete
 
     a.btn.btn-primary(href = '/admin/createAccount') Create new account 

@@ -8,10 +8,11 @@ block content
             th Option
         each category in categorys
             tr
-                td= category.category
                 td
-                    a.btn.btn-success(href='#') Update 
-                    a.btn.btn-danger.ml-4(href='/admin/deleteCourseCategory/'+ category.id) Delete 
+                    a(href='/staff/viewCourse/' + category.category)= category.category
+                td
+                    a.btn.btn-success(href='/staff/updateCourseCategory/' + category.id) Update 
+                    a.btn.btn-danger.ml-4(href='/staff/deleteCourseCategory/'+ category.id) Delete 
 
 
-    a.btn.btn-primary(href = '/admin/createCourseCategory') Create new Course Category 
+    a.btn.btn-primary(href = '/staff/createCourseCategory') Create new Course Category 

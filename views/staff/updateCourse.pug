@@ -1,0 +1,16 @@
+extends ../layouts/staffMenu
+block content
+    h1 Update Course
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/staff/updateCourse/" + course.id method="POST")
+            .form-group 
+                label Course name
+                input.form-control(name="courseName", type='text', value= values ? values.code : '' + course.courseName)
+                input(name='courseCategory', type='hidden', value='' + course.courseCategory)
+
+            button.btn.btn-success Update

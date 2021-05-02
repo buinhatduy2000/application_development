@@ -5,7 +5,10 @@ module.exports = {
     //Account=============================================================
     viewAccount: function (req, res) {
         res.render('admin/viewAccount', {
-            accounts: db.get('accounts').cloneDeep().value()
+            accountAdmin: db.get('accounts').filter({ role: 'admin' }).value(),
+            accountStaff: db.get('accounts').filter({ role: 'manager' }).value(),
+            accountTrainer: db.get('accounts').filter({ role: 'trainer' }).value(),
+            accountTrainee: db.get('accounts').filter({ role: 'trainee' }).value(),
         });
     },
 
@@ -58,10 +61,7 @@ module.exports = {
     },
 
     getCreateCourseCategory: function (req, res) {
-        var account = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
-        res.render('admin/createCourseCategory', {
-            trainers: account
-        })
+        res.render('admin/createCourseCategory')
     },
 
     postCreateCourseCategory: function (req, res) {
@@ -159,7 +159,7 @@ module.exports = {
         console.log(id);
     },
 
-    // Assign trainer to Course
+    // Assign trainer to Course===========================================================
     viewTrainerToCourse: function (req, res) {
         var viewTrainer = db.get('trainerToCourse').cloneDeep().value();
         res.render('admin/viewTrainer', {
@@ -183,6 +183,33 @@ module.exports = {
         var id = req.params.id;
         db.get('trainerToCourse').remove({ id: id }).write();
         res.redirect('/admin/viewTrainer');
+        console.log(id);
+    },
+
+    // Assign trainee to Course===========================================================
+    viewTraineeToCourse: function (req, res) {
+        var view = db.get('traineeToCourse').cloneDeep().value();
+        res.render('admin/viewTrainee', {
+            views: view
+        });
+    },
+
+    addTrainee: function (req, res) {
+        var course = db.get('trainerToCourse').value();
+        var trainee = db.get('accounts').filter({ role: 'trainee' }).cloneDeep().value();
+        res.render('admin/traineeCourse', {
+            courses: course, trainees: trainee
+        });
+    },
+    postAddTrainee: function (req, res) {
+        req.body.id = shortid.generate();
+        db.get('traineeToCourse').push(req.body).write();
+        res.redirect('viewTrainee');
+    },
+    deleteTrainee: function (req, res) {
+        var id = req.params.id;
+        db.get('traineeToCourse').remove({ id: id }).write();
+        res.redirect('/admin/viewTrainee');
         console.log(id);
     },
 

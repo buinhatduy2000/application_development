@@ -36,13 +36,17 @@ module.exports = {
         console.log(account.id)
         console.log(account.role)
 
-        if(account.role == 'admin')
+        if (account.role == 'admin')
             res.redirect('/admin');
-        else if (account.role == 'manager')
+        if (account.role == 'manager')
             res.redirect('/staff');
+        if (account.role == 'trainer')
+            res.redirect('/trainer');
+        if (account.role == 'trainee')
+            res.redirect('/trainee');
     },
 
-    logout: function(req, res){
+    logout: function (req, res) {
         var account = db.get('accounts').value();
         res.clearCookie('accountId');
         res.redirect("/auth/login")

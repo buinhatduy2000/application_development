@@ -1,0 +1,36 @@
+extends ../layouts/staffMenu
+block content
+    h1 Update user 
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/staff/updateAccount/"+ accounts.id method="POST")
+
+            .form-group 
+                label Name
+                input.form-control(name="name", type='text', value='' + accounts.name ) 
+
+                label User Name
+                input.form-control(name="username", type='text', value='' + accounts.username) 
+
+                label Password
+                input.form-control(name="password", type='password', value='' + accounts.password)
+
+                label Role
+                br
+                input(type='radio', name='role', value='admin')
+                label(for='admin') Admin
+                br
+                input(type='radio', name='role', value='manager')
+                label(for='manager') Staff (Manager)
+                br
+                input(type='radio', name='role', value='trainer')
+                label(for='trainer') Trainer
+                br
+                input(type='radio', name='role', value='trainee')
+                label(for='trainee') Trainee
+
+            button.btn.btn-success Update 
