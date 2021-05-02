@@ -1,79 +1,89 @@
 extends ../layouts/staffMenu
 block content
+    #accordion.mt-4
+        .card
+            #headingOne.card-header
+                h5.mb-0
+                    button.btn.btn-link(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                        | Admin Account
+            #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordion')
+                .card-body
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th User Name 
+                                th Password
+                                th Actions 
+                            each account in accountAdmin
+                                tr
+                                    td= account.name
+                                    td= account.username
+                                    td **********
+                                    td 
+                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                           
+        .card
+            #headingTwo.card-header
+                h5.mb-0
+                    button.btn.btn-link.collapsed(data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+                        | Staff Account
+            #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordion')
+                .card-body
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th User Name 
+                                th Password
+                                th Actions 
+                            each account in accountStaff
+                                tr
+                                    td= account.name
+                                    td= account.username
+                                    td **********
+                                    td
+                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete                  
+        .card
+            #headingThree.card-header
+                h5.mb-0
+                    button.btn.btn-link.collapsed(data-toggle='collapse' data-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
+                        | Trainer Account
+            #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordion')
+                .card-body
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th User Name 
+                                th Password
+                                th Actions 
+                            each account in accountTrainer
+                                tr
+                                    td= account.name
+                                    td= account.username
+                                    td **********
+                                    td
+                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
 
-    h1(style='text-align:center;',) List staff accounts
-    table.table.mt-4 
-        tr 
-            th Name
-            th User Name 
-            th Password
-            th Actions 
-        each account in accountAdmin
-            tr
-                td= account.name
-                td= account.username
-                td **********
-                td
-                    .dropdown
-                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                            | Action
-                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                            a.dropdown-item.alert.alert-success(href='/staff/updateAccount/'+ account.id) Update 
-                            a.dropdown-item.alert.alert-danger(href='/staff/deleteAccount/'+ account.id) Delete
-    h1(style='text-align:center;') List staff accounts
-    table.table.mt-4 
-        tr 
-            th Name
-            th User Name 
-            th Password
-            th Actions 
-        each account in accountStaff
-            tr
-                td= account.name
-                td= account.username
-                td **********
-                td
-                    .dropdown
-                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                            | Action
-                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                            a.dropdown-item.alert.alert-success(href='/staff/updateAccount/'+ account.id) Update 
-                            a.dropdown-item.alert.alert-danger(href='/staff/deleteAccount/'+ account.id) Delete
-    h1(style='text-align:center;') List trainer account
-    table.table.mt-4 
-        tr 
-            th Name
-            th User Name 
-            th Password
-            th Actions 
-        each account in accountTrainer
-            tr
-                td= account.name
-                td= account.username
-                td **********
-                td
-                    .dropdown
-                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                            | Action
-                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                            a.dropdown-item.alert.alert-success(href='/staff/updateAccount/'+ account.id) Update 
-                            a.dropdown-item.alert.alert-danger(href='/staff/deleteAccount/'+ account.id) Delete
-    h1(style='text-align:center;') List trainee account
-    table.table.mt-4 
-        tr 
-            th Name
-            th User Name 
-            th Password
-            th Actions 
-        each account in accountTrainee
-            tr
-                td= account.name
-                td= account.username
-                td **********
-                td
-                    .dropdown
-                        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                            | Action
-                        .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                            a.dropdown-item.alert.alert-success(href='/staff/updateAccount/'+ account.id) Update 
-                            a.dropdown-item.alert.alert-danger(href='/staff/deleteAccount/'+ account.id) Delete
+        .card
+            #headingFour.card-header
+                h5.mb-0
+                    button.btn.btn-link.collapsed(data-toggle='collapse' data-target='#collapseFour' aria-expanded='false' aria-controls='collapseFour')
+                        | Trainee Account
+            #collapseFour.collapse(aria-labelledby='headingFour' data-parent='#accordion')
+                .card-body
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th User Name 
+                                th Password
+                                th Actions 
+                            each account in accountTrainee
+                                tr
+                                    td= account.name
+                                    td= account.username
+                                    td **********
+                                    td
+                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
