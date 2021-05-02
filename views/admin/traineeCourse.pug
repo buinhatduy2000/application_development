@@ -1,0 +1,24 @@
+extends ../layouts/adminMenu
+block content
+    h1 Add a Trainer to Course
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/admin/addTraineeToCourse" method="POST")
+            .form-group 
+                label Course name
+                select.form-control(name="course")
+                    option(selected='') Choose a Course
+                    each course in courses
+                        option= course.course+' | '+course.trainer
+
+                label Trainee Name
+                select.form-control(name="trainee")
+                    option(selected='') Choose a Trainer
+                    each trainee in trainees
+                        option= trainee.name
+
+            button.btn.btn-success Create

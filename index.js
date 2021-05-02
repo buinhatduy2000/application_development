@@ -2,10 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookiePaser = require('cookie-parser');
 
-var userRoutes = require('./routes/users.routes');
 var authRoutes = require('./routes/auth.route');
-var adminRoutes = require('./routes/admin.route');
+var traineeRoutes = require('./routes/trainee.route');
+var trainerRoutes = require('./routes/trainer.route');
 var staffRoutes = require('./routes/staff.route');
+var adminRoutes = require('./routes/admin.route');
 
 var authMiddleware = require('./middlewares/auth.middleware');
 
@@ -25,10 +26,11 @@ app.get('/', function (req, res) {
     res.redirect('auth/login')
 });
 
-app.use('/admin', authMiddleware.requireAuth, adminRoutes);
-app.use('/staff', authMiddleware.requireAuth, staffRoutes);
-app.use('/users', authMiddleware.requireAuth, userRoutes);
 app.use('/auth', authRoutes);
+app.use('/trainee', authMiddleware.requireAuth, traineeRoutes);
+app.use('/trainer', authMiddleware.requireAuth, trainerRoutes);
+app.use('/staff', authMiddleware.requireAuth, staffRoutes);
+app.use('/admin', authMiddleware.requireAuth, adminRoutes);
 
 var PORT = process.env.Port || 8000
 app.listen(PORT);

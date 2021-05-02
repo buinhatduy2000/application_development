@@ -9,7 +9,7 @@ module.exports = {
         var account = db.get('accounts').find({id: req.cookies.accountId}).value();
         
         if(!account){
-            res.redirect('/auth.login');
+            res.redirect('/auth/login');
             return;
         }
         res.locals.account = account;

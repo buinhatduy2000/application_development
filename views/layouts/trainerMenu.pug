@@ -6,7 +6,7 @@ html
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
     body 
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
-            a.navbar-brand(href='#') Staff System
+            a.navbar-brand(href='#') Trainer System
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarNav.collapse.navbar-collapse
@@ -31,15 +31,7 @@ html
                         ul.list-group.list-group-flush
                             li.list-group-item= "Hello " + account.role + " " + account.name
                             li.list-group-item 
-                                a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewAccount') Manage Accounts detail
-                            li.list-group-item 
-                                a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewCourseCategory') Manage Course Category
-                            li.list-group-item 
                                 a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewTopic') Manage Topic
-                            li.list-group-item 
-                                a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewTrainer') Assign trainer to course
-                            li.list-group-item 
-                                a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewTrainee') Assign trainee to course
                             li.list-group-item
                                 form(action="/auth/logout" method="GET")
                                     button.btn.btn-danger Logout

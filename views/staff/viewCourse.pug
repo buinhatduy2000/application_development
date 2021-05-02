@@ -5,15 +5,13 @@ block content
     table.table 
         tr 
             th Course Name
-            th Course Category
             th Actions 
         each course in courses
             tr
                 td= course.courseName
-                td= course.courseCategory
                 td
-                    a.btn.btn-success(href='#') Update 
-                    a.btn.btn-danger.ml-4(href='/admin/deleteCourse/'+ course.id) Delete 
+                    a.btn.btn-success(href='/staff/updateCourse/'+ course.id) Update 
+                    a.btn.btn-danger.ml-4(href='/staff/deleteCourse/'+ course.id) Delete 
 
 
-    a.btn.btn-primary(href = '/admin/createCourse') Create new Course
+    a.btn.btn-primary(href = '/staff/createCourse/' + category) Create new Course
