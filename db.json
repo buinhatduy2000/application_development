@@ -59,12 +59,49 @@
       "courseName": "Research Business project",
       "courseCategory": "Bussiness",
       "id": "vayySOyfy"
+    },
+    {
+      "courseName": "Advanced programming",
+      "courseCategory": "Computing",
+      "id": "sG54WjRjQ"
+    },
+    {
+      "courseName": "Basic layout",
+      "courseCategory": "Graphic Design",
+      "id": "295XVD08i"
     }
   ],
   "topic": [
     {
       "topic": "WBS",
+      "courseName": "Research Business project",
       "id": "S9zN-qLHR"
+    },
+    {
+      "topic": "Gantt chart",
+      "id": "ie7XbFYhz"
+    },
+    {
+      "topic": "Gantt chart",
+      "id": "_yxsYCVfQ"
+    },
+    {
+      "topic": "Gantt chart",
+      "id": "cyT1R8vzu"
+    },
+    {
+      "topic": "Gantt chart",
+      "id": "-gLfVjyhV"
+    },
+    {
+      "topic": "Gantt chart",
+      "courseName": "Research Business project",
+      "id": "apYxR7iln"
+    },
+    {
+      "topic": "Design Pattern",
+      "courseName": "Advanced programming",
+      "id": "Ti5HFFva5"
     }
   ],
   "trainerToCourse": [

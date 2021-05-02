@@ -139,23 +139,30 @@ module.exports = {
 
     //Topic==================================================================
     viewTopic: function (req, res) {
-        var topic = db.get('topic').cloneDeep().value();
+        var course = req.params.course
+        var topic = db.get('topic').filter({courseName: course}).value();
         res.render('admin/viewTopic', {
+            course: course,
             topics: topic
         });
     },
-    createTopic: function (req, res) {
-        res.render('admin/createTopic');
+    getCreateTopic: function (req, res) {
+        var course = req.params.course
+        res.render('admin/createTopic', {
+            course: course
+        });
     },
     postCreateTopic: function (req, res) {
         req.body.id = shortid.generate();
+        var courseName = req.body.courseName;
         db.get('topic').push(req.body).write();
-        res.redirect('viewTopic');
+        res.redirect('/admin/viewTopic/' + courseName);
     },
+
     deleteTopic: function (req, res) {
         var id = req.params.id;
         db.get('topic').remove({ id: id }).write();
-        res.redirect('/admin/viewTopic');
+        res.redirect('admin/viewTopic');
         console.log(id);
     },
 
