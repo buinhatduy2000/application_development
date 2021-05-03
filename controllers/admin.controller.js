@@ -1,6 +1,9 @@
-var db = require("../db");
-var shortid = require('shortid');
 var Account = require("../models/account.model");
+var Course = require("../models/course.model");
+var CourseCategory = require("../models/courseCategory.model")
+var Topic = require("../models/topic.model");
+var TraineeToCourse = require("../models/traineeToCourse.model");
+var TrainerToCourse = require("../models/trainerToCourse.model");
 
 module.exports = {
     //Account=============================================================
@@ -14,18 +17,18 @@ module.exports = {
     },
 
     getCreateAccount: function (req, res) {
-        req.body.id = shortid.generate();
         res.render('admin/createAccount');
     },
 
     postCreateAccount: function (req, res) {
-        db.get('accounts').push(req.body).write();
+        const account = new Account(req.body);
+        account.save();
         res.redirect('viewAccount');
     },
 
     deleteAccount: function (req, res) {
         var id = req.params.id;
-        db.get('accounts').remove({ id: id }).write();
+        //db.get('accounts').remove({ id: id }).write();
         res.redirect('/admin/viewAccount');
         console.log(id);
     },
@@ -33,7 +36,7 @@ module.exports = {
     getUpdateAccount: function (req, res) {
         var id = req.params.id;
         res.render('admin/updateAccount', {
-            accounts: db.get('accounts').find({ id: id }).value()
+            //accounts: db.get('accounts').find({ id: id }).value()
         });
     },
 
@@ -43,10 +46,10 @@ module.exports = {
         var username = req.body.username;
         var password = req.body.password;
         var role = req.body.role;
-        db.get('accounts').find({ id: id }).assign({ name: name}).write();
-        db.get('accounts').find({ id: id }).assign({ username: username}).write();
-        db.get('accounts').find({ id: id }).assign({ password: password}).write();
-        db.get('accounts').find({ id: id }).assign({ role: role}).write();
+        //db.get('accounts').find({ id: id }).assign({ name: name}).write();
+        //db.get('accounts').find({ id: id }).assign({ username: username}).write();
+        //db.get('accounts').find({ id: id }).assign({ password: password}).write();
+        //db.get('accounts').find({ id: id }).assign({ role: role}).write();
         res.redirect('/admin/viewAccount');
         console.log(id, name, username, password, role);
 
@@ -55,7 +58,7 @@ module.exports = {
 
     //Course Category======================================================
     viewCourseCategory: function (req, res) {
-        var category = db.get('courseCategory').cloneDeep().value();
+        var category = CourseCategory.find();
         res.render('admin/viewCourseCategory', {
             categorys: category
         });
@@ -67,18 +70,19 @@ module.exports = {
 
     postCreateCourseCategory: function (req, res) {
         req.body.id = shortid.generate();
-        db.get('courseCategory').push(req.body).write();
+        const courseCategory = new CourseCategory(req.body);
+        courseCategory.save();
         res.redirect('viewCourseCategory');
     },
     deleteCourseCategory: function (req, res) {
         var id = req.params.id;
-        db.get('courseCategory').remove({ id: id }).write();
+        //db.get('courseCategory').remove({ id: id }).write();
         res.redirect('/admin/viewCourseCategory');
         console.log(id);
     },
     updateCourseCategory: function (req, res) {
         var id = req.params.id;
-        var courseCategory = db.get('courseCategory').find({ id: id }).value();
+        //var courseCategory = db.get('courseCategory').find({ id: id }).value();
         res.render('admin/updateCourseCategory', {
             courseCategorys: courseCategory
         });
@@ -86,7 +90,7 @@ module.exports = {
     POSTupdateCourseCategory: function (req, res) {
         var id = req.params.id;
         var category = req.body.category;
-        db.get('courseCategory').find({ id: id }).assign({ category: category }).write();
+        //db.get('courseCategory').find({ id: id }).assign({ category: category }).write();
         res.redirect('/admin/viewCourseCategory');
     },
 
@@ -94,7 +98,7 @@ module.exports = {
 
     viewCourse: function (req, res) {
         var category = req.params.category;
-        var course = db.get('Course').filter({courseCategory: category}).value();
+        var course = Course.find();
         res.render('admin/viewCourse', {
             courses: course,
             category: category
@@ -110,7 +114,8 @@ module.exports = {
     postCreateCourse: function (req, res) {
         req.body.id = shortid.generate();
         var category = req.body.courseCategory;
-        db.get('Course').push(req.body).write();
+        const course = new Course(req.body);
+        course.save();
         res.redirect('/admin/viewCourse/' + category);
         console.log(category)
     },
@@ -118,14 +123,14 @@ module.exports = {
     deleteCourse: function (req, res) {
         var id = req.params.id;
         var category = req.body.courseCategory;
-        db.get('Course').remove({ id: id }).write();
+        //db.get('Course').remove({ id: id }).write();
         res.redirect('/admin/viewCourseCategory');
         console.log(category);
     },
 
     getUpdateCourse: function (req, res) {
         var id = req.params.id;
-        var course = db.get('Course').find({ id: id }).value();
+        //var course = db.get('Course').find({ id: id }).value();
         res.render('admin/updateCourse', {
             course: course
         });
@@ -133,7 +138,7 @@ module.exports = {
     postUpdateCourse: function (req, res) {
         var id = req.params.id;
         var courseName = req.body.courseName;
-        db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
+        //db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
         res.redirect('/admin/viewCourse/' + req.body.courseCategory);
         console.log(req.body.courseCategory);
     },
@@ -141,7 +146,7 @@ module.exports = {
     //Topic==================================================================
     viewTopic: function (req, res) {
         var course = req.params.course
-        var topic = db.get('topic').filter({courseName: course}).value();
+        var topic = Topic.find()
         res.render('admin/viewTopic', {
             course: course,
             topics: topic
@@ -154,69 +159,69 @@ module.exports = {
         });
     },
     postCreateTopic: function (req, res) {
-        req.body.id = shortid.generate();
         var courseName = req.body.courseName;
-        db.get('topic').push(req.body).write();
+        const topic = new Topic(req.body);
+        topic.save();
         res.redirect('/admin/viewTopic/' + courseName);
     },
     
     deleteTopic: function (req, res) {
         var id = req.params.id;
-        db.get('topic').remove({ id: id }).write();
+        //db.get('topic').remove({ id: id }).write();
         res.redirect('/admin/viewTopic');
         console.log(id);
     },
 
     // Assign trainer to Course===========================================================
     viewTrainerToCourse: function (req, res) {
-        var viewTrainer = db.get('trainerToCourse').cloneDeep().value();
+        var viewTrainer = TrainerToCourse.find();
         res.render('admin/viewTrainer', {
             viewTrainers: viewTrainer
         });
     },
 
     addTrainer: function (req, res) {
-        var course = db.get('Course').value();
-        var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
+        //var course = db.get('Course').value();
+        //var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
         res.render('admin/trainerCourse', {
             courses: course, trainers: trainer
         });
     },
     postAddTrainer: function (req, res) {
-        req.body.id = shortid.generate();
-        db.get('trainerToCourse').push(req.body).write();
+        const trainerToCourse = new TrainerToCourse(req.body);
+        trainerToCourse.save();
         res.redirect('viewTrainer');
     },
     deleteTrainer: function (req, res) {
         var id = req.params.id;
-        db.get('trainerToCourse').remove({ id: id }).write();
+        //db.get('trainerToCourse').remove({ id: id }).write();
         res.redirect('/admin/viewTrainer');
         console.log(id);
     },
 
     // Assign trainee to Course===========================================================
     viewTraineeToCourse: function (req, res) {
-        var view = db.get('traineeToCourse').cloneDeep().value();
+        var view = TraineeToCourse.find();
         res.render('admin/viewTrainee', {
             views: view
         });
     },
 
     addTrainee: function (req, res) {
-        var course = db.get('trainerToCourse').value();
-        var trainee = db.get('accounts').filter({ role: 'trainee' }).cloneDeep().value();
+        //var course = db.get('trainerToCourse').value();
+        //var trainee = db.get('accounts').filter({ role: 'trainee' }).cloneDeep().value();
         res.render('admin/traineeCourse', {
             courses: course, trainees: trainee
         });
     },
     postAddTrainee: function (req, res) {
-        req.body.id = shortid.generate();
-        db.get('traineeToCourse').push(req.body).write();
+        const traineeToCourse = new TraineeToCourse(req.body);
+        traineeToCourse.save();
         res.redirect('viewTrainee');
     },
     deleteTrainee: function (req, res) {
         var id = req.params.id;
-        db.get('traineeToCourse').remove({ id: id }).write();
+        //db.get('traineeToCourse').remove({ id: id }).write();
         res.redirect('/admin/viewTrainee');
         console.log(id);
     },

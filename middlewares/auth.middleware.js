@@ -1,4 +1,4 @@
-var db = require('../db')
+var Account = require("../models/account.model");
 
 module.exports = {
     requireAuth: function(req, res, next){
@@ -6,7 +6,7 @@ module.exports = {
             res.redirect('/auth/login');
             return;
         }
-        var account = db.get('accounts').find({id: req.cookies.accountId}).value();
+        var account = Account.find({id: req.cookies.accountId});
         
         if(!account){
             res.redirect('/auth/login');

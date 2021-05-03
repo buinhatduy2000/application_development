@@ -1,4 +1,4 @@
-var Account = require("../models/account.model");
+const Account = require("../models/account.model");
 
 module.exports = {
     login: function (req, res) {
@@ -9,9 +9,9 @@ module.exports = {
         var username = req.body.username;
         var password = req.body.password;
 
-        var account = await Account.findOne({ username: username}).lean();
+        var account = await Account.findOne({ username: username});
 
-        console.log(account)
+        console.log(account.password)
 
         if (!account) {
             res.render('auth/login', {
@@ -47,8 +47,8 @@ module.exports = {
             res.redirect('/trainee');
     },
 
-    logout: function (req, res) {
-        var account = db.get('accounts').value();
+    logout: async function (req, res) {
+        var account = Account.find({});
         res.clearCookie('accountId');
         res.redirect("/auth/login")
     }
