@@ -7,12 +7,12 @@ var TrainerToCourse = require("../models/trainerToCourse.model");
 
 module.exports = {
     //Account=============================================================
-    viewAccount: function (req, res) {
+    viewAccount: async function (req, res) {
         res.render('admin/viewAccount', {
-            accountAdmin: Account.find({ role: 'admin' }),
-            accountStaff: Account.find({ role: 'manager' }),
-            accountTrainer: Account.find({ role: 'trainer' }),
-            accountTrainee: Account.find({ role: 'trainee' })
+            accountAdmin: await Account.find({ role: 'admin' }),
+            accountStaff: await Account.find({ role: 'manager' }),
+            accountTrainer: await Account.find({ role: 'trainer' }),
+            accountTrainee: await Account.find({ role: 'trainee' })
         });
     },
 
@@ -57,8 +57,8 @@ module.exports = {
 
 
     //Course Category======================================================
-    viewCourseCategory: function (req, res) {
-        var category = CourseCategory.find();
+    viewCourseCategory: async function (req, res) {
+        var category =  await CourseCategory.find({})
         res.render('admin/viewCourseCategory', {
             categorys: category
         });
@@ -96,9 +96,9 @@ module.exports = {
 
     //Course================================================================
 
-    viewCourse: function (req, res) {
+    viewCourse: async function (req, res) {
         var category = req.params.category;
-        var course = Course.find();
+        var course = await Course.find();
         res.render('admin/viewCourse', {
             courses: course,
             category: category
@@ -112,7 +112,6 @@ module.exports = {
         });
     },
     postCreateCourse: function (req, res) {
-        req.body.id = shortid.generate();
         var category = req.body.courseCategory;
         const course = new Course(req.body);
         course.save();
@@ -144,9 +143,9 @@ module.exports = {
     },
 
     //Topic==================================================================
-    viewTopic: function (req, res) {
+    viewTopic: async function (req, res) {
         var course = req.params.course
-        var topic = Topic.find()
+        var topic = await Topic.find()
         res.render('admin/viewTopic', {
             course: course,
             topics: topic
@@ -173,8 +172,8 @@ module.exports = {
     },
 
     // Assign trainer to Course===========================================================
-    viewTrainerToCourse: function (req, res) {
-        var viewTrainer = TrainerToCourse.find();
+    viewTrainerToCourse: async function (req, res) {
+        var viewTrainer = await TrainerToCourse.find();
         res.render('admin/viewTrainer', {
             viewTrainers: viewTrainer
         });
@@ -200,8 +199,8 @@ module.exports = {
     },
 
     // Assign trainee to Course===========================================================
-    viewTraineeToCourse: function (req, res) {
-        var view = TraineeToCourse.find();
+    viewTraineeToCourse: async function (req, res) {
+        var view = await TraineeToCourse.find();
         res.render('admin/viewTrainee', {
             views: view
         });
