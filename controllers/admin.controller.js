@@ -69,7 +69,6 @@ module.exports = {
     },
 
     postCreateCourseCategory: function (req, res) {
-        req.body.id = shortid.generate();
         const courseCategory = new CourseCategory(req.body);
         courseCategory.save();
         res.redirect('viewCourseCategory');
