@@ -7,9 +7,9 @@ var TrainerToCourse = require("../models/trainerToCourse.model");
 module.exports = {
     postCreateAccount: async function (req, res, next) {
         var username= req.body.username
-        var account = await Account.find({ username: username });
+        var account = await Account.findOne({ username: username });
         console.log(account);
-        console.log(req.body.username);
+        console.log(username);
         var error = [];
         if (!req.body.name) {
             error.push('Name is required!')
@@ -37,7 +37,7 @@ module.exports = {
     },
     postCreateCourseCategory: async function (req, res, next) {
 
-        var category = await CourseCategory.find({ category: req.body.category });
+        var category = await CourseCategory.findOne({ category: req.body.category });
         var error = [];
         if (!req.body.category) {
             error.push('Category name is required!')
@@ -52,6 +52,7 @@ module.exports = {
             });
             return;
         }
+        console.log(category);
         next();
     },
     postCreateCourse: async function (req, res, next) {

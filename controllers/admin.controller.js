@@ -58,7 +58,7 @@ module.exports = {
 
     //Course Category======================================================
     viewCourseCategory: async function (req, res) {
-        var category =  await CourseCategory.find({})
+        var category =  await CourseCategory.find({});
         res.render('admin/viewCourseCategory', {
             categorys: category
         });
