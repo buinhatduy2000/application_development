@@ -1,16 +1,19 @@
-
-var db = require("../db");
+var Account = require("../models/account.model");
 
 module.exports = {
     login: function (req, res) {
         res.render('auth/login');
     },
 
-    postLogin: function (req, res) {
+    postLogin: async function (req, res) {
         var username = req.body.username;
         var password = req.body.password;
 
-        var account = db.get('accounts').find({ username: username }).value();
+        var account = Account.find({ username: username}, function (err, accounts) {
+            if(err) console.log("Err");
+          });
+
+        console.log(account)
 
         if (!account) {
             res.render('auth/login', {
