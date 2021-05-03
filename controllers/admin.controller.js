@@ -30,7 +30,7 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         var condition = { '_id': ObjectID };
-        //db.get('accounts').remove({ id: id }).write();
+        await Account.deleteOne(condition);
         res.redirect('/admin/viewAccount');
         console.log(id);
     },
@@ -42,7 +42,7 @@ module.exports = {
         var account = await Account.find(condition)
 
         res.render('admin/updateAccount', {
-            accounts: account
+            account: account
         });
         console.log(account)
     },
@@ -57,10 +57,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
 
-        //db.get('accounts').find({ id: id }).assign({ name: name}).write();
-        //db.get('accounts').find({ id: id }).assign({ username: username}).write();
-        //db.get('accounts').find({ id: id }).assign({ password: password}).write();
-        //db.get('accounts').find({ id: id }).assign({ role: role}).write();
+        await Account.updateOne(condition, req.body)
         res.redirect('/admin/viewAccount');
         console.log(id, name, username, password, role);
 
