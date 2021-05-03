@@ -9,9 +9,7 @@ module.exports = {
         var username = req.body.username;
         var password = req.body.password;
 
-        var account = Account.find({ username: username}, function (err, accounts) {
-            if(err) console.log("Err");
-          });
+        var account = await Account.findOne({ username: username}).lean();
 
         console.log(account)
 

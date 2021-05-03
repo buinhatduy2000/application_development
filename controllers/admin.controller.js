@@ -1,14 +1,15 @@
 var db = require("../db");
 var shortid = require('shortid');
+var Account = require("../models/account.model");
 
 module.exports = {
     //Account=============================================================
     viewAccount: function (req, res) {
         res.render('admin/viewAccount', {
-            accountAdmin: db.get('accounts').filter({ role: 'admin' }).value(),
-            accountStaff: db.get('accounts').filter({ role: 'manager' }).value(),
-            accountTrainer: db.get('accounts').filter({ role: 'trainer' }).value(),
-            accountTrainee: db.get('accounts').filter({ role: 'trainee' }).value(),
+            accountAdmin: Account.find({ role: 'admin' }),
+            accountStaff: Account.find({ role: 'manager' }),
+            accountTrainer: Account.find({ role: 'trainer' }),
+            accountTrainee: Account.find({ role: 'trainee' })
         });
     },
 
