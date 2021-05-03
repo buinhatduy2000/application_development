@@ -39,7 +39,7 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var account = await Account.find(condition)
+        var account = await Account.findOne(condition)
 
         res.render('admin/updateAccount', {
             account: account
@@ -81,29 +81,29 @@ module.exports = {
         courseCategory.save();
         res.redirect('viewCourseCategory');
     },
-    deleteCourseCategory: function (req, res) {
+    deleteCourseCategory: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //db.get('courseCategory').remove({ id: id }).write();
+        await CourseCategory.deleteOne(condition);
         res.redirect('/admin/viewCourseCategory');
         console.log(id);
     },
-    updateCourseCategory: function (req, res) {
+    updateCourseCategory: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //var courseCategory = db.get('courseCategory').find({ id: id }).value();
+        var courseCategory = await CourseCategory.findOne(condition)
         res.render('admin/updateCourseCategory', {
             courseCategorys: courseCategory
         });
     },
-    POSTupdateCourseCategory: function (req, res) {
+    POSTupdateCourseCategory: async function (req, res) {
         var id = req.params.id;
         var category = req.body.category;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //db.get('courseCategory').find({ id: id }).assign({ category: category }).write();
+        await courseCategory.updateOne(condition, req.body)
         res.redirect('/admin/viewCourseCategory');
     },
 
@@ -132,31 +132,30 @@ module.exports = {
         console.log(category)
     },
 
-    deleteCourse: function (req, res) {
+    deleteCourse: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         var category = req.body.courseCategory;
-        //db.get('Course').remove({ id: id }).write();
+        await Course.deleteOne(condition);
         res.redirect('/admin/viewCourseCategory');
         console.log(category);
     },
 
-    getUpdateCourse: function (req, res) {
+    getUpdateCourse: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //var course = db.get('Course').find({ id: id }).value();
+        var course = await Course.findOne(condition)
         res.render('admin/updateCourse', {
             course: course
         });
     },
-    postUpdateCourse: function (req, res) {
+    postUpdateCourse: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var courseName = req.body.courseName;
-        //db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
+        await Course.updateOne(condition, req.body)
         res.redirect('/admin/viewCourse/' + req.body.courseCategory);
         console.log(req.body.courseCategory);
     },
@@ -187,7 +186,7 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //db.get('topic').remove({ id: id }).write();
+        await Topic.deleteOne(condition);
         res.redirect('/admin/viewTopic');
         console.log(id);
     },
@@ -196,15 +195,17 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-
-        res.redirect('/admin/viewTopic');
+        var topic = await Topic.findOne(condition)
+        res.redirect('/admin/viewTopic', {
+            topic: topic
+        });
     },
 
     postUpdateTopic: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-
+        await Topic.updateOne(condition, req.body);
         res.redirect('/admin/viewTopic');
     },
 
@@ -228,11 +229,11 @@ module.exports = {
         trainerToCourse.save();
         res.redirect('viewTrainer');
     },
-    deleteTrainer: function (req, res) {
+    deleteTrainer: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //db.get('trainerToCourse').remove({ id: id }).write();
+        await TrainerToCourse.deleteOne(condition);
         res.redirect('/admin/viewTrainer');
         console.log(id);
     },
@@ -257,11 +258,11 @@ module.exports = {
         traineeToCourse.save();
         res.redirect('viewTrainee');
     },
-    deleteTrainee: function (req, res) {
+    deleteTrainee: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        //db.get('traineeToCourse').remove({ id: id }).write();
+        await TraineeToCourse.deleteOne(condition);
         res.redirect('/admin/viewTrainee');
         console.log(id);
     },
