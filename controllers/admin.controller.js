@@ -39,10 +39,12 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
+        var account = await Account.find(condition)
 
         res.render('admin/updateAccount', {
-            //accounts: db.get('accounts').find({ id: id }).value()
+            accounts: account
         });
+        console.log(account)
     },
 
     postUpdateAccount: async function (req, res) {
