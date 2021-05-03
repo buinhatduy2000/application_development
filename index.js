@@ -10,14 +10,15 @@ var adminRoutes = require('./routes/admin.route');
 
 var authMiddleware = require('./middlewares/auth.middleware');
 
-var port = 3000;
+var db = require('./db');
+db.connect();
 
 var app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookiePaser());
 
 app.use(express.static('public'));
