@@ -1,10 +1,15 @@
-var db = require("../db");
-var shortid = require('shortid');
+var Account = require("../models/account.model");
+var Course = require("../models/course.model");
+var CourseCategory = require("../models/courseCategory.model")
+var Topic = require("../models/topic.model");
+var TraineeToCourse = require("../models/traineeToCourse.model");
+var TrainerToCourse = require("../models/trainerToCourse.model");
 module.exports = {
-    postCreateAccount: function (req, res, next) {
-        req.body.id = shortid.generate();
-
-        var account = db.get('accounts').find({ username: req.body.username }).value();
+    postCreateAccount: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.find({ username: username });
+        console.log(account);
+        console.log(req.body.username);
         var error = [];
         if (!req.body.name) {
             error.push('Name is required!')
@@ -30,9 +35,9 @@ module.exports = {
         }
         next();
     },
-    postCreateCourseCategory: function (req, res, next) {
+    postCreateCourseCategory: async function (req, res, next) {
 
-        var category = db.get('courseCategory').find({ category: req.body.category }).value();
+        var category = await CourseCategory.find({ category: req.body.category });
         var error = [];
         if (!req.body.category) {
             error.push('Category name is required!')
@@ -49,7 +54,7 @@ module.exports = {
         }
         next();
     },
-    postCreateCourse: function (req, res, next) {
+    postCreateCourse: async function (req, res, next) {
         var error = [];
         if (!req.body.courseName) {
             error.push('Name of Course is required !')
@@ -58,7 +63,7 @@ module.exports = {
             error.push('Course Category is required !')
         }
         if (error.length) {
-            var categorys = db.get('courseCategory').value();
+            var categorys = await CourseCategory.find({})
             res.render('admin/createCourse', {
                 categorys: categorys,
                 errors: error,
