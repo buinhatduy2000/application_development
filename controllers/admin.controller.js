@@ -196,7 +196,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         var topic = await Topic.findOne(condition)
-        res.redirect('/admin/viewTopic', {
+        res.render('admin/updateTopic', {
             topic: topic
         });
     },
