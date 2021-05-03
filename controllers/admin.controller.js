@@ -165,7 +165,7 @@ module.exports = {
     //Topic==================================================================
     viewTopic: async function (req, res) {
         var course = req.params.course
-        var topic = await Topic.find()
+        var topic = await Topic.find({courseName: course})
         res.render('admin/viewTopic', {
             course: course,
             topics: topic
@@ -184,13 +184,29 @@ module.exports = {
         res.redirect('/admin/viewTopic/' + courseName);
     },
     
-    deleteTopic: function (req, res) {
+    deleteTopic: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         //db.get('topic').remove({ id: id }).write();
         res.redirect('/admin/viewTopic');
         console.log(id);
+    },
+
+    getUpdateTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        res.redirect('/admin/viewTopic');
+    },
+
+    postUpdateTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        res.redirect('/admin/viewTopic');
     },
 
     // Assign trainer to Course===========================================================

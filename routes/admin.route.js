@@ -52,6 +52,10 @@ router.post('/createTopic/:course', controller.postCreateTopic),
 
 router.get('/deleteTopic/:id', controller.deleteTopic);
 
+router.get('/updateTopic/:id', controller.getUpdateTopic);
+
+router.post('/updateTopic/:id', controller.postUpdateTopic);
+
 // Trainer to Course
 router.get('/viewTrainer', controller.viewTrainerToCourse);
 
