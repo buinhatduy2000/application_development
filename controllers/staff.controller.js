@@ -15,7 +15,15 @@ module.exports = {
             accountTrainee: await Account.find({ role: 'trainee' })
         });
     },
+    getCreateAccount: function (req, res) {
+        res.render('staff/createAccount');
+    },
 
+    postCreateAccount: function (req, res) {
+        const account = new Account(req.body);
+        account.save();
+        res.redirect('viewAccount');
+    },
     deleteAccount: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
@@ -29,9 +37,8 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
         res.render('staff/updateAccount', {
-            accounts: account
+            account: account
         });
     },
 
@@ -150,10 +157,12 @@ module.exports = {
         var course = req.params.course
         var topic = await Topic.find({courseName: course})
         res.render('staff/viewTopic', {
+            course: course,
             topics: topic
         });
     },
-    createTopic: function (req, res) {
+
+    getCreateTopic: function (req, res) {
         var course = req.params.course
         res.render('staff/createTopic', {
             course: course
@@ -170,6 +179,32 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.deleteOne(condition);
+        res.redirect('/staff/viewTopic/' + courseName);
+    },
+    
+    deleteTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await Topic.deleteOne(condition);
+        res.redirect('/staff/viewCourseCategory');
+    },
+
+    getUpdateTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var topic = await Topic.findOne(condition)
+        res.render('staff/updateTopic', {
+            topic: topic
+        });
+    },
+
+    postUpdateTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await Topic.updateOne(condition, req.body);
         res.redirect('/staff/viewTopic');
     },
 
@@ -182,11 +217,14 @@ module.exports = {
     },
 
     addTrainer: async function (req, res) {
+
         var course = await Course.find({});
+        //var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
         var trainer = await Account.find({role: "trainer"});
         res.render('staff/trainerCourse', {
             courses: course, trainers: trainer
         });
+        console.log(course)
     },
     postAddTrainer: function (req, res) {
         const trainerToCourse = new TrainerToCourse(req.body);
@@ -211,6 +249,7 @@ module.exports = {
 
     addTrainee: async function (req, res) {
         var course = await TrainerToCourse.find({});
+        //var course = db.get('trainerToCourse').value();
         var trainee = await Account.find({role: "trainee"});
         res.render('staff/traineeCourse', {
             courses: course, trainees: trainee

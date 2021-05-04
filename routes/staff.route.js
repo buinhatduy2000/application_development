@@ -42,7 +42,7 @@ router.post('/updateCourse/:id',validate.postCreateCourse, controller.postUpdate
 //Topic
 router.get('/viewTopic', controller.viewTopic);
 
-router.get('/createTopic', controller.createTopic);
+router.get('/createTopic', controller.getCreateTopic);
 
 router.post('/createTopic', controller.postCreateTopic),
 
