@@ -9,7 +9,7 @@ module.exports = {
         var username = req.body.username;
         var password = req.body.password;
 
-        var account = await Account.findOne({ username: username});
+        var account = await Account.findOne({ username: username });
 
         if (!account) {
             res.render('auth/login', {
@@ -31,24 +31,19 @@ module.exports = {
             return;
         }
         res.cookie('accountId', account.id);
+        res.cookie('accountRole', account.role);
 
-        console.log(account.username)
-        console.log(account.id)
-        console.log(account.role)
+        // console.log(account.username)
+        // console.log(account.id)
+        // console.log(account.role)
 
-        if (account.role == 'admin')
-            res.redirect('/admin');
-        if (account.role == 'manager')
-            res.redirect('/staff');
-        if (account.role == 'trainer')
-            res.redirect('/trainer');
-        if (account.role == 'trainee')
-            res.redirect('/trainee');
+        res.redirect('/' + account.role);
     },
 
     logout: async function (req, res) {
         var account = Account.find({});
         res.clearCookie('accountId');
+        res.clearCookie('accountRole');
         res.redirect("/auth/login")
     }
 };
