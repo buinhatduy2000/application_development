@@ -257,7 +257,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await TraineeToCourse.deleteOne(condition);
-        res.redirect('/admin/viewTrainee');
+        res.redirect('/admin/viewTrainer');
         console.log(id);
     },
     listTrainee: async function (req, res) {
