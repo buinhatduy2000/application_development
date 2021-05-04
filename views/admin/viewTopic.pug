@@ -5,10 +5,12 @@ block content
     table.table 
         tr 
             th Topic name
+            th Topic detail
             th Action
         each topic in topics
             tr
                 td= topic.topicName
+                td= topic.topicDetail
                 td
                     a.btn.btn-success(href='/admin/updateTopic/' + topic.id) Update
                     a.btn.btn-danger.ml-4(href='/admin/deleteTopic/' + topic.id) Delete 
