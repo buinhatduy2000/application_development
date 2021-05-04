@@ -213,14 +213,11 @@ module.exports = {
     },
 
     addTrainer: async function (req, res) {
-        //var course = db.get('Course').value();
         var course = await Course.find({});
-        //var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
         var trainer = await Account.find({role: "trainer"});
         res.render('admin/trainerCourse', {
             courses: course, trainers: trainer
         });
-        console.log(course)
     },
     postAddTrainer: function (req, res) {
         const trainerToCourse = new TrainerToCourse(req.body);
@@ -233,7 +230,6 @@ module.exports = {
         let condition = { '_id': ObjectID };
         await TrainerToCourse.deleteOne(condition);
         res.redirect('/admin/viewTrainer');
-        console.log(id);
     },
 
     // Assign trainee to Course===========================================================
@@ -245,9 +241,7 @@ module.exports = {
     },
 
     addTrainee: async function (req, res) {
-        //var course = db.get('trainerToCourse').value();
         var course = await TrainerToCourse.find({});
-        //var trainee = db.get('accounts').filter({ role: 'trainee' }).cloneDeep().value();
         var trainee = await Account.find({role: "trainee"});
         res.render('admin/traineeCourse', {
             courses: course, trainees: trainee

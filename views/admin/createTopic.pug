@@ -7,7 +7,7 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-         form(action="/admin/createTopic/:course" method="POST")
+        form(action="/admin/createTopic/:course" method="POST")
             .form-group 
                 label Topic Name
                 input.form-control(name="topicName", type='text', value= values ? values.code : '')
