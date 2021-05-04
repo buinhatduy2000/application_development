@@ -72,6 +72,8 @@ router.get('/addTraineeToCourse', controller.addTrainee);
 
 router.post('/addTraineeToCourse', controller.postAddTrainee);
 
+router.get('/listTrainee/:course', controller.listTrainee);
+
 router.get('/deleteTrainee/:id', controller.deleteTrainee);
 
 router.get('/', controller.index);

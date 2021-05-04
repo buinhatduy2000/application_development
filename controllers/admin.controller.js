@@ -128,7 +128,7 @@ module.exports = {
         const course = new Course(req.body);
         course.save();
         res.redirect('/admin/viewCourse/' + category);
-    },
+    }, 
 
     deleteCourse: async function (req, res) {
         var id = req.params.id;
@@ -259,6 +259,14 @@ module.exports = {
         await TraineeToCourse.deleteOne(condition);
         res.redirect('/admin/viewTrainee');
         console.log(id);
+    },
+    listTrainee: async function (req, res) {
+        var coursename = req.params.course;
+        var view = await TraineeToCourse.find({courseName: coursename});
+        res.render('admin/listTrainee', {
+            views: view
+        });
+        console.log(coursename);
     },
 
     //Home Page================================================================
