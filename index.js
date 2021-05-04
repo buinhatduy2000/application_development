@@ -33,6 +33,6 @@ app.use('/trainer', authMiddleware.requireAuth, trainerRoutes);
 app.use('/staff', authMiddleware.requireAuth, staffRoutes);
 app.use('/admin', authMiddleware.requireAuth, adminRoutes);
 
-var PORT = process.env.PORT || 3000
+var PORT = process.env.PORT || 8000
 app.listen(PORT);
 console.debug("Server is running on port: " + PORT);
