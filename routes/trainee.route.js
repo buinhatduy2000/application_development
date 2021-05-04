@@ -3,9 +3,6 @@ var router = express.Router();
 var controller = require('../controllers/trainee.controller');
 
 
-//Course Category
-router.get('/viewCourseCategory', controller.viewCourseCategory);
-
 //Course
 router.get('/viewCourse/:category', controller.viewCourse);
 

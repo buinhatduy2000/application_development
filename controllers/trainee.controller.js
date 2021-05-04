@@ -4,16 +4,8 @@ var Topic = require("../models/topic.model");
 
 module.exports = {
 
-    viewCourseCategory: async function (req, res) {
-        var category =  await CourseCategory.find({});
-        res.render('trainee/viewCourseCategory', {
-            categorys: category
-        });
-    },
-
     viewCourse: async function (req, res) {
-        var category = req.params.category;
-        var course = await Course.find({courseCategory: category});
+        
         res.render('trainee/viewCourse', {
             courses: course,
             category: category
