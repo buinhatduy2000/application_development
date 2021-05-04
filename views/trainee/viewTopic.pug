@@ -1,0 +1,11 @@
+extends ../layouts/traineeMenu
+block content
+
+    h1 List Topic
+    table.table 
+        tr 
+            th Topic name
+        each topic in topics
+            tr
+                td= topic.topicName
+                

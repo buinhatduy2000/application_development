@@ -1,0 +1,11 @@
+extends ../layouts/traineeMenu
+block content
+
+    h1 List Course
+    table.table 
+        tr 
+            th Course Name
+        each course in courses
+            tr
+                td
+                    a(href='/trainee/viewTopic/' + course.courseName)= course.courseName= course.courseName

@@ -1,0 +1,12 @@
+extends ../layouts/traineeMenu
+block content
+
+    h1 List Course Category
+    table.table 
+        tr 
+            th Course Category Name
+        each category in categorys
+            tr
+                td
+                    a(href='/trainee/viewCourse/' + category.category)= category.category
+
