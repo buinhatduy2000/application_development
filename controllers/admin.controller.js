@@ -234,7 +234,7 @@ module.exports = {
 
     // Assign trainee to Course===========================================================
     viewTraineeToCourse: async function (req, res) {
-        var view = await TraineeToCourse.find();
+        var view = await TraineeToCourse.find({});
         res.render('admin/viewTrainee', {
             views: view
         });
@@ -250,7 +250,7 @@ module.exports = {
     postAddTrainee: function (req, res) {
         const traineeToCourse = new TraineeToCourse(req.body);
         traineeToCourse.save();
-        res.redirect('viewTrainee');
+        res.redirect('viewTrainer');
     },
     deleteTrainee: async function (req, res) {
         var id = req.params.id;

@@ -10,7 +10,8 @@ block content
             th Action
         each view in viewTrainers
             tr
-                td= view.courseName
+                td
+                    a(href='/admin/listTrainee/' + view.courseName + ' | ' + view.trainer)= view.courseName
                 td= view.trainer
                 td
                     a.btn.btn-success(href='#') Update
