@@ -48,17 +48,11 @@ module.exports = {
 
     postUpdateAccount: async function (req, res) {
         var id = req.params.id;
-        var name = req.body.name;
-        var username = req.body.username;
-        var password = req.body.password;
-        var role = req.body.role;
-
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
 
         await Account.updateOne(condition, req.body)
         res.redirect('/admin/viewAccount');
-        console.log(id, name, username, password, role);
 
     },
 
@@ -233,12 +227,6 @@ module.exports = {
     },
 
     // Assign trainee to Course===========================================================
-    viewTraineeToCourse: async function (req, res) {
-        var view = await TraineeToCourse.find({});
-        res.render('admin/viewTrainee', {
-            views: view
-        });
-    },
 
     addTrainee: async function (req, res) {
         var course = await TrainerToCourse.find({});

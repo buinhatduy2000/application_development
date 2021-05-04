@@ -66,7 +66,6 @@ router.post('/addTrainerToCourse', controller.postAddTrainer);
 router.get('/deleteTrainer/:id', controller.deleteTrainer);
 
 //Trainee to Course
-router.get('/viewTrainee', controller.viewTraineeToCourse);
 
 router.get('/addTraineeToCourse', controller.addTrainee);
 
