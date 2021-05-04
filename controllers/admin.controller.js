@@ -111,6 +111,14 @@ module.exports = {
         });
     },
 
+    viewCourseDetail: async function (req, res) {
+        var course = req.params.detail;
+        var view = await TrainerToCourse.find({courseName: course});
+        res.render('admin/viewCourseDetail', {
+            views: view
+        });
+    },
+
     getCreateCourse: function (req, res) {
         var category = req.params.category;
         res.render('admin/createCourse', {
@@ -128,7 +136,6 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var category = req.body.courseCategory;
         await Course.deleteOne(condition);
         res.redirect('/admin/viewCourseCategory');
     },
@@ -159,6 +166,7 @@ module.exports = {
             topics: topic
         });
     },
+    
     getCreateTopic: function (req, res) {
         var course = req.params.course
         res.render('admin/createTopic', {

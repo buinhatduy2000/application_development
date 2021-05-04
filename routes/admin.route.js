@@ -30,8 +30,11 @@ router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
 
 router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.POSTupdateCourseCategory);
 
+
 //Course
 router.get('/viewCourse/:category', controller.viewCourse);
+
+router.get('/viewCourseDetail/:detail', controller.viewCourseDetail);
 
 router.get('/createCourse/:category', controller.getCreateCourse);
 
