@@ -179,6 +179,7 @@ module.exports = {
         var courseName = req.body.courseName;
         const topic = new Topic(req.body);
         topic.save();
+        console.log(req.body);
         res.redirect('/admin/viewTopic/' + courseName);
     },
     
@@ -187,7 +188,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.deleteOne(condition);
-        res.redirect('/admin/viewTopic');
+        res.redirect('/admin/viewCourseCategory');
         console.log(id);
     },
 

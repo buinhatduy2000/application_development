@@ -10,6 +10,6 @@ block content
          form(action="/admin/createTopic/:course" method="POST")
             .form-group 
                 label Topic Name
-                input.form-control(name="topic", type='text', value= values ? values.code : '')
+                input.form-control(name="topicName", type='text', value= values ? values.code : '')
                 input(name="courseName", type='hidden', value='' + course)
             button.btn.btn-success Create
