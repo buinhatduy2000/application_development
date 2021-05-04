@@ -1,16 +1,8 @@
-var Course = require("../models/course.model");
-var CourseCategory = require("../models/courseCategory.model")
+var Account = require("../models/account.model");
+var TraineeToCourse = require("../models/traineeToCourse.model");
 var Topic = require("../models/topic.model");
 
 module.exports = {
-
-    viewCourse: async function (req, res) {
-        
-        res.render('trainee/viewCourse', {
-            courses: course,
-            category: category
-        });
-    },
 
     viewTopic: async function (req, res) {
         var course = req.params.course
@@ -20,8 +12,32 @@ module.exports = {
         });
     },
 
+    getUpdateInformation: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var account = await Account.findOne(condition)
+        res.render('trainee/updateInformation', {
+            account: account
+        })
+    },
+
+    postUpdateInformation: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        await Account.updateOne(condition, req.body);
+        res.redirect('/trainee')
+    },
+
     //Home Page================================================================
-    index: function (req, res) {
-        res.render('trainee/index');
+    index: async function (req, res) {
+        var account = await Account.findOne({'_id': req.cookies.accountId});
+        var course = await TraineeToCourse.find({trainee: account.name});
+        res.render('trainee/index', {
+            account: account,
+            courses: course
+        });
     },
 };

@@ -1,0 +1,32 @@
+extends ../layouts/traineeMenu
+block content
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/trainee/updateInformation/"+ account.id method="POST")
+
+            .form-group 
+                label Name
+                input.form-control(name="name" type='text' value='' + account.name) 
+
+                label User Name
+                input.form-control(name="username" type='text', maxlenth=10, value='' + account.username) 
+
+                label Password
+                input.form-control(name="password" type='password' value='' + account.password)
+
+                label Age
+                input.form-control(name="age" type='number' value='' + account.age) 
+
+                label Date of birth
+                input.form-control(name="dateofbirth" type='date' value='' + account.dateofbirth) 
+
+                label Education
+                input.form-control(name="education" type='text' value='' + account.education) 
+
+                label Main Programming language
+                input.form-control(name="mainprogramminglanguage" type='text' value='' + account.mainprogramminglanguage) 
+                
+            button.btn.btn-success Update 

@@ -11,4 +11,6 @@ block content
             .form-group 
                 label Topic Name
                 input.form-control(name="topic", type='text', value= values ? values.code : '' + topic.topicName)
+                label Topic detail
+                input.form-control(name="topicDetail", type='text', value= '' + topic.topicDetail)
             button.btn.btn-success Update
