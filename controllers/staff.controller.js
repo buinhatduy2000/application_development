@@ -1,5 +1,9 @@
-var db = require("../db");
-var shortid = require('shortid');
+var Account = require("../models/account.model");
+var Course = require("../models/course.model");
+var CourseCategory = require("../models/courseCategory.model")
+var Topic = require("../models/topic.model");
+var TraineeToCourse = require("../models/traineeToCourse.model");
+var TrainerToCourse = require("../models/trainerToCourse.model");
 
 module.exports = {
     //Account=============================================================
