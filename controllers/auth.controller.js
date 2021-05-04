@@ -11,7 +11,6 @@ module.exports = {
 
         var account = await Account.findOne({ username: username});
 
-        console.log(account.password)
 
         if (!account) {
             res.render('auth/login', {
