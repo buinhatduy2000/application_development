@@ -7,10 +7,10 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin//addTrainerToCourse" method="POST")
+        form(action="/admin/addTrainerToCourse" method="POST")
             .form-group 
                 label Course name
-                select.form-control(name="course")
+                select.form-control(name="courseName")
                     option(selected='') Choose a Course
                     each course in courses
                         option= course.courseName

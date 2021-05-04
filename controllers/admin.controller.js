@@ -44,7 +44,6 @@ module.exports = {
         res.render('admin/updateAccount', {
             account: account
         });
-        console.log(account)
     },
 
     postUpdateAccount: async function (req, res) {
@@ -129,7 +128,6 @@ module.exports = {
         const course = new Course(req.body);
         course.save();
         res.redirect('/admin/viewCourse/' + category);
-        console.log(category)
     },
 
     deleteCourse: async function (req, res) {
@@ -139,7 +137,6 @@ module.exports = {
         var category = req.body.courseCategory;
         await Course.deleteOne(condition);
         res.redirect('/admin/viewCourseCategory');
-        console.log(category);
     },
 
     getUpdateCourse: async function (req, res) {
@@ -157,7 +154,6 @@ module.exports = {
         let condition = { '_id': ObjectID };
         await Course.updateOne(condition, req.body)
         res.redirect('/admin/viewCourse/' + req.body.courseCategory);
-        console.log(req.body.courseCategory);
     },
 
     //Topic==================================================================
@@ -179,7 +175,6 @@ module.exports = {
         var courseName = req.body.courseName;
         const topic = new Topic(req.body);
         topic.save();
-        console.log(req.body);
         res.redirect('/admin/viewTopic/' + courseName);
     },
     
@@ -189,7 +184,6 @@ module.exports = {
         let condition = { '_id': ObjectID };
         await Topic.deleteOne(condition);
         res.redirect('/admin/viewCourseCategory');
-        console.log(id);
     },
 
     getUpdateTopic: async function (req, res) {
@@ -218,12 +212,15 @@ module.exports = {
         });
     },
 
-    addTrainer: function (req, res) {
+    addTrainer: async function (req, res) {
         //var course = db.get('Course').value();
+        var course = await Course.find({});
         //var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
+        var trainer = await Account.find({role: "trainer"});
         res.render('admin/trainerCourse', {
             courses: course, trainers: trainer
         });
+        console.log(course)
     },
     postAddTrainer: function (req, res) {
         const trainerToCourse = new TrainerToCourse(req.body);
@@ -247,9 +244,11 @@ module.exports = {
         });
     },
 
-    addTrainee: function (req, res) {
+    addTrainee: async function (req, res) {
         //var course = db.get('trainerToCourse').value();
+        var course = await TrainerToCourse.find({});
         //var trainee = db.get('accounts').filter({ role: 'trainee' }).cloneDeep().value();
+        var trainee = await Account.find({role: "trainee"});
         res.render('admin/traineeCourse', {
             courses: course, trainees: trainee
         });

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const trainerToCourse = new Schema({
-    course: {type: String, maxLength: 255},
+    courseName: {type: String, maxLength: 255},
     trainer: {type: String, maxLength: 255}
 });
 
