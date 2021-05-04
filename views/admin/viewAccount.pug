@@ -1,7 +1,6 @@
 extends ../layouts/adminMenu
 block content
-    a.btn.btn-primary.mt-4(href = '/admin/createAccount') Create new account 
-
+    
     #accordion.mt-4
         .card
             #headingOne.card-header
@@ -89,3 +88,5 @@ block content
                                     td
                                         a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
                                         a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+    
+    a.btn.btn-primary.mt-4(href = '/admin/createAccount') Create new account 
