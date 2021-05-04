@@ -11,7 +11,6 @@ module.exports = {
 
         var account = await Account.findOne({ username: username});
 
-
         if (!account) {
             res.render('auth/login', {
                 errors: [
@@ -32,6 +31,7 @@ module.exports = {
             return;
         }
         res.cookie('accountId', account.id);
+
         console.log(account.username)
         console.log(account.id)
         console.log(account.role)
