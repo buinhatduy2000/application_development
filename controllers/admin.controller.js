@@ -30,8 +30,9 @@ module.exports = {
     },
 
     postCreateAccount: function (req, res) {
-        const account = new Account(req.body);
+        const account = new Account(req.body.username, req.body.password);
         account.save();
+        const trainer
         res.redirect('viewAccount');
     },
 
