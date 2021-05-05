@@ -28,19 +28,19 @@ router.get('/deleteAccount/:id', controller.deleteAccount);
 
 router.get('/updateAccountAdmin', controller.getUpdateAccountAdmin);
 
-router.post('/updateAccountAdmin', validate.postUpdateAccount, controller.postUpdateAccountAdmin);
+router.post('/updateAccountAdmin', controller.postUpdateAccountAdmin);
 
 router.get('/updateAccountStaff', controller.getUpdateAccountStaff);
 
-router.post('/updateAccountStaff', validate.postUpdateAccount, controller.postUpdateAccountStaff);
+router.post('/updateAccountStaff', controller.postUpdateAccountStaff);
 
 router.get('/updateAccountTrainer', controller.getUpdateAccountTrainer);
 
-router.post('/updateAccountTrainer', validate.postUpdateAccount, controller.postUpdateAccountTrainer);
+router.post('/updateAccountTrainer', controller.postUpdateAccountTrainer);
 
 router.get('/updateAccountTrainee', controller.getUpdateAccountTrainee);
 
-router.post('/updateAccountTrainee', validate.postUpdateAccount, controller.postUpdateAccountTrainee);
+router.post('/updateAccountTrainee', controller.postUpdateAccountTrainee);
 
 
 //Course Category
