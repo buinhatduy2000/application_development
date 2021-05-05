@@ -8,14 +8,17 @@ block content
             th Trainer Name
             th Action
             th Action
-        each view in viewTrainers
+            th Action
+        each view in views
             tr
                 td
-                    a(href='/staff/listTrainee/' + view.courseName + ' | ' + view.trainer)= view.courseName
+                    a(href='/staff/viewTopic/' + view.courseName + ' | ' + view.trainer)= view.courseName
                 td= view.trainer
                 td
                     a.btn.btn-success(href='#') Update
                 td 
                     a.btn.btn-danger.ml-4(href='/staff/deleteTrainer/'+ view.id) Delete 
+                td
+                    a.btn.btn-success(href='/staff/listTrainee/' + view.courseName + ' | ' + view.trainer) View all trainee
 
     a.btn.btn-primary(href = '/staff/addTrainerToCourse') Add new Trainer to Course

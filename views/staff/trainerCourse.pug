@@ -10,7 +10,7 @@ block content
         form(action="/staff/addTrainerToCourse" method="POST")
             .form-group 
                 label Course name
-                select.form-control(name="course")
+                select.form-control(name="courseName")
                     option(selected='') Choose a Course
                     each course in courses
                         option= course.courseName

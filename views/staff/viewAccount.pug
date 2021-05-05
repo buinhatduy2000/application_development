@@ -1,5 +1,6 @@
 extends ../layouts/staffMenu
 block content
+    
     #accordion.mt-4
         .card
             #headingOne.card-header
@@ -12,16 +13,22 @@ block content
                             tr 
                                 th Name
                                 th User Name 
-                                th Password
+                                th Age
+                                th D.O.B
+                                th Education
+                                th Main programming language
                                 th Actions 
                             each account in accountAdmin
                                 tr
                                     td= account.name
                                     td= account.username
-                                    td **********
+                                    td= account.age
+                                    td= account.dateofbirth
+                                    td= account.education
+                                    td= account.mainprogramminglanguage
                                     td 
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete
                                            
         .card
             #headingTwo.card-header
@@ -34,16 +41,22 @@ block content
                             tr 
                                 th Name
                                 th User Name 
-                                th Password
+                                th Age
+                                th D.O.B
+                                th Education
+                                th Main programming language
                                 th Actions 
                             each account in accountStaff
                                 tr
                                     td= account.name
                                     td= account.username
-                                    td **********
+                                    td= account.age
+                                    td= account.dateofbirth
+                                    td= account.education
+                                    td= account.mainprogramminglanguage
                                     td
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete                  
+                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete                  
         .card
             #headingThree.card-header
                 h5.mb-0
@@ -55,16 +68,22 @@ block content
                             tr 
                                 th Name
                                 th User Name 
-                                th Password
+                                th Age
+                                th D.O.B
+                                th Education
+                                th Main programming language
                                 th Actions 
                             each account in accountTrainer
                                 tr
                                     td= account.name
                                     td= account.username
-                                    td **********
+                                    td= account.age
+                                    td= account.dateofbirth
+                                    td= account.education
+                                    td= account.mainprogramminglanguage
                                     td
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete
 
         .card
             #headingFour.card-header
@@ -77,13 +96,20 @@ block content
                             tr 
                                 th Name
                                 th User Name 
-                                th Password
+                                th Age
+                                th D.O.B
+                                th Education
+                                th Main programming language
                                 th Actions 
                             each account in accountTrainee
                                 tr
                                     td= account.name
                                     td= account.username
-                                    td **********
+                                    td= account.age
+                                    td= account.dateofbirth
+                                    td= account.education
+                                    td= account.mainprogramminglanguage
                                     td
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete
+    

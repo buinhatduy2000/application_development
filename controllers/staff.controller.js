@@ -9,12 +9,13 @@ module.exports = {
     //Account=============================================================
     viewAccount: async function (req, res) {
         res.render('staff/viewAccount', {
-            accountAdmin: await Account.find({ role: 'admin' }),
+            accountAdmin: await Account.find({ role: 'staff' }),
             accountStaff: await Account.find({ role: 'manager' }),
             accountTrainer: await Account.find({ role: 'trainer' }),
             accountTrainee: await Account.find({ role: 'trainee' })
         });
     },
+
     getCreateAccount: function (req, res) {
         res.render('staff/createAccount');
     },
@@ -24,6 +25,7 @@ module.exports = {
         account.save();
         res.redirect('viewAccount');
     },
+
     deleteAccount: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
@@ -37,6 +39,8 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
+        var account = await Account.findOne(condition)
+
         res.render('staff/updateAccount', {
             account: account
         });
@@ -44,17 +48,11 @@ module.exports = {
 
     postUpdateAccount: async function (req, res) {
         var id = req.params.id;
-        var name = req.body.name;
-        var username = req.body.username;
-        var password = req.body.password;
-        var role = req.body.role;
-
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
 
         await Account.updateOne(condition, req.body)
         res.redirect('/staff/viewAccount');
-        console.log(id, name, username, password, role);
 
     },
 
@@ -113,6 +111,14 @@ module.exports = {
         });
     },
 
+    viewCourseDetail: async function (req, res) {
+        var course = req.params.detail;
+        var view = await TrainerToCourse.find({courseName: course});
+        res.render('staff/viewCourseDetail', {
+            views: view
+        });
+    },
+
     getCreateCourse: function (req, res) {
         var category = req.params.category;
         res.render('staff/createCourse', {
@@ -124,13 +130,12 @@ module.exports = {
         const course = new Course(req.body);
         course.save();
         res.redirect('/staff/viewCourse/' + category);
-    },
+    }, 
 
     deleteCourse: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var category = req.body.courseCategory;
         await Course.deleteOne(condition);
         res.redirect('/staff/viewCourseCategory');
     },
@@ -161,7 +166,7 @@ module.exports = {
             topics: topic
         });
     },
-
+    
     getCreateTopic: function (req, res) {
         var course = req.params.course
         res.render('staff/createTopic', {
@@ -172,13 +177,6 @@ module.exports = {
         var courseName = req.body.courseName;
         const topic = new Topic(req.body);
         topic.save();
-        res.redirect('staff/viewTopic/' + courseName);
-    },
-    deleteTopic: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        await Topic.deleteOne(condition);
         res.redirect('/staff/viewTopic/' + courseName);
     },
     
@@ -217,14 +215,11 @@ module.exports = {
     },
 
     addTrainer: async function (req, res) {
-
         var course = await Course.find({});
-        //var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
         var trainer = await Account.find({role: "trainer"});
         res.render('staff/trainerCourse', {
             courses: course, trainers: trainer
         });
-        console.log(course)
     },
     postAddTrainer: function (req, res) {
         const trainerToCourse = new TrainerToCourse(req.body);
@@ -240,16 +235,9 @@ module.exports = {
     },
 
     // Assign trainee to Course===========================================================
-    viewTraineeToCourse: async function (req, res) {
-        var view = await TraineeToCourse.find();
-        res.render('staff/viewTrainee', {
-            views: view
-        });
-    },
 
     addTrainee: async function (req, res) {
         var course = await TrainerToCourse.find({});
-        //var course = db.get('trainerToCourse').value();
         var trainee = await Account.find({role: "trainee"});
         res.render('staff/traineeCourse', {
             courses: course, trainees: trainee
@@ -258,15 +246,23 @@ module.exports = {
     postAddTrainee: function (req, res) {
         const traineeToCourse = new TraineeToCourse(req.body);
         traineeToCourse.save();
-        res.redirect('viewTrainee');
+        res.redirect('viewTrainer');
     },
     deleteTrainee: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await TraineeToCourse.deleteOne(condition);
-        res.redirect('/staff/viewTrainee');
+        res.redirect('/staff/viewTrainer');
         console.log(id);
+    },
+    listTrainee: async function (req, res) {
+        var coursename = req.params.course;
+        var view = await TraineeToCourse.find({courseName: coursename});
+        res.render('staff/listTrainee', {
+            views: view
+        });
+        console.log(coursename);
     },
 
     //Home Page================================================================
