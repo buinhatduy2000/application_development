@@ -95,20 +95,20 @@ module.exports = {
     },
 
     getUpdateAccountStaff: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var staff = await Staff.findOne({username: username})
 
-        res.render('admin/updateAccount', {
-            account: account
+        res.render('admin/updateAccountStaff', {
+            account: account,
+            staff: staff
         });
     },
 
     postUpdateAccountStaff: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Staff.updateOne({username: username}, req.body)
 
         await Account.updateOne(condition, req.body)
         res.redirect('/admin/viewAccount');
@@ -116,20 +116,20 @@ module.exports = {
     },
 
     getUpdateAccountTrainer: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var trainer = await Trainer.findOne({username: username})
 
-        res.render('admin/updateAccount', {
-            account: account
+        res.render('admin/updateAccountTrainer', {
+            account: account,
+            trainer: trainer
         });
     },
 
     postUpdateAccountTrainer: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Trainer.updateOne({username: username}, req.body)
 
         await Account.updateOne(condition, req.body)
         res.redirect('/admin/viewAccount');
@@ -137,20 +137,21 @@ module.exports = {
     },
 
     getUpdateAccountTrainee: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var trainee = await Trainee.findOne({username: username})
 
-        res.render('admin/updateAccount', {
-            account: account
+
+        res.render('admin/updateAccountTrainee', {
+            account: account,
+            trainee: trainee
         });
     },
 
     postUpdateAccountTrainee: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Trainee.updateOne({username: username}, req.body)
 
         await Account.updateOne(condition, req.body)
         res.redirect('/admin/viewAccount');
@@ -159,10 +160,8 @@ module.exports = {
 
 
     deleteAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        var condition = { '_id': ObjectID };
-        await Account.deleteOne(condition);
+        var username = req.params.username;
+        await Account.deleteOne({username: username});
         res.redirect('/admin/viewAccount');
         console.log(id);
     },

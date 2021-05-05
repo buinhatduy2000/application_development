@@ -6,16 +6,16 @@ block content
         form(action="/admin/createAccountTrainee" method="POST")
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value= values ? values.username : '') 
+                input.form-control(name="name", type='text', value='' + account.name) 
 
                 label User Name
-                input.form-control(name="username", type='text', value= values ? values.username : '') 
+                input.form-control(name="username", type='text', value='' + account.username) 
 
                 label Password
-                input.form-control(name="password", type='password', value= values ? values.password : '')
+                input.form-control(name="password", type='password', value='' + account.password)
 
                 label Date of birth
-                input.form-control(name="dateofbirth", type='date', value='')
+                input.form-control(name="dateofbirth", type='date', value='' + trainer.dateofbirth)
 
                 label Education
                 input.form-control(name="education", type='text', value='') 
@@ -25,4 +25,4 @@ block content
 
                 input.form-control(name="role", type='hidden', value='trainee')
 
-            button.btn.btn-success Create
+            button.btn.btn-success Update
