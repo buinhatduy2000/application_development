@@ -55,6 +55,7 @@ module.exports = {
         const trainer = new Trainer();
         trainer.save();
         res.redirect('viewAccount');
+
     },
 
     getCreateAccountTrainee: function (req, res) {
@@ -67,15 +68,6 @@ module.exports = {
         const trainee = new Trainee();
         trainee.save();
         res.redirect('viewAccount');
-    },
-
-    deleteAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        var condition = { '_id': ObjectID };
-        await Account.deleteOne(condition);
-        res.redirect('/admin/viewAccount');
-        console.log(id);
     },
 
     getUpdateAccount: async function (req, res) {
@@ -98,16 +90,14 @@ module.exports = {
         res.redirect('/admin/viewAccount');
 
     },
-    
-    getUpdateAccount: async function (req, res) {
+
+    deleteAccount: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
-
-        res.render('admin/updateAccount', {
-            account: account
-        });
+        var condition = { '_id': ObjectID };
+        await Account.deleteOne(condition);
+        res.redirect('/admin/viewAccount');
+        console.log(id);
     },
 
     postUpdateAccount: async function (req, res) {

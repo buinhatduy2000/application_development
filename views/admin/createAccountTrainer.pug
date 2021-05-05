@@ -1,0 +1,35 @@
+extends ../layouts/adminMenu
+block content
+    h1 Create account for Admin
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/admin/createAccount" method="POST")
+            .form-group 
+                label Name
+                input.form-control(name="username", type='text', value= values ? values.username : '') 
+
+                label User Name
+                input.form-control(name="username", type='text', value= values ? values.username : '') 
+
+                label Password
+                input.form-control(name="password", type='password', value= values ? values.password : '')
+
+                label Date of birth
+                input.form-control(name="dateofbirth", type='date', value='')
+
+                label 
+                br
+                input(type='radio', name='type', value='internal')
+                label(for='admin') Internal
+                br
+                input(type='radio', name='type', value='external')
+                label(for='manager') External
+                br
+
+                input.form-control(name="courseName", type='hidden', value='trainer')
+
+            button.btn.btn-success Create
