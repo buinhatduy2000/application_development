@@ -7,7 +7,13 @@ var validate = require('../validate/admin.validate')
 //Account
 router.get('/viewAccount', controller.viewAccount);
 
-router.get('/createAccount', controller.getCreateAccount);
+router.get('/createAccountAdmin', controller.getCreateAccountAdmin);
+
+router.get('/createAccountStaff', controller.getCreateAccountStaff);
+
+router.get('/createAccountTrainer', controller.getCreateAccountTrainer);
+
+router.get('/createAccountTrainee', controller.getCreateAccountTrainee);
 
 router.post('/createAccount', validate.postCreateAccount, controller.postCreateAccount);
 

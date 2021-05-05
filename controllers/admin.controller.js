@@ -16,23 +16,23 @@ module.exports = {
         });
     },
 
-    getCreateAccount: function (req, res) {
-        res.render('admin/createAccount');
+    getCreateAccountAdmin: function (req, res) {
+        res.render('admin/createAccountAdmin');
+    },
+    getCreateAccountStaff: function (req, res) {
+        res.render('admin/createAccountStaff');
+    },
+    getCreateAccountTrainer: function (req, res) {
+        res.render('admin/createAccountTrainer');
+    },
+    getCreateAccountTrainee: function (req, res) {
+        res.render('admin/createAccountTrainee');
     },
 
     postCreateAccount: function (req, res) {
         const account = new Account(req.body);
         account.save();
         res.redirect('viewAccount');
-    },
-
-    deleteAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        var condition = { '_id': ObjectID };
-        await Account.deleteOne(condition);
-        res.redirect('/admin/viewAccount');
-        console.log(id);
     },
 
     getUpdateAccount: async function (req, res) {
@@ -54,6 +54,14 @@ module.exports = {
         await Account.updateOne(condition, req.body)
         res.redirect('/admin/viewAccount');
 
+    },
+    deleteAccount: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        var condition = { '_id': ObjectID };
+        await Account.deleteOne(condition);
+        res.redirect('/admin/viewAccount');
+        console.log(id);
     },
 
 
