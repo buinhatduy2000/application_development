@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const Trainer = new Schema({
+const Trainee = new Schema({
+    username: {type: String, maxLength: 255},
     name: {type: String, maxLength: 255},
     age: { type: String, maxLength: 255 },
     dateofbirth: {type: Date, maxLength: 255},
@@ -10,4 +11,4 @@ const Trainer = new Schema({
     mainprogramminglanguage: {type: String, maxLength: 255}
 });
 
-module.exports = mongoose.model('Trainer', Trainer);
+module.exports = mongoose.model('Trainee', Trainee);

@@ -1,9 +1,14 @@
 var Account = require("../models/account.model");
+var Admin = require("../models/admin.model");
+var Staff = require("../models/staff.model");
+var Trainer = require("../models/trainer.model");
+var Trainee = require("../models/trainee.model");
 var Course = require("../models/course.model");
 var CourseCategory = require("../models/courseCategory.model")
 var Topic = require("../models/topic.model");
 var TraineeToCourse = require("../models/traineeToCourse.model");
 var TrainerToCourse = require("../models/trainerToCourse.model");
+
 
 module.exports = {
     //Account=============================================================
@@ -16,14 +21,51 @@ module.exports = {
         });
     },
 
-    getCreateAccount: function (req, res) {
-        res.render('admin/createAccount');
+    getCreateAccountAdmin: function (req, res) {
+        res.render('admin/createAccountAdmin');
     },
 
-    postCreateAccount: function (req, res) {
-        const account = new Account(req.body.username, req.body.password);
+    postCreateAccountAdmin: function (req, res) {
+        const account = new Account(req.body.username, req.body.password, req.body.role);
         account.save();
-        const trainer
+        const admin = new Admin();
+        admin.save();
+        res.redirect('viewAccount');
+    },
+
+    getCreateAccountStaff: function (req, res) {
+        res.render('admin/createAccountStaff');
+    },
+
+    postCreateAccountStaff: function (req, res) {
+        const account = new Account(req.body.username, req.body.password, req.body.role);
+        account.save();
+        const staff = new Staff();
+        staff.save();
+        res.redirect('viewAccount');
+    },
+
+    getCreateAccountTrainer: function (req, res) {
+        res.render('admin/createAccountTrainer');
+    },
+
+    postCreateAccountTrainer: function (req, res) {
+        const account = new Account(req.body.username, req.body.password, req.body.role);
+        account.save();
+        const trainer = new Trainer();
+        trainer.save();
+        res.redirect('viewAccount');
+    },
+
+    getCreateAccountTrainee: function (req, res) {
+        res.render('admin/createAccountTrainee');
+    },
+
+    postCreateAccountTrainee: function (req, res) {
+        const account = new Account(req.body.username, req.body.password, req.body.role);
+        account.save();
+        const trainee = new Trainee();
+        trainee.save();
         res.redirect('viewAccount');
     },
 
@@ -56,7 +98,27 @@ module.exports = {
         res.redirect('/admin/viewAccount');
 
     },
+    
+    getUpdateAccount: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var account = await Account.findOne(condition)
 
+        res.render('admin/updateAccount', {
+            account: account
+        });
+    },
+
+    postUpdateAccount: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        await Account.updateOne(condition, req.body)
+        res.redirect('/admin/viewAccount');
+
+    },
 
     //Course Category======================================================
     viewCourseCategory: async function (req, res) {

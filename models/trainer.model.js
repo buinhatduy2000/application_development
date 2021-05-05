@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const Trainer = new Schema({
+    username: {type: String, maxLength: 255},
     name: {type: String, maxLength: 255},
     dateofbirth: {type: Date, maxLength: 255},
     type: {type: String, maxLength: 255},
