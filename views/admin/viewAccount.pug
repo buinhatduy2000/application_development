@@ -17,8 +17,8 @@ block content
                                 tr
                                     td= account.name
                                     td 
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/admin/updateAccountAdmin/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.username) Delete
                                            
         .card
             #headingTwo.card-header
@@ -35,8 +35,8 @@ block content
                                 tr
                                     td= account.name
                                     td
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete                  
+                                        a.btn.btn-success(href='/admin/updateAccountStaff/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.username) Delete                  
         .card
             #headingThree.card-header
                 h5.mb-0
@@ -52,8 +52,8 @@ block content
                                 tr
                                     td= account.name
                                     td
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/admin/updateAccountTrainer/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.username) Delete
 
         .card
             #headingFour.card-header
@@ -70,8 +70,8 @@ block content
                                 tr
                                     td= account.name
                                     td
-                                        a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/admin/updateAccountTrainee/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.username) Delete
 
     
     //- a.btn.btn-primary.mt-4(href = '/admin/createAccount') Create new account 

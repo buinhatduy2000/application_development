@@ -75,22 +75,21 @@ module.exports = {
     },
 
     getUpdateAccountAdmin: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var admin = await Admin.findOne({username: username})
 
-        res.render('admin/updateAccount', {
-            account: account
+        res.render('admin/updateAccountAdmin', {
+            account: account,
+            admin: admin
         });
     },
 
     postUpdateAccountAdmin: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
+        var username = req.params.username;
 
-        await Account.updateOne(condition, req.body)
+        await Account.updateOne({username: username}, req.body)
+        await Admin.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
 
     },

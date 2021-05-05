@@ -26,21 +26,21 @@ router.post('/createAccountTrainee', validate.postCreateAccount, controller.post
 
 router.get('/deleteAccount/:id', controller.deleteAccount);
 
-router.get('/updateAccountAdmin', controller.getUpdateAccountAdmin);
+router.get('/updateAccountAdmin/:username', controller.getUpdateAccountAdmin);
 
-router.post('/updateAccountAdmin', controller.postUpdateAccountAdmin);
+router.post('/updateAccountAdmin/:username', controller.postUpdateAccountAdmin);
 
-router.get('/updateAccountStaff', controller.getUpdateAccountStaff);
+router.get('/updateAccountStaff/:username', controller.getUpdateAccountStaff);
 
-router.post('/updateAccountStaff', controller.postUpdateAccountStaff);
+router.post('/updateAccountStaff/:username', controller.postUpdateAccountStaff);
 
-router.get('/updateAccountTrainer', controller.getUpdateAccountTrainer);
+router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
 
-router.post('/updateAccountTrainer', controller.postUpdateAccountTrainer);
+router.post('/updateAccountTrainer/:username', controller.postUpdateAccountTrainer);
 
-router.get('/updateAccountTrainee', controller.getUpdateAccountTrainee);
+router.get('/updateAccountTrainee/:username', controller.getUpdateAccountTrainee);
 
-router.post('/updateAccountTrainee', controller.postUpdateAccountTrainee);
+router.post('/updateAccountTrainee/:username', controller.postUpdateAccountTrainee);
 
 
 //Course Category
