@@ -70,7 +70,7 @@ module.exports = {
         res.redirect('viewAccount');
     },
 
-    getUpdateAccount: async function (req, res) {
+    getUpdateAccountAdmin: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
@@ -81,7 +81,7 @@ module.exports = {
         });
     },
 
-    postUpdateAccount: async function (req, res) {
+    postUpdateAccountAdmin: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
@@ -90,6 +90,70 @@ module.exports = {
         res.redirect('/admin/viewAccount');
 
     },
+
+    getUpdateAccountStaff: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var account = await Account.findOne(condition)
+
+        res.render('admin/updateAccount', {
+            account: account
+        });
+    },
+
+    postUpdateAccountStaff: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        await Account.updateOne(condition, req.body)
+        res.redirect('/admin/viewAccount');
+
+    },
+
+    getUpdateAccountTrainer: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var account = await Account.findOne(condition)
+
+        res.render('admin/updateAccount', {
+            account: account
+        });
+    },
+
+    postUpdateAccountTrainer: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        await Account.updateOne(condition, req.body)
+        res.redirect('/admin/viewAccount');
+
+    },
+
+    getUpdateAccountTrainee: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var account = await Account.findOne(condition)
+
+        res.render('admin/updateAccount', {
+            account: account
+        });
+    },
+
+    postUpdateAccountTrainee: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+
+        await Account.updateOne(condition, req.body)
+        res.redirect('/admin/viewAccount');
+
+    },
+
 
     deleteAccount: async function (req, res) {
         var id = req.params.id;
@@ -100,15 +164,6 @@ module.exports = {
         console.log(id);
     },
 
-    postUpdateAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-
-        await Account.updateOne(condition, req.body)
-        res.redirect('/admin/viewAccount');
-
-    },
 
     //Course Category======================================================
     viewCourseCategory: async function (req, res) {
