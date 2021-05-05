@@ -193,7 +193,6 @@ module.exports = {
         let condition = { '_id': ObjectID };
         await CourseCategory.deleteOne(condition);
         res.redirect('/admin/viewCourseCategory');
-        console.log(id);
     },
     updateCourseCategory: async function (req, res) {
         var id = req.params.id;

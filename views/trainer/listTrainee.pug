@@ -1,0 +1,11 @@
+extends ../layouts/trainerMenu
+block content
+
+    h1 List Trainee with Course
+    table.table 
+        tr 
+            th Trainee Name
+        each view in views
+            tr
+                td= view.trainee
+

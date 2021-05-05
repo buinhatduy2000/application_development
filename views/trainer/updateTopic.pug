@@ -1,0 +1,16 @@
+extends ../layouts/trainerMenu
+block content
+    h1 Create Topic
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/trainer/updateTopic/" + topic.id method="POST")
+            .form-group 
+                label Topic Name
+                input.form-control(name="topic", type='text', value= values ? values.code : '' + topic.topicName)
+                label Topic detail
+                input.form-control(name="topicDetail", type='text', value= '' + topic.topicDetail)
+            button.btn.btn-success Update
