@@ -12,20 +12,10 @@ block content
                     table.table.mt-4 
                             tr 
                                 th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
                                 th Actions 
                             each account in accountAdmin
                                 tr
                                     td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
                                     td 
                                         a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
                                         a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
@@ -40,20 +30,10 @@ block content
                     table.table.mt-4 
                             tr 
                                 th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
                                 th Actions 
                             each account in accountStaff
                                 tr
                                     td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
                                     td
                                         a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
                                         a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete                  
@@ -67,20 +47,10 @@ block content
                     table.table.mt-4 
                             tr 
                                 th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
                                 th Actions 
                             each account in accountTrainer
                                 tr
                                     td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
                                     td
                                         a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
                                         a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete
@@ -95,20 +65,10 @@ block content
                     table.table.mt-4 
                             tr 
                                 th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
                                 th Actions 
                             each account in accountTrainee
                                 tr
                                     td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
                                     td
                                         a.btn.btn-success(href='/admin/updateAccount/'+ account.id) Update 
                                         a.btn.btn-danger.ml-4(href='/admin/deleteAccount/'+ account.id) Delete

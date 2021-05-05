@@ -26,9 +26,10 @@ module.exports = {
     },
 
     postCreateAccountAdmin: function (req, res) {
-        const account = new Account(req.body.username, req.body.password, req.body.role);
+        console.log(req.body)
+        const account = new Account(req.body);
         account.save();
-        const admin = new Admin();
+        const admin = new Admin(req.body);
         admin.save();
         res.redirect('viewAccount');
     },
@@ -38,10 +39,11 @@ module.exports = {
     },
 
     postCreateAccountStaff: function (req, res) {
-        const account = new Account(req.body.username, req.body.password, req.body.role);
+        const account = new Account(req.body);
         account.save();
-        const staff = new Staff();
+        const staff = new Staff(req.body);
         staff.save();
+        console.log(req.body)
         res.redirect('viewAccount');
     },
 
@@ -50,10 +52,11 @@ module.exports = {
     },
 
     postCreateAccountTrainer: function (req, res) {
-        const account = new Account(req.body.username, req.body.password, req.body.role);
+        const account = new Account(req.body);
         account.save();
-        const trainer = new Trainer();
+        const trainer = new Trainer(req.body);
         trainer.save();
+        console.log(req.body)
         res.redirect('viewAccount');
 
     },
@@ -63,10 +66,11 @@ module.exports = {
     },
 
     postCreateAccountTrainee: function (req, res) {
-        const account = new Account(req.body.username, req.body.password, req.body.role);
+        const account = new Account(req.body);
         account.save();
-        const trainee = new Trainee();
+        const trainee = new Trainee(req.body);
         trainee.save();
+        console.log(req.body)
         res.redirect('viewAccount');
     },
 
@@ -167,7 +171,7 @@ module.exports = {
 
     //Course Category======================================================
     viewCourseCategory: async function (req, res) {
-        var category =  await CourseCategory.find({});
+        var category = await CourseCategory.find({});
         res.render('admin/viewCourseCategory', {
             categorys: category
         });
@@ -212,7 +216,7 @@ module.exports = {
 
     viewCourse: async function (req, res) {
         var category = req.params.category;
-        var course = await Course.find({courseCategory: category});
+        var course = await Course.find({ courseCategory: category });
         res.render('admin/viewCourse', {
             courses: course,
             category: category
@@ -221,7 +225,7 @@ module.exports = {
 
     viewCourseDetail: async function (req, res) {
         var course = req.params.detail;
-        var view = await TrainerToCourse.find({courseName: course});
+        var view = await TrainerToCourse.find({ courseName: course });
         res.render('admin/viewCourseDetail', {
             views: view
         });
@@ -238,7 +242,7 @@ module.exports = {
         const course = new Course(req.body);
         course.save();
         res.redirect('/admin/viewCourse/' + category);
-    }, 
+    },
 
     deleteCourse: async function (req, res) {
         var id = req.params.id;
@@ -268,13 +272,13 @@ module.exports = {
     //Topic==================================================================
     viewTopic: async function (req, res) {
         var course = req.params.course
-        var topic = await Topic.find({courseName: course})
+        var topic = await Topic.find({ courseName: course })
         res.render('admin/viewTopic', {
             course: course,
             topics: topic
         });
     },
-    
+
     getCreateTopic: function (req, res) {
         var course = req.params.course
         res.render('admin/createTopic', {
@@ -287,7 +291,7 @@ module.exports = {
         topic.save();
         res.redirect('/admin/viewTopic/' + courseName);
     },
-    
+
     deleteTopic: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
@@ -324,7 +328,7 @@ module.exports = {
 
     addTrainer: async function (req, res) {
         var course = await Course.find({});
-        var trainer = await Account.find({role: "trainer"});
+        var trainer = await Account.find({ role: "trainer" });
         res.render('admin/trainerCourse', {
             courses: course, trainers: trainer
         });
@@ -346,7 +350,7 @@ module.exports = {
 
     addTrainee: async function (req, res) {
         var course = await TrainerToCourse.find({});
-        var trainee = await Account.find({role: "trainee"});
+        var trainee = await Account.find({ role: "trainee" });
         res.render('admin/traineeCourse', {
             courses: course, trainees: trainee
         });
@@ -366,7 +370,7 @@ module.exports = {
     },
     listTrainee: async function (req, res) {
         var coursename = req.params.course;
-        var view = await TraineeToCourse.find({courseName: coursename});
+        var view = await TraineeToCourse.find({ courseName: coursename });
         res.render('admin/listTrainee', {
             views: view
         });

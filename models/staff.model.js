@@ -5,10 +5,7 @@ const ObjectId = Schema.ObjectId;
 const Staff = new Schema({
     username: {type: String, maxLength: 255},
     name: {type: String, maxLength: 255},
-    age: { type: String, maxLength: 255 },
     dateofbirth: {type: Date, maxLength: 255},
-    education: {type: String, maxLength: 255},
-    mainprogramminglanguage: {type: String, maxLength: 255}
 });
 
 module.exports = mongoose.model('Staff', Staff);

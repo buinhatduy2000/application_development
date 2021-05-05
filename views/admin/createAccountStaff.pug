@@ -6,17 +6,17 @@ block content
         form(action="/admin/createAccountStaff" method="POST")
             .form-group 
                 label Name
-                input.form-control(name="username", type='text', value= values ? values.username : '') 
+                input.form-control(name="name", type='text') 
 
                 label User Name
-                input.form-control(name="username", type='text', value= values ? values.username : '') 
+                input.form-control(name="username", type='text') 
 
                 label Password
-                input.form-control(name="password", type='password', value= values ? values.password : '')
+                input.form-control(name="password", type='password')
 
                 label Date of birth
                 input.form-control(name="dateofbirth", type='date', value='')
 
-                input.form-control(name="courseName", type='hidden', value='staff')
+                input.form-control(name="role", type='hidden', value='staff')
 
             button.btn.btn-success Create
