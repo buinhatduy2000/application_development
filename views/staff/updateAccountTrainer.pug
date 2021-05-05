@@ -1,0 +1,41 @@
+extends ../layouts/staffMenu
+block content
+    h1 Update account for Trainer
+
+    //- if errors
+    //-     each error in errors
+    //-         .alert.alert-danger= error
+
+    .align-items-center
+        form(action="/staff/updateAccountTrainer/" + account.username method="POST")
+            .form-group 
+                label Name
+                input.form-control(name="name", type='text', value='' + account.name) 
+
+                label User Name
+                input.form-control(name="username", type='text', value='' + account.username) 
+
+                label Password
+                input.form-control(name="password", type='password', value='' + account.password)
+
+                label Date of birth
+                input.form-control(name="dateofbirth", type='date', value='' + trainer.dateofbirth)
+
+                label Email
+                input.form-control(name="email", type='text', value='' + trainer.email)
+
+                label Phone number
+                input.form-control(name="phonenumber", type='text', value='' + trainer.phonenumber)
+
+                label 
+                br
+                input(type='radio', name='type', value='internal')
+                label(for='admin') Internal
+                br
+                input(type='radio', name='type', value='external')
+                label(for='manager') External
+                br
+
+                input.form-control(name="courseName", type='hidden', value='trainer')
+
+            button.btn.btn-success Update

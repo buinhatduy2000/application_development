@@ -1,7 +1,42 @@
 extends ../layouts/staffMenu
 block content
     
-    #accordion.mt-4               
+    #accordion.mt-4
+        .card
+            #headingOne.card-header
+                h5.mb-0
+                    button.btn.btn-link(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                        | Admin Account
+            #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordion')
+                .card-body
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th Actions 
+                            each account in accountAdmin
+                                tr
+                                    td= account.name
+                                    td 
+                                        a.btn.btn-success(href='/staff/updateAccountAdmin/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.username) Delete
+                                           
+        .card
+            #headingTwo.card-header
+                h5.mb-0
+                    button.btn.btn-link.collapsed(data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+                        | Staff Account
+            #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordion')
+                .card-body
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th Actions 
+                            each account in accountStaff
+                                tr
+                                    td= account.name
+                                    td
+                                        a.btn.btn-success(href='/staff/updateAccountStaff/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.username) Delete                  
         .card
             #headingThree.card-header
                 h5.mb-0
@@ -12,23 +47,13 @@ block content
                     table.table.mt-4 
                             tr 
                                 th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
                                 th Actions 
                             each account in accountTrainer
                                 tr
                                     td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
                                     td
-                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/staff/updateAccountTrainer/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.username) Delete
 
         .card
             #headingFour.card-header
@@ -40,21 +65,30 @@ block content
                     table.table.mt-4 
                             tr 
                                 th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
                                 th Actions 
                             each account in accountTrainee
                                 tr
                                     td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
                                     td
-                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete
+                                        a.btn.btn-success(href='/staff/updateAccountTrainee/'+ account.username) Update 
+                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.username) Delete
+
     
+    //- button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal') Create new Account
+    //- // Modal
+    //- #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+    //-     .modal-dialog(role='document')
+    //-         .modal-content
+    //-             .modal-header
+    //-                 h5#exampleModalLabel.modal-title Chon doi tuong ban muon tao tai khoan
+    //-                 button.close(type='button' data-dismiss='modal' aria-label='Close')
+    //-                 span(aria-hidden='true') ×
+    //-             .modal-body
+    //-                 | Chon doi tuong muon tao tai khoan nhe!
+    //-             .modal-footer
+    //-                 a.btn.btn-secondary.mt-4(data-dismiss='modal') Close
+    //-                 a.btn.btn-primary.mt-4(href = '/staff/createAccountStaff') staff
+    //-                 a.btn.btn-primary.mt-4(href = '/staff/createAccountStaff') Staff
+    //-                 a.btn.btn-primary.mt-4(href = '/staff/createAccountTrainer') Trainer
+    //-                 a.btn.btn-primary.mt-4(href = '/staff/createAccountTrainee') Trainee
+

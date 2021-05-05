@@ -1,65 +1,178 @@
 var Account = require("../models/account.model");
+var Admin = require("../models/admin.model");
+var Staff = require("../models/staff.model");
+var Trainer = require("../models/trainer.model");
+var Trainee = require("../models/trainee.model");
 var Course = require("../models/course.model");
 var CourseCategory = require("../models/courseCategory.model")
 var Topic = require("../models/topic.model");
 var TraineeToCourse = require("../models/traineeToCourse.model");
 var TrainerToCourse = require("../models/trainerToCourse.model");
 
+
 module.exports = {
     //Account=============================================================
     viewAccount: async function (req, res) {
         res.render('staff/viewAccount', {
-            accountAdmin: await Account.find({ role: 'staff' }),
-            accountStaff: await Account.find({ role: 'manager' }),
+            accountAdmin: await Account.find({ role: 'admin' }),
+            accountStaff: await Account.find({ role: 'staff' }),
             accountTrainer: await Account.find({ role: 'trainer' }),
             accountTrainee: await Account.find({ role: 'trainee' })
         });
     },
 
-    getCreateAccount: function (req, res) {
-        res.render('staff/createAccount');
+    getCreateAccountAdmin: function (req, res) {
+        res.render('staff/createAccountAdmin');
     },
 
-    postCreateAccount: function (req, res) {
+    postCreateAccountAdmin: function (req, res) {
+        console.log(req.body)
         const account = new Account(req.body);
         account.save();
+        const admin = new Admin(req.body);
+        admin.save();
         res.redirect('viewAccount');
     },
 
-    deleteAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        var condition = { '_id': ObjectID };
-        await Account.deleteOne(condition);
-        res.redirect('/staff/viewAccount');
-        console.log(id);
+    getCreateAccountStaff: function (req, res) {
+        res.render('staff/createAccountStaff');
     },
 
-    getUpdateAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
+    postCreateAccountStaff: function (req, res) {
+        const account = new Account(req.body);
+        account.save();
+        const staff = new Staff(req.body);
+        staff.save();
+        console.log(req.body)
+        res.redirect('viewAccount');
+    },
 
-        res.render('staff/updateAccount', {
-            account: account
+    getCreateAccountTrainer: function (req, res) {
+        res.render('staff/createAccountTrainer');
+    },
+
+    postCreateAccountTrainer: function (req, res) {
+        const account = new Account(req.body);
+        account.save();
+        const trainer = new Trainer(req.body);
+        trainer.save();
+        console.log(req.body)
+        res.redirect('viewAccount');
+
+    },
+
+    getCreateAccountTrainee: function (req, res) {
+        res.render('staff/createAccountTrainee');
+    },
+
+    postCreateAccountTrainee: function (req, res) {
+        const account = new Account(req.body);
+        account.save();
+        const trainee = new Trainee(req.body);
+        trainee.save();
+        console.log(req.body)
+        res.redirect('viewAccount');
+    },
+
+    getUpdateAccountAdmin: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var admin = await Admin.findOne({username: username})
+
+        res.render('staff/updateAccountAdmin', {
+            account: account,
+            admin: admin
         });
     },
 
-    postUpdateAccount: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
+    postUpdateAccountAdmin: async function (req, res) {
+        var username = req.params.username;
 
-        await Account.updateOne(condition, req.body)
+        await Account.updateOne({username: username}, req.body)
+        await Admin.updateOne({username: username}, req.body)
         res.redirect('/staff/viewAccount');
 
+    },
+
+    getUpdateAccountStaff: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var staff = await Staff.findOne({username: username})
+
+        res.render('staff/updateAccountStaff', {
+            account: account,
+            staff: staff
+        });
+    },
+
+    postUpdateAccountStaff: async function (req, res) {
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Staff.updateOne({username: username}, req.body)
+
+        await Account.updateOne({username: username}, req.body)
+        res.redirect('/staff/viewAccount');
+
+    },
+
+    getUpdateAccountTrainer: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var trainer = await Trainer.findOne({username: username})
+
+        res.render('staff/updateAccountTrainer', {
+            account: account,
+            trainer: trainer
+        });
+    },
+
+    postUpdateAccountTrainer: async function (req, res) {
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Trainer.updateOne({username: username}, req.body)
+
+        await Account.updateOne({username: username}, req.body)
+        res.redirect('/staff/viewAccount');
+
+    },
+
+    getUpdateAccountTrainee: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var trainee = await Trainee.findOne({username: username})
+
+
+        res.render('staff/updateAccountTrainee', {
+            account: account,
+            trainee: trainee
+        });
+    },
+
+    postUpdateAccountTrainee: async function (req, res) {
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Trainee.updateOne({username: username}, req.body)
+
+        await Account.updateOne({username: username}, req.body)
+        res.redirect('/staff/viewAccount');
+
+    },
+
+
+    deleteAccount: async function (req, res) {
+        var username = req.params.username;
+        await Account.deleteOne({username: username});
+        await Admin.deleteOne({username: username});
+        await Staff.deleteOne({username: username});
+        await Trainer.deleteOne({username: username});
+        await Trainee.deleteOne({username: username});
+        res.redirect('/staff/viewAccount');
     },
 
 
     //Course Category======================================================
     viewCourseCategory: async function (req, res) {
-        var category =  await CourseCategory.find({});
+        var category = await CourseCategory.find({});
         res.render('staff/viewCourseCategory', {
             categorys: category
         });
@@ -104,7 +217,7 @@ module.exports = {
 
     viewCourse: async function (req, res) {
         var category = req.params.category;
-        var course = await Course.find({courseCategory: category});
+        var course = await Course.find({ courseCategory: category });
         res.render('staff/viewCourse', {
             courses: course,
             category: category
@@ -113,7 +226,7 @@ module.exports = {
 
     viewCourseDetail: async function (req, res) {
         var course = req.params.detail;
-        var view = await TrainerToCourse.find({courseName: course});
+        var view = await TrainerToCourse.find({ courseName: course });
         res.render('staff/viewCourseDetail', {
             views: view
         });
@@ -130,7 +243,7 @@ module.exports = {
         const course = new Course(req.body);
         course.save();
         res.redirect('/staff/viewCourse/' + category);
-    }, 
+    },
 
     deleteCourse: async function (req, res) {
         var id = req.params.id;
@@ -160,13 +273,13 @@ module.exports = {
     //Topic==================================================================
     viewTopic: async function (req, res) {
         var course = req.params.course
-        var topic = await Topic.find({courseName: course})
+        var topic = await Topic.find({ courseName: course })
         res.render('staff/viewTopic', {
             course: course,
             topics: topic
         });
     },
-    
+
     getCreateTopic: function (req, res) {
         var course = req.params.course
         res.render('staff/createTopic', {
@@ -179,7 +292,7 @@ module.exports = {
         topic.save();
         res.redirect('/staff/viewTopic/' + courseName);
     },
-    
+
     deleteTopic: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
@@ -216,7 +329,7 @@ module.exports = {
 
     addTrainer: async function (req, res) {
         var course = await Course.find({});
-        var trainer = await Account.find({role: "trainer"});
+        var trainer = await Account.find({ role: "trainer" });
         res.render('staff/trainerCourse', {
             courses: course, trainers: trainer
         });
@@ -238,7 +351,7 @@ module.exports = {
 
     addTrainee: async function (req, res) {
         var course = await TrainerToCourse.find({});
-        var trainee = await Account.find({role: "trainee"});
+        var trainee = await Account.find({ role: "trainee" });
         res.render('staff/traineeCourse', {
             courses: course, trainees: trainee
         });
@@ -258,7 +371,7 @@ module.exports = {
     },
     listTrainee: async function (req, res) {
         var coursename = req.params.course;
-        var view = await TraineeToCourse.find({courseName: coursename});
+        var view = await TraineeToCourse.find({ courseName: coursename });
         res.render('staff/listTrainee', {
             views: view
         });
