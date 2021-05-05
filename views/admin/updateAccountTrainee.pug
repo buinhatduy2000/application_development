@@ -15,13 +15,13 @@ block content
                 input.form-control(name="password", type='password', value='' + account.password)
 
                 label Date of birth
-                input.form-control(name="dateofbirth", type='date', value='' + trainer.dateofbirth)
+                input.form-control(name="dateofbirth", type='date', value='' + trainee.dateofbirth)
 
                 label Education
-                input.form-control(name="education", type='text', value='') 
+                input.form-control(name="education", type='text', value='' + trainee.education) 
 
                 label Main Programming language
-                input.form-control(name="mainprogramminglanguage", type='text', value='')
+                input.form-control(name="mainprogramminglanguage", type='text', value='' + trainee.mainprogramminglanguage)
 
                 input.form-control(name="role", type='hidden', value='trainee')
 

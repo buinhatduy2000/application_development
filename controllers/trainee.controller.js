@@ -1,4 +1,5 @@
 var Account = require("../models/account.model");
+var Trainee = require("../models/trainee.model");
 var TraineeToCourse = require("../models/traineeToCourse.model");
 var Topic = require("../models/topic.model");
 
@@ -13,21 +14,20 @@ module.exports = {
     },
 
     getUpdateInformation: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
-        var account = await Account.findOne(condition)
+        var username = req.params.username;
+        var account = await Account.findOne({username: username});
+        var trainee = await Trainee.findOne({username: username});
         res.render('trainee/updateInformation', {
-            account: account
+            account: account,
+            trainee: trainee
         })
     },
 
     postUpdateInformation: async function (req, res) {
-        var id = req.params.id;
-        var ObjectID = require('mongodb').ObjectID(id);
-        let condition = { '_id': ObjectID };
+        var username = req.params.username;
 
-        await Account.updateOne(condition, req.body);
+        await Account.updateOne({username: username}, req.body);
+        await Trainee.updateOne({username: username}, req.body);
         res.redirect('/trainee')
     },
 
