@@ -1,62 +1,7 @@
 extends ../layouts/staffMenu
 block content
     
-    #accordion.mt-4
-        .card
-            #headingOne.card-header
-                h5.mb-0
-                    button.btn.btn-link(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
-                        | Admin Account
-            #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordion')
-                .card-body
-                    table.table.mt-4 
-                            tr 
-                                th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
-                                th Actions 
-                            each account in accountAdmin
-                                tr
-                                    td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
-                                    td 
-                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete
-                                           
-        .card
-            #headingTwo.card-header
-                h5.mb-0
-                    button.btn.btn-link.collapsed(data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
-                        | Staff Account
-            #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordion')
-                .card-body
-                    table.table.mt-4 
-                            tr 
-                                th Name
-                                th User Name 
-                                th Age
-                                th D.O.B
-                                th Education
-                                th Main programming language
-                                th Actions 
-                            each account in accountStaff
-                                tr
-                                    td= account.name
-                                    td= account.username
-                                    td= account.age
-                                    td= account.dateofbirth
-                                    td= account.education
-                                    td= account.mainprogramminglanguage
-                                    td
-                                        a.btn.btn-success(href='/staff/updateAccount/'+ account.id) Update 
-                                        a.btn.btn-danger.ml-4(href='/staff/deleteAccount/'+ account.id) Delete                  
+    #accordion.mt-4               
         .card
             #headingThree.card-header
                 h5.mb-0

@@ -11,7 +11,6 @@ module.exports = {
             res.redirect('/auth/login');
             return;
         }
-        res.locals.account = account;
         next();
 
     },
@@ -23,8 +22,10 @@ module.exports = {
                 res.status(401)
                 return res.send('You are not an ' + role +', you do not have permission to access this website');
             }
-            console.log(account.role)
-            console.log(role)
+            res.locals.account = account;
+            
+            // console.log(account.role)
+            // console.log(role)
             next();
         }
     }
