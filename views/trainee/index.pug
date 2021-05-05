@@ -1,14 +1,14 @@
 extends ../layouts/traineeMenu
 block content
+    .row
+        each course in courses
+            .col
+                .card(style='width: 18rem;')
+                    img.card-img-top(src='//cms.greenwich.edu.vn/pluginfile.php/1/theme_adaptable/frontpagerendererdefaultimage/1596790129/edu-survey-landing-image.jpg' )
+                    .card-body
+                        p.card-text
+                            a(href="trainee/viewTopic/" + course.courseName)=course.courseName
 
-    each course in courses
-        .card(style='width: 18rem;')
-            img.card-img-top(src='//cms.greenwich.edu.vn/pluginfile.php/1/theme_adaptable/frontpagerendererdefaultimage/1596790129/edu-survey-landing-image.jpg' )
-            .card-body
-                p.card-text
-                    a(href="trainee/viewTopic/" + course.courseName)=course.courseName
-
-    a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/trainee/updateInformation/' + account.id) Update Infomation
 
 
 

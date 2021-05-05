@@ -30,6 +30,8 @@ html
                     .card.ml-4.mt-4(style='width: 18rem;text-align: center;')
                         ul.list-group.list-group-flush
                             li.list-group-item
+                                a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/trainee/updateInformation/' + account.id) Update Infomation
+                            li.list-group-item
                                 form(action="/auth/logout" method="GET")
                                     button.btn.btn-danger Logout
                 .col
