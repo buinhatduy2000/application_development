@@ -7,15 +7,41 @@ var validate = require('../validate/admin.validate')
 //Account
 router.get('/viewAccount', controller.viewAccount);
 
-router.get('/createAccount', controller.getCreateAccount);
+router.get('/createAccountAdmin', controller.getCreateAccountAdmin);
 
-router.post('/createAccount', validate.postCreateAccount, controller.postCreateAccount);
+router.post('/createAccountAdmin', validate.postCreateAccount, controller.postCreateAccountAdmin);
 
-router.get('/deleteAccount/:id', controller.deleteAccount);
+router.get('/createAccountStaff', controller.getCreateAccountStaff);
 
-router.get('/updateAccount/:id', controller.getUpdateAccount);
+router.post('/createAccountStaff', validate.postCreateAccount, controller.postCreateAccountStaff);
 
-router.post('/updateAccount/:id', controller.postUpdateAccount);
+router.get('/createAccountTrainer', controller.getCreateAccountTrainer);
+
+router.post('/createAccountTrainer', validate.postCreateAccount, controller.postCreateAccountTrainer);
+
+router.get('/createAccountTrainee', controller.getCreateAccountTrainee);
+
+router.post('/createAccountTrainee', validate.postCreateAccount, controller.postCreateAccountTrainee);
+
+
+router.get('/deleteAccount/:username', controller.deleteAccount);
+
+router.get('/updateAccountAdmin/:username', controller.getUpdateAccountAdmin);
+
+router.post('/updateAccountAdmin/:username', controller.postUpdateAccountAdmin);
+
+router.get('/updateAccountStaff/:username', controller.getUpdateAccountStaff);
+
+router.post('/updateAccountStaff/:username', controller.postUpdateAccountStaff);
+
+router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
+
+router.post('/updateAccountTrainer/:username', controller.postUpdateAccountTrainer);
+
+router.get('/updateAccountTrainee/:username', controller.getUpdateAccountTrainee);
+
+router.post('/updateAccountTrainee/:username', controller.postUpdateAccountTrainee);
+
 
 //Course Category
 router.get('/viewCourseCategory', controller.viewCourseCategory);
