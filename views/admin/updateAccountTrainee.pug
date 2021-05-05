@@ -1,9 +1,9 @@
 extends ../layouts/adminMenu
 block content
-    h1 Create account for Trainee
+    h1 Update account for Trainee
 
     .align-items-center
-        form(action="/admin/createAccountTrainee" method="POST")
+        form(action="/admin/updateAccountTrainee/" + account.username method="POST")
             .form-group 
                 label Name
                 input.form-control(name="name", type='text', value='' + account.name) 

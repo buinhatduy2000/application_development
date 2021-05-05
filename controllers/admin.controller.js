@@ -15,7 +15,7 @@ module.exports = {
     viewAccount: async function (req, res) {
         res.render('admin/viewAccount', {
             accountAdmin: await Account.find({ role: 'admin' }),
-            accountStaff: await Account.find({ role: 'manager' }),
+            accountStaff: await Account.find({ role: 'staff' }),
             accountTrainer: await Account.find({ role: 'trainer' }),
             accountTrainee: await Account.find({ role: 'trainee' })
         });
@@ -110,7 +110,7 @@ module.exports = {
         await Account.updateOne({username: username}, req.body)
         await Staff.updateOne({username: username}, req.body)
 
-        await Account.updateOne(condition, req.body)
+        await Account.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
 
     },
@@ -131,7 +131,7 @@ module.exports = {
         await Account.updateOne({username: username}, req.body)
         await Trainer.updateOne({username: username}, req.body)
 
-        await Account.updateOne(condition, req.body)
+        await Account.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
 
     },
@@ -153,7 +153,7 @@ module.exports = {
         await Account.updateOne({username: username}, req.body)
         await Trainee.updateOne({username: username}, req.body)
 
-        await Account.updateOne(condition, req.body)
+        await Account.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
 
     },
@@ -162,8 +162,11 @@ module.exports = {
     deleteAccount: async function (req, res) {
         var username = req.params.username;
         await Account.deleteOne({username: username});
+        await Admin.deleteOne({username: username});
+        await Staff.deleteOne({username: username});
+        await Trainer.deleteOne({username: username});
+        await Trainee.deleteOne({username: username});
         res.redirect('/admin/viewAccount');
-        console.log(id);
     },
 
 
