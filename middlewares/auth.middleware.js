@@ -11,13 +11,21 @@ module.exports = {
             res.redirect('/auth/login');
             return;
         }
-        // if (account.accountRole !== req.cookies.accountRole) {
-        //     res.send("lewlew");
-        //     return;
-        // }
-        console.log(req.param);
         res.locals.account = account;
         next();
 
     },
+    checkLogin: function (role) {
+        return async (req, res, next) => {
+            var id = req.cookies.accountId
+            var account = await Account.findOne({ _id: id });
+            if (account.role !== role) {
+                res.status(401)
+                return res.send('You are not an ' + role +', you do not have permission to access this website');
+            }
+            console.log(account.role)
+            console.log(role)
+            next();
+        }
+    }
 };

@@ -28,10 +28,10 @@ app.get('/', function (req, res) {
 });
 
 app.use('/auth', authRoutes);
-app.use('/trainee', authMiddleware.requireAuth, traineeRoutes);
-app.use('/trainer', authMiddleware.requireAuth, trainerRoutes);
-app.use('/staff', authMiddleware.requireAuth, staffRoutes);
-app.use('/admin', authMiddleware.requireAuth, adminRoutes);
+app.use('/trainee', authMiddleware.requireAuth, authMiddleware.checkLogin('trainee'), traineeRoutes);
+app.use('/trainer', authMiddleware.requireAuth, authMiddleware.checkLogin('trainer'), trainerRoutes);
+app.use('/staff', authMiddleware.requireAuth, authMiddleware.checkLogin('staff'), staffRoutes);
+app.use('/admin', authMiddleware.requireAuth, authMiddleware.checkLogin('admin'), adminRoutes);
 
 var PORT = process.env.PORT || 8000
 app.listen(PORT);
