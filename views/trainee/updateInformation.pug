@@ -1,11 +1,8 @@
 extends ../layouts/traineeMenu
 block content
-    if errors
-        each error in errors
-            .alert.alert-danger= error
 
     .align-items-center
-        form(action="/trainee/updateInformation/"+ account.id method="POST")
+        form(action="/trainee/updateInformation/"+ account.username method="POST")
 
             .form-group 
                 label Name

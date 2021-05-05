@@ -25,7 +25,7 @@ module.exports = {
             res.locals.account = account;
             
             // console.log(account.role)
-            // console.log(role)
+            console.log(role)
             next();
         }
     }
