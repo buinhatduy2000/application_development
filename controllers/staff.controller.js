@@ -21,32 +21,6 @@ module.exports = {
         });
     },
 
-    getCreateAccountAdmin: function (req, res) {
-        res.render('staff/createAccountAdmin');
-    },
-
-    postCreateAccountAdmin: function (req, res) {
-        console.log(req.body)
-        const account = new Account(req.body);
-        account.save();
-        const admin = new Admin(req.body);
-        admin.save();
-        res.redirect('viewAccount');
-    },
-
-    getCreateAccountStaff: function (req, res) {
-        res.render('staff/createAccountStaff');
-    },
-
-    postCreateAccountStaff: function (req, res) {
-        const account = new Account(req.body);
-        account.save();
-        const staff = new Staff(req.body);
-        staff.save();
-        console.log(req.body)
-        res.redirect('viewAccount');
-    },
-
     getCreateAccountTrainer: function (req, res) {
         res.render('staff/createAccountTrainer');
     },
@@ -72,47 +46,6 @@ module.exports = {
         trainee.save();
         console.log(req.body)
         res.redirect('viewAccount');
-    },
-
-    getUpdateAccountAdmin: async function (req, res) {
-        var username = req.params.username;
-        var account = await Account.findOne({username: username})
-        var admin = await Admin.findOne({username: username})
-
-        res.render('staff/updateAccountAdmin', {
-            account: account,
-            admin: admin
-        });
-    },
-
-    postUpdateAccountAdmin: async function (req, res) {
-        var username = req.params.username;
-
-        await Account.updateOne({username: username}, req.body)
-        await Admin.updateOne({username: username}, req.body)
-        res.redirect('/staff/viewAccount');
-
-    },
-
-    getUpdateAccountStaff: async function (req, res) {
-        var username = req.params.username;
-        var account = await Account.findOne({username: username})
-        var staff = await Staff.findOne({username: username})
-
-        res.render('staff/updateAccountStaff', {
-            account: account,
-            staff: staff
-        });
-    },
-
-    postUpdateAccountStaff: async function (req, res) {
-        var username = req.params.username;
-        await Account.updateOne({username: username}, req.body)
-        await Staff.updateOne({username: username}, req.body)
-
-        await Account.updateOne({username: username}, req.body)
-        res.redirect('/staff/viewAccount');
-
     },
 
     getUpdateAccountTrainer: async function (req, res) {

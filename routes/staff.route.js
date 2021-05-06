@@ -7,14 +7,6 @@ var validate = require('../validate/admin.validate')
 //Account
 router.get('/viewAccount', controller.viewAccount);
 
-router.get('/createAccountAdmin', controller.getCreateAccountAdmin);
-
-router.post('/createAccountAdmin', validate.postCreateAccount, controller.postCreateAccountAdmin);
-
-router.get('/createAccountStaff', controller.getCreateAccountStaff);
-
-router.post('/createAccountStaff', validate.postCreateAccount, controller.postCreateAccountStaff);
-
 router.get('/createAccountTrainer', controller.getCreateAccountTrainer);
 
 router.post('/createAccountTrainer', validate.postCreateAccount, controller.postCreateAccountTrainer);
@@ -25,14 +17,6 @@ router.post('/createAccountTrainee', validate.postCreateAccount, controller.post
 
 
 router.get('/deleteAccount/:username', controller.deleteAccount);
-
-router.get('/updateAccountAdmin/:username', controller.getUpdateAccountAdmin);
-
-router.post('/updateAccountAdmin/:username', controller.postUpdateAccountAdmin);
-
-router.get('/updateAccountStaff/:username', controller.getUpdateAccountStaff);
-
-router.post('/updateAccountStaff/:username', controller.postUpdateAccountStaff);
 
 router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
 
