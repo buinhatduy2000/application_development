@@ -2,9 +2,9 @@ extends ../layouts/adminMenu
 block content
     h1 Create account for Trainer
 
-    //- if errors
-    //-     each error in errors
-    //-         .alert.alert-danger= error
+    if errors
+        each error in errors
+            .alert.alert-danger= error
 
     .align-items-center
         form(action="/admin/createAccountTrainer" method="POST")

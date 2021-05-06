@@ -5,7 +5,7 @@ var Topic = require("../models/topic.model");
 var TraineeToCourse = require("../models/traineeToCourse.model");
 var TrainerToCourse = require("../models/trainerToCourse.model");
 module.exports = {
-    postCreateAccount: async function (req, res, next) {
+    postCreateAccountAdmin: async function (req, res, next) {
         var username= req.body.username
         var account = await Account.findOne({ username: username });
         console.log(account);
@@ -23,8 +23,93 @@ module.exports = {
         if (!req.body.password) {
             error.push('Password is required!')
         }
-        if (!req.body.role) {
-            error.push('Role is required!')
+        if (error.length) {
+            res.render('admin/createAccountAdmin', {
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateAccountStaff: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
+        var error = [];
+        if (!req.body.name) {
+            error.push('Name is required!')
+        }
+        if (!req.body.username) {
+            error.push('Username is required!')
+        }
+        if (account) {
+            error.push('Tai khoan da ton tai')
+        }
+        if (!req.body.password) {
+            error.push('Password is required!')
+        }
+        if (error.length) {
+            res.render('admin/createAccountStaff', {
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateAccountTrainer: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
+        var error = [];
+        if (!req.body.name) {
+            error.push('Name is required!')
+        }
+        if (!req.body.username) {
+            error.push('Username is required!')
+        }
+        if (account) {
+            error.push('Tai khoan da ton tai')
+        }
+        if (!req.body.password) {
+            error.push('Password is required!')
+        }
+        if (error.length) {
+            res.render('admin/createAccountTrainer', {
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateAccountTrainee: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
+        var error = [];
+        if (!req.body.name) {
+            error.push('Name is required!')
+        }
+        if (!req.body.username) {
+            error.push('Username is required!')
+        }
+        if (account) {
+            error.push('Tai khoan da ton tai')
+        }
+        if (!req.body.password) {
+            error.push('Password is required!')
+        }
+        if (error.length) {
+            res.render('admin/createAccountTrainee', {
+                errors: error,
+                values: req.body
+            });
+            return;
         }
         next();
     },

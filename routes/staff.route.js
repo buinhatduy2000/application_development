@@ -9,11 +9,11 @@ router.get('/viewAccount', controller.viewAccount);
 
 router.get('/createAccountTrainer', controller.getCreateAccountTrainer);
 
-router.post('/createAccountTrainer', validate.postCreateAccount, controller.postCreateAccountTrainer);
+router.post('/createAccountTrainer', validate.postCreateAccountTrainer, controller.postCreateAccountTrainer);
 
 router.get('/createAccountTrainee', controller.getCreateAccountTrainee);
 
-router.post('/createAccountTrainee', validate.postCreateAccount, controller.postCreateAccountTrainee);
+router.post('/createAccountTrainee', validate.postCreateAccountTrainee, controller.postCreateAccountTrainee);
 
 router.get('/updateInformation/:username', controller.getUpdateInformation)
 

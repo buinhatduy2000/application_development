@@ -9,19 +9,19 @@ router.get('/viewAccount', controller.viewAccount);
 
 router.get('/createAccountAdmin', controller.getCreateAccountAdmin);
 
-router.post('/createAccountAdmin', validate.postCreateAccount, controller.postCreateAccountAdmin);
+router.post('/createAccountAdmin', validate.postCreateAccountAdmin, controller.postCreateAccountAdmin);
 
 router.get('/createAccountStaff', controller.getCreateAccountStaff);
 
-router.post('/createAccountStaff', validate.postCreateAccount, controller.postCreateAccountStaff);
+router.post('/createAccountStaff', validate.postCreateAccountStaff, controller.postCreateAccountStaff);
 
 router.get('/createAccountTrainer', controller.getCreateAccountTrainer);
 
-router.post('/createAccountTrainer', validate.postCreateAccount, controller.postCreateAccountTrainer);
+router.post('/createAccountTrainer', validate.postCreateAccountTrainer, controller.postCreateAccountTrainer);
 
 router.get('/createAccountTrainee', controller.getCreateAccountTrainee);
 
-router.post('/createAccountTrainee', validate.postCreateAccount, controller.postCreateAccountTrainee);
+router.post('/createAccountTrainee', validate.postCreateAccountTrainee, controller.postCreateAccountTrainee);
 
 
 router.get('/deleteAccount/:username', controller.deleteAccount);
