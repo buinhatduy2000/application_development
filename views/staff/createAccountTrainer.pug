@@ -7,7 +7,7 @@ block content
     //-         .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/createAccountTrainer" method="POST")
+        form(action="/staff/createAccountTrainer" method="POST")
             .form-group 
                 label Name
                 input.form-control(name="name", type='text', value= values ? values.username : '') 

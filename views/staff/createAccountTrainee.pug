@@ -3,7 +3,7 @@ block content
     h1 Create account for Trainee
 
     .align-items-center
-        form(action="/admin/createAccountTrainee" method="POST")
+        form(action="/staff/createAccountTrainee" method="POST")
             .form-group 
                 label Name
                 input.form-control(name="name", type='text', value= values ? values.username : '') 
