@@ -21,8 +21,8 @@ html
                     a.nav-link(href='#') Pricing
                 li.nav-item
                     .d-flex.align-items-center 
-                    form(action="/users/search", method="GET" class="d-flex")
-                        input(type="text", name="q" value=question class="form-control")
+                    form(action="/users/search" method="GET" class="d-flex")
+                        input(type="text" name="q" value=question class="form-control")
                         button(class="btn btn-primary ml-2") Search
         .container 
             .row
@@ -30,6 +30,8 @@ html
                     .card.ml-4.mt-4(style='width: 18rem;text-align: center;')
                         ul.list-group.list-group-flush
                             li.list-group-item= "Hello " + account.role + " " + account.name
+                            li.list-group-item
+                                a.btn.btn-primary(type='button' data-toggle='tooltip' data-placement='right' title='Tooltip on right' href='/trainer/updateInformation/' + account.username) Update Infomation
                             li.list-group-item
                                 form(action="/auth/logout" method="GET")
                                     button.btn.btn-danger Logout

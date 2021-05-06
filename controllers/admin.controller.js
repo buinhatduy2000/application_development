@@ -43,7 +43,6 @@ module.exports = {
         account.save();
         const staff = new Staff(req.body);
         staff.save();
-        console.log(req.body)
         res.redirect('viewAccount');
     },
 
@@ -56,7 +55,6 @@ module.exports = {
         account.save();
         const trainer = new Trainer(req.body);
         trainer.save();
-        console.log(req.body)
         res.redirect('viewAccount');
 
     },

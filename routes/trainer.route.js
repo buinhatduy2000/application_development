@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../controllers/trainer.controller');
 
+router.get('/updateInformation/:username', controller.getUpdateInformation)
+
+router.post('/updateInformation/:username', controller.postUpdateInformation)
+
 router.get('/listTrainee/:course', controller.listTrainee);
 
 router.get('/viewTopic/:course', controller.viewTopic);

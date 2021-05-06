@@ -26,13 +26,6 @@ module.exports = {
         if (!req.body.role) {
             error.push('Role is required!')
         }
-        if (error.length) {
-            res.render('admin/createAccount', {
-                errors: error,
-                values: req.body
-            });
-            return;
-        }
         next();
     },
     postCreateCourseCategory: async function (req, res, next) {
