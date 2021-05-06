@@ -311,6 +311,24 @@ module.exports = {
         console.log(coursename);
     },
 
+    getUpdateInformation: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username});
+        var staff = await Staff.findOne({username: username});
+        res.render('staff/updateInformation', {
+            account: account,
+            staff: staff
+        })
+    },
+
+    postUpdateInformation: async function (req, res) {
+        var username = req.params.username;
+
+        await Account.updateOne({username: username}, req.body);
+        await Staff.updateOne({username: username}, req.body);
+        res.redirect('/staff')
+    },
+
     //Home Page================================================================
     index: function (req, res) {
         res.render('staff/index');

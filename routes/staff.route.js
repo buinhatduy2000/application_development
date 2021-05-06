@@ -15,6 +15,10 @@ router.get('/createAccountTrainee', controller.getCreateAccountTrainee);
 
 router.post('/createAccountTrainee', validate.postCreateAccount, controller.postCreateAccountTrainee);
 
+router.get('/updateInformation/:username', controller.getUpdateInformation)
+
+router.post('/updateInformation/:username', controller.postUpdateInformation)
+
 
 router.get('/deleteAccount/:username', controller.deleteAccount);
 
