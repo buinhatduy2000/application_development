@@ -36,7 +36,6 @@ module.exports = {
         var account = await Account.findOne({'_id': req.cookies.accountId});
         var course = await TraineeToCourse.find({trainee: account.name});
         res.render('trainee/index', {
-            account: account,
             courses: course
         });
     },

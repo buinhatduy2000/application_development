@@ -12,7 +12,7 @@ html
             #navbarNav.collapse.navbar-collapse
             ul.navbar-nav
                 li.nav-item.active
-                    a.nav-link(href='/staff')
+                    a.nav-link(href='/trainer')
                         | Home 
                         span.sr-only (current)
                 li.nav-item
@@ -30,8 +30,6 @@ html
                     .card.ml-4.mt-4(style='width: 18rem;text-align: center;')
                         ul.list-group.list-group-flush
                             li.list-group-item= "Hello " + account.role + " " + account.name
-                            li.list-group-item 
-                                a.btn.btn-primary(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/trainer/viewTopic') Manage Topic
                             li.list-group-item
                                 form(action="/auth/logout" method="GET")
                                     button.btn.btn-danger Logout
