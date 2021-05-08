@@ -85,7 +85,6 @@ module.exports = {
 
     postUpdateAccountAdmin: async function (req, res) {
         var username = req.params.username;
-
         await Account.updateOne({username: username}, req.body)
         await Admin.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
@@ -107,8 +106,6 @@ module.exports = {
         var username = req.params.username;
         await Account.updateOne({username: username}, req.body)
         await Staff.updateOne({username: username}, req.body)
-
-        await Account.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
 
     },
