@@ -18,7 +18,7 @@ module.exports = {
             error.push('Username is required!')
         }
         if (account) {
-            error.push('Tai khoan da ton tai')
+            error.push('Account already exists')
         }
         if (!req.body.password) {
             error.push('Password is required!')
@@ -45,7 +45,7 @@ module.exports = {
             error.push('Username is required!')
         }
         if (account) {
-            error.push('Tai khoan da ton tai')
+            error.push('Account already exists')
         }
         if (!req.body.password) {
             error.push('Password is required!')
@@ -72,7 +72,7 @@ module.exports = {
             error.push('Username is required!')
         }
         if (account) {
-            error.push('Tai khoan da ton tai')
+            error.push('Account already exists')
         }
         if (!req.body.password) {
             error.push('Password is required!')
@@ -99,7 +99,7 @@ module.exports = {
             error.push('Username is required!')
         }
         if (account) {
-            error.push('Tai khoan da ton tai')
+            error.push('Account already exists')
         }
         if (!req.body.password) {
             error.push('Password is required!')
@@ -121,7 +121,7 @@ module.exports = {
             error.push('Category name is required!')
         }
         if (category) {
-            error.push('Category nay da ton tai')
+            error.push('Category already exists')
         }
         if (error.length) {
             res.render('admin/createCourseCategory', {
