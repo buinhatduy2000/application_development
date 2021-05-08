@@ -78,7 +78,7 @@ router.get('/viewTrainer', controller.viewTrainerToCourse);
 
 router.get('/addTrainerToCourse', controller.addTrainer);
 
-router.post('/addTrainerToCourse', controller.postAddTrainer);
+router.post('/addTrainerToCourse',validate.postAddTrainer, controller.postAddTrainer);
 
 router.get('/deleteTrainer/:id', controller.deleteTrainer);
 
