@@ -6,19 +6,19 @@ block content
         form(action="/staff/updateAccountTrainee/" + account.username method="POST")
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value='' + account.name) 
+                input.form-control(name="name", type='text', value='' + account.name required='') 
 
                 label User Name
-                input.form-control(name="username", type='text', value='' + account.username) 
+                input.form-control(name="username", type='text', value='' + account.username required='') 
 
                 label Password
-                input.form-control(name="password", type='password', value='' + account.password)
+                input.form-control(name="password", type='password', value='' + account.password required='')
 
                 label Date of birth
-                input.form-control(name="dateofbirth", type='date', value='' + trainee.dateofbirth)
+                input.form-control(name="dateofbirth", type='date', value='' + trainee.dateofbirth required='')
 
                 label Education
-                input.form-control(name="education", type='text', value='' + trainee.education) 
+                input.form-control(name="education", type='text', value='' + trainee.education required='') 
 
                 label Main Programming language
                 input.form-control(name="mainprogramminglanguage", type='text', value='' + trainee.mainprogramminglanguage)

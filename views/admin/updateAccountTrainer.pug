@@ -10,22 +10,22 @@ block content
         form(action="/admin/updateAccountTrainer/" + account.username method="POST")
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value='' + account.name) 
+                input.form-control(name="name", type='text', value='' + account.name required='') 
 
                 label User Name
-                input.form-control(name="username", type='text', value='' + account.username) 
+                input.form-control(name="username", type='text', value='' + account.username required='') 
 
                 label Password
-                input.form-control(name="password", type='password', value='' + account.password)
+                input.form-control(name="password", type='password', value='' + account.password required='')
 
                 label Date of birth
-                input.form-control(name="dateofbirth", type='date', value='' + trainer.dateofbirth)
+                input.form-control(name="dateofbirth", type='date', value='' + trainer.dateofbirth required='')
 
                 label Email
-                input.form-control(name="email", type='text', value='' + trainer.email)
+                input.form-control(name="email", type='text', value='' + trainer.email required='')
 
                 label Phone number
-                input.form-control(name="phonenumber", type='text', value='' + trainer.phonenumber)
+                input.form-control(name="phonenumber", type='text', value='' + trainer.phonenumber required='')
 
                 label 
                 br
