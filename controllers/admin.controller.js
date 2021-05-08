@@ -313,7 +313,8 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.updateOne(condition, req.body);
-        res.redirect('/admin/viewTopic');
+        res.redirect('/admin/viewCourseCategory');
+        console.log(req.body)
     },
 
     // Assign trainer to Course===========================================================
