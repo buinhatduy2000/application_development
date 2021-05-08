@@ -333,6 +333,7 @@ module.exports = {
         const trainerToCourse = new TrainerToCourse(req.body);
         trainerToCourse.save();
         res.redirect('viewTrainer');
+        console.log(req.body)
     },
     deleteTrainer: async function (req, res) {
         var id = req.params.id;

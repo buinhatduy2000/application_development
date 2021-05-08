@@ -26,21 +26,21 @@ router.post('/createAccountTrainee', validate.postCreateAccountTrainee, controll
 
 router.get('/deleteAccount/:username', controller.deleteAccount);
 
-router.get('/updateAccountAdmin/:username',validate.postCreateAccountAdmin, controller.getUpdateAccountAdmin);
+router.get('/updateAccountAdmin/:username', controller.getUpdateAccountAdmin);
 
 router.post('/updateAccountAdmin/:username', controller.postUpdateAccountAdmin);
 
 router.get('/updateAccountStaff/:username', controller.getUpdateAccountStaff);
 
-router.post('/updateAccountStaff/:username',validate.postCreateAccountStaff, controller.postUpdateAccountStaff);
+router.post('/updateAccountStaff/:username', controller.postUpdateAccountStaff);
 
 router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
 
-router.post('/updateAccountTrainer/:username',validate.postCreateAccountTrainer, controller.postUpdateAccountTrainer);
+router.post('/updateAccountTrainer/:username', controller.postUpdateAccountTrainer);
 
 router.get('/updateAccountTrainee/:username', controller.getUpdateAccountTrainee);
 
-router.post('/updateAccountTrainee/:username',validate.postCreateAccountTrainee, controller.postUpdateAccountTrainee);
+router.post('/updateAccountTrainee/:username', controller.postUpdateAccountTrainee);
 
 
 //Course Category
@@ -90,7 +90,7 @@ router.get('/viewTrainer', controller.viewTrainerToCourse);
 
 router.get('/addTrainerToCourse', controller.addTrainer);
 
-router.post('/addTrainerToCourse', controller.postAddTrainer);
+router.post('/addTrainerToCourse',validate.postAddTrainer, controller.postAddTrainer);
 
 router.get('/deleteTrainer/:id', controller.deleteTrainer);
 
