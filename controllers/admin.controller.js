@@ -265,7 +265,6 @@ module.exports = {
         await Course.updateOne(condition, req.body)
         res.redirect('/admin/viewCourse/' + req.body.courseCategory);
     },
-
     //Topic==================================================================
     viewTopic: async function (req, res) {
         var course = req.params.course
