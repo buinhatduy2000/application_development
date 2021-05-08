@@ -32,7 +32,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.deleteOne(condition);
-        res.redirect('/trainer/viewCourseCategory');
+        res.redirect('/trainer');
     },
 
     getUpdateTopic: async function (req, res) {
@@ -50,7 +50,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.updateOne(condition, req.body);
-        res.redirect('/trainer/viewCourseCategory');
+        res.redirect('/trainer');
     },
 
     listTrainee: async function (req, res) {
