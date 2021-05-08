@@ -132,7 +132,7 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var courseCategory = await CourseCategory.findOne(condition)
+        var CourseCategory = await CourseCategory.findOne(condition)
         res.render('staff/updateCourseCategory', {
             courseCategorys: courseCategory
         });
@@ -249,7 +249,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.updateOne(condition, req.body);
-        res.redirect('/staff/viewTopic');
+        res.redirect('/staff/viewCourseCategory');
     },
 
     // Assign trainer to Course===========================================================

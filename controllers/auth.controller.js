@@ -33,6 +33,10 @@ module.exports = {
         res.cookie('accountId', account.id);
         res.cookie('accountRole', account.role);
 
+        // console.log(account.username)
+        // console.log(account.id)
+        // console.log(account.role)
+
         res.redirect('/' + account.role);
     },
 
