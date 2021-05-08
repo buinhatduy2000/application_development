@@ -203,9 +203,10 @@ module.exports = {
     },
     POSTupdateCourseCategory: async function (req, res) {
         var id = req.params.id;
+        var category = req.body.category;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        await courseCategory.updateOne(condition, req.body)
+        await CourseCategory.updateOne(condition, req.body)
         res.redirect('/admin/viewCourseCategory');
     },
 
@@ -265,6 +266,7 @@ module.exports = {
         await Course.updateOne(condition, req.body)
         res.redirect('/admin/viewCourse/' + req.body.courseCategory);
     },
+
     //Topic==================================================================
     viewTopic: async function (req, res) {
         var course = req.params.course
@@ -311,7 +313,8 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.updateOne(condition, req.body);
-        res.redirect('/admin/viewTopic');
+        res.redirect('/admin/viewCourseCategory');
+        console.log(req.body)
     },
 
     // Assign trainer to Course===========================================================

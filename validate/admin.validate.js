@@ -130,7 +130,7 @@ module.exports = {
             });
             return;
         }
-        console.log(req.body.category);
+        console.log(category);
         next();
     },
     postCreateCourse: async function (req, res, next) {

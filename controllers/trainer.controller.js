@@ -50,7 +50,7 @@ module.exports = {
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await Topic.updateOne(condition, req.body);
-        res.redirect('/trainer/viewTopic');
+        res.redirect('/trainer/viewCourseCategory');
     },
 
     listTrainee: async function (req, res) {
