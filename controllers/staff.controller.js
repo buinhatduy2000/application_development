@@ -50,8 +50,8 @@ module.exports = {
 
     getUpdateAccountTrainer: async function (req, res) {
         var username = req.params.username;
-        var account = await Account.findOne({username: username})
-        var trainer = await Trainer.findOne({username: username})
+        var account = await Account.findOne({ username: username })
+        var trainer = await Trainer.findOne({ username: username })
 
         res.render('staff/updateAccountTrainer', {
             account: account,
@@ -61,18 +61,18 @@ module.exports = {
 
     postUpdateAccountTrainer: async function (req, res) {
         var username = req.params.username;
-        await Account.updateOne({username: username}, req.body)
-        await Trainer.updateOne({username: username}, req.body)
+        await Account.updateOne({ username: username }, req.body)
+        await Trainer.updateOne({ username: username }, req.body)
 
-        await Account.updateOne({username: username}, req.body)
+        await Account.updateOne({ username: username }, req.body)
         res.redirect('/staff/viewAccount');
 
     },
 
     getUpdateAccountTrainee: async function (req, res) {
         var username = req.params.username;
-        var account = await Account.findOne({username: username})
-        var trainee = await Trainee.findOne({username: username})
+        var account = await Account.findOne({ username: username })
+        var trainee = await Trainee.findOne({ username: username })
 
 
         res.render('staff/updateAccountTrainee', {
@@ -83,10 +83,10 @@ module.exports = {
 
     postUpdateAccountTrainee: async function (req, res) {
         var username = req.params.username;
-        await Account.updateOne({username: username}, req.body)
-        await Trainee.updateOne({username: username}, req.body)
+        await Account.updateOne({ username: username }, req.body)
+        await Trainee.updateOne({ username: username }, req.body)
 
-        await Account.updateOne({username: username}, req.body)
+        await Account.updateOne({ username: username }, req.body)
         res.redirect('/staff/viewAccount');
 
     },
@@ -94,11 +94,11 @@ module.exports = {
 
     deleteAccount: async function (req, res) {
         var username = req.params.username;
-        await Account.deleteOne({username: username});
-        await Admin.deleteOne({username: username});
-        await Staff.deleteOne({username: username});
-        await Trainer.deleteOne({username: username});
-        await Trainee.deleteOne({username: username});
+        await Account.deleteOne({ username: username });
+        await Admin.deleteOne({ username: username });
+        await Staff.deleteOne({ username: username });
+        await Trainer.deleteOne({ username: username });
+        await Trainee.deleteOne({ username: username });
         res.redirect('/staff/viewAccount');
     },
 
@@ -132,7 +132,7 @@ module.exports = {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        var CourseCategory = await CourseCategory.findOne(condition)
+        var courseCategory = await CourseCategory.findOne(condition)
         res.render('staff/updateCourseCategory', {
             courseCategorys: courseCategory
         });
@@ -313,8 +313,8 @@ module.exports = {
 
     getUpdateInformation: async function (req, res) {
         var username = req.params.username;
-        var account = await Account.findOne({username: username});
-        var staff = await Staff.findOne({username: username});
+        var account = await Account.findOne({ username: username });
+        var staff = await Staff.findOne({ username: username });
         res.render('staff/updateInformation', {
             account: account,
             staff: staff
@@ -324,8 +324,8 @@ module.exports = {
     postUpdateInformation: async function (req, res) {
         var username = req.params.username;
 
-        await Account.updateOne({username: username}, req.body);
-        await Staff.updateOne({username: username}, req.body);
+        await Account.updateOne({ username: username }, req.body);
+        await Staff.updateOne({ username: username }, req.body);
         res.redirect('/staff')
     },
 
