@@ -206,7 +206,7 @@ module.exports = {
         var category = req.body.category;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
-        await courseCategory.updateOne(condition, req.body)
+        await CourseCategory.updateOne(condition, req.body)
         res.redirect('/admin/viewCourseCategory');
     },
 
