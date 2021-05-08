@@ -1,21 +1,21 @@
 extends ../layouts/adminMenu
 block content
-    h1 Update Account Admin
-
+    h1 Update account Admin
+    
     .align-items-center
         form(action="/admin/updateAccountAdmin/" + account.username method="POST")
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value=""+ account.name ) 
+                input.form-control(name="name", type='text', value="" + account.name) 
 
                 label User Name
-                input.form-control(name="username", type='text', value=""+ account.username ) 
+                input.form-control(name="username", type='text', value="" + account.username) 
 
                 label Password
-                input.form-control(name="password", type='password', value=""+ account.password)
+                input.form-control(name="password", type='password', value="" + account.password)
 
                 label Date of birth
-                input.form-control(name="dateofbirth", type='date', value=""+ admin.dateofbirth)
+                input.form-control(name="dateofbirth", type='date', value='' + staff.dateofbirth)
 
                 input.form-control(name="role", type='hidden', value='admin')
 
