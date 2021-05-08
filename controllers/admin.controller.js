@@ -203,7 +203,6 @@ module.exports = {
     },
     POSTupdateCourseCategory: async function (req, res) {
         var id = req.params.id;
-        var category = req.body.category;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
         await courseCategory.updateOne(condition, req.body)
