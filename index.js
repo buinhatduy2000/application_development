@@ -10,14 +10,15 @@ var adminRoutes = require('./routes/admin.route');
 
 var authMiddleware = require('./middlewares/auth.middleware');
 
-var port = 3000;
+var db = require('./db');
+db.connect();
 
 var app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookiePaser());
 
 app.use(express.static('public'));
@@ -27,10 +28,10 @@ app.get('/', function (req, res) {
 });
 
 app.use('/auth', authRoutes);
-app.use('/trainee', authMiddleware.requireAuth, traineeRoutes);
-app.use('/trainer', authMiddleware.requireAuth, trainerRoutes);
-app.use('/staff', authMiddleware.requireAuth, staffRoutes);
-app.use('/admin', authMiddleware.requireAuth, adminRoutes);
+app.use('/trainee', authMiddleware.requireAuth, authMiddleware.checkLogin('trainee'), traineeRoutes);
+app.use('/trainer', authMiddleware.requireAuth, authMiddleware.checkLogin('trainer'), trainerRoutes);
+app.use('/staff', authMiddleware.requireAuth, authMiddleware.checkLogin('staff'), staffRoutes);
+app.use('/admin', authMiddleware.requireAuth, authMiddleware.checkLogin('admin'), adminRoutes);
 
 var PORT = process.env.PORT || 8000
 app.listen(PORT);

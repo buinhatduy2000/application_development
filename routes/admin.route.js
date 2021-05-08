@@ -7,15 +7,41 @@ var validate = require('../validate/admin.validate')
 //Account
 router.get('/viewAccount', controller.viewAccount);
 
-router.get('/createAccount', controller.getCreateAccount);
+router.get('/createAccountAdmin', controller.getCreateAccountAdmin);
 
-router.post('/createAccount', validate.postCreateAccount, controller.postCreateAccount);
+router.post('/createAccountAdmin', validate.postCreateAccountAdmin, controller.postCreateAccountAdmin);
 
-router.get('/deleteAccount/:id', controller.deleteAccount);
+router.get('/createAccountStaff', controller.getCreateAccountStaff);
 
-router.get('/updateAccount/:id', controller.getUpdateAccount);
+router.post('/createAccountStaff', validate.postCreateAccountStaff, controller.postCreateAccountStaff);
 
-router.post('/updateAccount/:id', controller.postUpdateAccount);
+router.get('/createAccountTrainer', controller.getCreateAccountTrainer);
+
+router.post('/createAccountTrainer', validate.postCreateAccountTrainer, controller.postCreateAccountTrainer);
+
+router.get('/createAccountTrainee', controller.getCreateAccountTrainee);
+
+router.post('/createAccountTrainee', validate.postCreateAccountTrainee, controller.postCreateAccountTrainee);
+
+
+router.get('/deleteAccount/:username', controller.deleteAccount);
+
+router.get('/updateAccountAdmin/:username', controller.getUpdateAccountAdmin);
+
+router.post('/updateAccountAdmin/:username', controller.postUpdateAccountAdmin);
+
+router.get('/updateAccountStaff/:username', controller.getUpdateAccountStaff);
+
+router.post('/updateAccountStaff/:username', controller.postUpdateAccountStaff);
+
+router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
+
+router.post('/updateAccountTrainer/:username', controller.postUpdateAccountTrainer);
+
+router.get('/updateAccountTrainee/:username', controller.getUpdateAccountTrainee);
+
+router.post('/updateAccountTrainee/:username', controller.postUpdateAccountTrainee);
+
 
 //Course Category
 router.get('/viewCourseCategory', controller.viewCourseCategory);
@@ -30,8 +56,11 @@ router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
 
 router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.POSTupdateCourseCategory);
 
+
 //Course
 router.get('/viewCourse/:category', controller.viewCourse);
+
+router.get('/viewCourseDetail/:detail', controller.viewCourseDetail);
 
 router.get('/createCourse/:category', controller.getCreateCourse);
 
@@ -52,6 +81,10 @@ router.post('/createTopic/:course', controller.postCreateTopic),
 
 router.get('/deleteTopic/:id', controller.deleteTopic);
 
+router.get('/updateTopic/:id', controller.getUpdateTopic);
+
+router.post('/updateTopic/:id', controller.postUpdateTopic);
+
 // Trainer to Course
 router.get('/viewTrainer', controller.viewTrainerToCourse);
 
@@ -62,11 +95,12 @@ router.post('/addTrainerToCourse', controller.postAddTrainer);
 router.get('/deleteTrainer/:id', controller.deleteTrainer);
 
 //Trainee to Course
-router.get('/viewTrainee', controller.viewTraineeToCourse);
 
 router.get('/addTraineeToCourse', controller.addTrainee);
 
 router.post('/addTraineeToCourse', controller.postAddTrainee);
+
+router.get('/listTrainee/:course', controller.listTrainee);
 
 router.get('/deleteTrainee/:id', controller.deleteTrainee);
 

@@ -7,8 +7,10 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/createTopic" method="POST")
+        form(action="/admin/updateTopic/" + topic.id method="POST")
             .form-group 
                 label Topic Name
-                input.form-control(name="topic", type='text', value= values ? values.code : '')
-            button.btn.btn-success Create
+                input.form-control(name="topic", type='text', value= values ? values.code : '' + topic.topicName)
+                label Topic detail
+                input.form-control(name="topicDetail", type='text', value= '' + topic.topicDetail)
+            button.btn.btn-success Update

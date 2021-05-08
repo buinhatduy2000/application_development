@@ -5,15 +5,38 @@ block content
         .card-header
             | Featured
         .card-body
-            h5.card-title Create acout
-            p.card-text Add new accounts for staff, trainer and trainee
-            a.btn.btn-primary(href='admin/create') Go
+            h5.card-title Manager account
+            p.card-text Add new accounts for trainer and trainee. It will can update and delete trainer and trainee
+            button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal') Go
+            // Modal
+            #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#exampleModalLabel.modal-title Chon doi tuong ban muon tao tai khoan
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') ×
+                        .modal-body
+                            | Chon doi tuong muon tao tai khoan nhe!
+                        .modal-footer
+                            a.btn.btn-secondary.mt-4(data-dismiss='modal') Close
+                            a.btn.btn-primary.mt-4(href = '/admin/createAccountAdmin') Admin
+                            a.btn.btn-primary.mt-4(href = '/admin/createAccountStaff') Staff
+                            a.btn.btn-primary.mt-4(href = '/admin/createAccountTrainer') Trainer
+                            a.btn.btn-primary.mt-4(href = '/admin/createAccountTrainee') Trainee
     .card.mt-4
         .card-header
             | Featured
         .card-body
-            h5.card-title Mangeger acount
-            p.card-text View list of manager, employee, trainer and trainee accounts
-            a.btn.btn-primary(href='admin/view') View
+            h5.card-title Mangeger Course detail
+            p.card-text View list of Course Category, and then add Course to Course Category
+            a.btn.btn-primary(href='/admin/viewCourseCategory') View
+    .card.mt-4
+        .card-header
+            | Featured
+        .card-body
+            h5.card-title Add trainer to course
+            p.card-text View list Course and trainer, then we can edit it
+            a.btn.btn-primary(href='/admin/viewTrainer') Go
 
 

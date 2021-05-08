@@ -1,0 +1,18 @@
+extends ../layouts/trainerMenu
+block content
+
+    h1 List Topic
+    table.table 
+        tr 
+            th Topic name
+            th Topic detail
+            th Action
+        each topic in topics
+            tr
+                td= topic.topicName
+                td= topic.topicDetail
+                td
+                    a.btn.btn-success(href='/trainer/updateTopic/' + topic.id) Update
+                    a.btn.btn-danger.ml-4(href='/trainer/deleteTopic/' + topic.id) Delete 
+
+    a.btn.btn-primary(href = '/trainer/createTopic/' + course) Add new Topic

@@ -1,0 +1,28 @@
+extends ../layouts/staffMenu
+block content
+    h1 Create account for Trainee
+
+    .align-items-center
+        form(action="/staff/createAccountTrainee" method="POST")
+            .form-group 
+                label Name
+                input.form-control(name="name", type='text', value= values ? values.username : '') 
+
+                label User Name
+                input.form-control(name="username", type='text', value= values ? values.username : '') 
+
+                label Password
+                input.form-control(name="password", type='password', value= values ? values.password : '')
+
+                label Date of birth
+                input.form-control(name="dateofbirth", type='date', value='')
+
+                label Education
+                input.form-control(name="education", type='text', value='') 
+
+                label Main Programming language
+                input.form-control(name="mainprogramminglanguage", type='text', value='')
+
+                input.form-control(name="role", type='hidden', value='trainee')
+
+            button.btn.btn-success Create

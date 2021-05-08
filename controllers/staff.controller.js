@@ -1,50 +1,111 @@
-var db = require("../db");
-var shortid = require('shortid');
+var Account = require("../models/account.model");
+var Admin = require("../models/admin.model");
+var Staff = require("../models/staff.model");
+var Trainer = require("../models/trainer.model");
+var Trainee = require("../models/trainee.model");
+var Course = require("../models/course.model");
+var CourseCategory = require("../models/courseCategory.model")
+var Topic = require("../models/topic.model");
+var TraineeToCourse = require("../models/traineeToCourse.model");
+var TrainerToCourse = require("../models/trainerToCourse.model");
+
 
 module.exports = {
     //Account=============================================================
-    viewAccount: function (req, res) {
+    viewAccount: async function (req, res) {
         res.render('staff/viewAccount', {
-            accountAdmin: db.get('accounts').filter({ role: 'admin' }).value(),
-            accountStaff: db.get('accounts').filter({ role: 'manager' }).value(),
-            accountTrainer: db.get('accounts').filter({ role: 'trainer' }).value(),
-            accountTrainee: db.get('accounts').filter({ role: 'trainee' }).value(),
+            accountAdmin: await Account.find({ role: 'admin' }),
+            accountStaff: await Account.find({ role: 'staff' }),
+            accountTrainer: await Account.find({ role: 'trainer' }),
+            accountTrainee: await Account.find({ role: 'trainee' })
         });
     },
 
-    deleteAccount: function (req, res) {
-        var id = req.params.id;
-        db.get('accounts').remove({ id: id }).write();
-        res.redirect('/staff/viewAccount');
-        console.log(id);
+    getCreateAccountTrainer: function (req, res) {
+        res.render('staff/createAccountTrainer');
     },
 
-    getUpdateAccount: function (req, res) {
-        var id = req.params.id;
-        res.render('staff/updateAccount', {
-            accounts: db.get('accounts').find({ id: id }).value()
+    postCreateAccountTrainer: function (req, res) {
+        const account = new Account(req.body);
+        account.save();
+        const trainer = new Trainer(req.body);
+        trainer.save();
+        console.log(req.body)
+        res.redirect('viewAccount');
+
+    },
+
+    getCreateAccountTrainee: function (req, res) {
+        res.render('staff/createAccountTrainee');
+    },
+
+    postCreateAccountTrainee: function (req, res) {
+        const account = new Account(req.body);
+        account.save();
+        const trainee = new Trainee(req.body);
+        trainee.save();
+        console.log(req.body)
+        res.redirect('viewAccount');
+    },
+
+    getUpdateAccountTrainer: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var trainer = await Trainer.findOne({username: username})
+
+        res.render('staff/updateAccountTrainer', {
+            account: account,
+            trainer: trainer
         });
     },
 
-    postUpdateAccount: function (req, res) {
-        var id = req.params.id;
-        var name = req.body.name;
-        var username = req.body.username;
-        var password = req.body.password;
-        var role = req.body.role;
-        db.get('accounts').find({ id: id }).assign({ name: name}).write();
-        db.get('accounts').find({ id: id }).assign({ username: username}).write();
-        db.get('accounts').find({ id: id }).assign({ password: password}).write();
-        db.get('accounts').find({ id: id }).assign({ role: role}).write();
-        res.redirect('/staff/viewAccount');
-        console.log(id, name, username, password, role);
+    postUpdateAccountTrainer: async function (req, res) {
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Trainer.updateOne({username: username}, req.body)
 
+        await Account.updateOne({username: username}, req.body)
+        res.redirect('/staff/viewAccount');
+
+    },
+
+    getUpdateAccountTrainee: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username})
+        var trainee = await Trainee.findOne({username: username})
+
+
+        res.render('staff/updateAccountTrainee', {
+            account: account,
+            trainee: trainee
+        });
+    },
+
+    postUpdateAccountTrainee: async function (req, res) {
+        var username = req.params.username;
+        await Account.updateOne({username: username}, req.body)
+        await Trainee.updateOne({username: username}, req.body)
+
+        await Account.updateOne({username: username}, req.body)
+        res.redirect('/staff/viewAccount');
+
+    },
+
+
+    deleteAccount: async function (req, res) {
+        var username = req.params.username;
+        await Account.deleteOne({username: username});
+        await Admin.deleteOne({username: username});
+        await Staff.deleteOne({username: username});
+        await Trainer.deleteOne({username: username});
+        await Trainee.deleteOne({username: username});
+        res.redirect('/staff/viewAccount');
     },
 
 
     //Course Category======================================================
-    viewCourseCategory: function (req, res) {
-        var category = db.get('courseCategory').cloneDeep().value();
+    viewCourseCategory: async function (req, res) {
+        var category = await CourseCategory.find({});
         res.render('staff/viewCourseCategory', {
             categorys: category
         });
@@ -55,38 +116,52 @@ module.exports = {
     },
 
     postCreateCourseCategory: function (req, res) {
-        req.body.id = shortid.generate();
-        db.get('courseCategory').push(req.body).write();
+        const courseCategory = new CourseCategory(req.body);
+        courseCategory.save();
         res.redirect('viewCourseCategory');
     },
-    deleteCourseCategory: function (req, res) {
+    deleteCourseCategory: async function (req, res) {
         var id = req.params.id;
-        db.get('courseCategory').remove({ id: id }).write();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await CourseCategory.deleteOne(condition);
         res.redirect('/staff/viewCourseCategory');
         console.log(id);
     },
-    updateCourseCategory: function (req, res) {
+    updateCourseCategory: async function (req, res) {
         var id = req.params.id;
-        var courseCategory = db.get('courseCategory').find({ id: id }).value();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var courseCategory = await CourseCategory.findOne(condition)
         res.render('staff/updateCourseCategory', {
             courseCategorys: courseCategory
         });
     },
-    POSTupdateCourseCategory: function (req, res) {
+    POSTupdateCourseCategory: async function (req, res) {
         var id = req.params.id;
         var category = req.body.category;
-        db.get('courseCategory').find({ id: id }).assign({ category: category }).write();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await courseCategory.updateOne(condition, req.body)
         res.redirect('/staff/viewCourseCategory');
     },
 
     //Course================================================================
 
-    viewCourse: function (req, res) {
+    viewCourse: async function (req, res) {
         var category = req.params.category;
-        var course = db.get('Course').filter({courseCategory: category}).value();
+        var course = await Course.find({ courseCategory: category });
         res.render('staff/viewCourse', {
             courses: course,
             category: category
+        });
+    },
+
+    viewCourseDetail: async function (req, res) {
+        var course = req.params.detail;
+        var view = await TrainerToCourse.find({ courseName: course });
+        res.render('staff/viewCourseDetail', {
+            views: view
         });
     },
 
@@ -97,110 +172,161 @@ module.exports = {
         });
     },
     postCreateCourse: function (req, res) {
-        req.body.id = shortid.generate();
         var category = req.body.courseCategory;
-        db.get('Course').push(req.body).write();
+        const course = new Course(req.body);
+        course.save();
         res.redirect('/staff/viewCourse/' + category);
-        console.log(category)
     },
 
-    deleteCourse: function (req, res) {
+    deleteCourse: async function (req, res) {
         var id = req.params.id;
-        var category = req.body.courseCategory;
-        db.get('Course').remove({ id: id }).write();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await Course.deleteOne(condition);
         res.redirect('/staff/viewCourseCategory');
-        console.log(category);
     },
 
-    getUpdateCourse: function (req, res) {
+    getUpdateCourse: async function (req, res) {
         var id = req.params.id;
-        var course = db.get('Course').find({ id: id }).value();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var course = await Course.findOne(condition)
         res.render('staff/updateCourse', {
             course: course
         });
     },
-    postUpdateCourse: function (req, res) {
+    postUpdateCourse: async function (req, res) {
         var id = req.params.id;
-        var courseName = req.body.courseName;
-        db.get('Course').find({ id: id }).assign({ courseName: courseName }).write();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await Course.updateOne(condition, req.body)
         res.redirect('/staff/viewCourse/' + req.body.courseCategory);
-        console.log(req.body.courseCategory);
     },
 
     //Topic==================================================================
-    viewTopic: function (req, res) {
-        var topic = db.get('topic').cloneDeep().value();
+    viewTopic: async function (req, res) {
+        var course = req.params.course
+        var topic = await Topic.find({ courseName: course })
         res.render('staff/viewTopic', {
+            course: course,
             topics: topic
         });
     },
-    createTopic: function (req, res) {
-        res.render('staff/createTopic');
+
+    getCreateTopic: function (req, res) {
+        var course = req.params.course
+        res.render('staff/createTopic', {
+            course: course
+        });
     },
     postCreateTopic: function (req, res) {
-        req.body.id = shortid.generate();
-        db.get('topic').push(req.body).write();
-        res.redirect('viewTopic');
+        var courseName = req.body.courseName;
+        const topic = new Topic(req.body);
+        topic.save();
+        res.redirect('/staff/viewTopic/' + courseName);
     },
-    deleteTopic: function (req, res) {
+
+    deleteTopic: async function (req, res) {
         var id = req.params.id;
-        db.get('topic').remove({ id: id }).write();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await Topic.deleteOne(condition);
+        res.redirect('/staff/viewCourseCategory');
+    },
+
+    getUpdateTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        var topic = await Topic.findOne(condition)
+        res.render('staff/updateTopic', {
+            topic: topic
+        });
+    },
+
+    postUpdateTopic: async function (req, res) {
+        var id = req.params.id;
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await Topic.updateOne(condition, req.body);
         res.redirect('/staff/viewTopic');
-        console.log(id);
     },
 
     // Assign trainer to Course===========================================================
-    viewTrainerToCourse: function (req, res) {
-        var viewTrainer = db.get('trainerToCourse').cloneDeep().value();
+    viewTrainerToCourse: async function (req, res) {
+        var viewTrainer = await TrainerToCourse.find();
         res.render('staff/viewTrainer', {
             viewTrainers: viewTrainer
         });
     },
 
-    addTrainer: function (req, res) {
-        var course = db.get('Course').value();
-        var trainer = db.get('accounts').filter({ role: 'trainer' }).cloneDeep().value();
+    addTrainer: async function (req, res) {
+        var course = await Course.find({});
+        var trainer = await Account.find({ role: "trainer" });
         res.render('staff/trainerCourse', {
             courses: course, trainers: trainer
         });
     },
     postAddTrainer: function (req, res) {
-        req.body.id = shortid.generate();
-        db.get('trainerToCourse').push(req.body).write();
+        const trainerToCourse = new TrainerToCourse(req.body);
+        trainerToCourse.save();
         res.redirect('viewTrainer');
     },
-    deleteTrainer: function (req, res) {
+    deleteTrainer: async function (req, res) {
         var id = req.params.id;
-        db.get('trainerToCourse').remove({ id: id }).write();
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await TrainerToCourse.deleteOne(condition);
         res.redirect('/staff/viewTrainer');
-        console.log(id);
     },
 
     // Assign trainee to Course===========================================================
-    viewTraineeToCourse: function (req, res) {
-        var view = db.get('traineeToCourse').cloneDeep().value();
-        res.render('staff/viewTrainee', {
-            views: view
-        });
-    },
 
-    addTrainee: function (req, res) {
-        var course = db.get('trainerToCourse').value();
-        var trainee = db.get('accounts').filter({ role: 'trainee' }).cloneDeep().value();
+    addTrainee: async function (req, res) {
+        var course = await TrainerToCourse.find({});
+        var trainee = await Account.find({ role: "trainee" });
         res.render('staff/traineeCourse', {
             courses: course, trainees: trainee
         });
     },
     postAddTrainee: function (req, res) {
-        req.body.id = shortid.generate();
-        db.get('traineeToCourse').push(req.body).write();
-        res.redirect('viewTrainee');
+        const traineeToCourse = new TraineeToCourse(req.body);
+        traineeToCourse.save();
+        res.redirect('viewTrainer');
     },
-    deleteTrainee: function (req, res) {
+    deleteTrainee: async function (req, res) {
         var id = req.params.id;
-        db.get('traineeToCourse').remove({ id: id }).write();
-        res.redirect('/staff/viewTrainee');
+        var ObjectID = require('mongodb').ObjectID(id);
+        let condition = { '_id': ObjectID };
+        await TraineeToCourse.deleteOne(condition);
+        res.redirect('/staff/viewTrainer');
         console.log(id);
+    },
+    listTrainee: async function (req, res) {
+        var coursename = req.params.course;
+        var view = await TraineeToCourse.find({ courseName: coursename });
+        res.render('staff/listTrainee', {
+            views: view
+        });
+        console.log(coursename);
+    },
+
+    getUpdateInformation: async function (req, res) {
+        var username = req.params.username;
+        var account = await Account.findOne({username: username});
+        var staff = await Staff.findOne({username: username});
+        res.render('staff/updateInformation', {
+            account: account,
+            staff: staff
+        })
+    },
+
+    postUpdateInformation: async function (req, res) {
+        var username = req.params.username;
+
+        await Account.updateOne({username: username}, req.body);
+        await Staff.updateOne({username: username}, req.body);
+        res.redirect('/staff')
     },
 
     //Home Page================================================================

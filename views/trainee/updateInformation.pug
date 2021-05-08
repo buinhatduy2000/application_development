@@ -1,0 +1,26 @@
+extends ../layouts/traineeMenu
+block content
+
+    .align-items-center
+        form(action="/trainee/updateInformation/"+ account.username method="POST")
+
+            .form-group 
+                label Name
+                input.form-control(name="name" type='text' value='' + account.name) 
+
+                label User Name
+                input.form-control(name="username" type='text', maxlenth=10, value='' + account.username) 
+
+                label Password
+                input.form-control(name="password" type='password' value='' + account.password)
+
+                label Date of birth
+                input.form-control(name="dateofbirth" type='date' value='' + trainee.dateofbirth) 
+
+                label Education
+                input.form-control(name="education" type='text' value='' + trainee.education) 
+
+                label Main Programming language
+                input.form-control(name="mainprogramminglanguage" type='text' value='' + trainee.mainprogramminglanguage) 
+                
+            button.btn.btn-success Update 

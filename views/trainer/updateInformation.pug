@@ -1,0 +1,25 @@
+extends ../layouts/trainerMenu
+block content
+
+    .align-items-center
+        form(action="/staff/updateInformation/"+ account.username method="POST")
+
+            .form-group 
+                label Name
+                input.form-control(name="name" type='text' value='' + account.name) 
+
+                label User Name
+                input.form-control(name="username" type='text', maxlenth=10, value='' + account.username) 
+
+                label Password
+                input.form-control(name="password" type='password' value='' + account.password)
+
+                label Date of birth
+                input.form-control(name="dateofbirth" type='date' value='' + trainer.dateofbirth) 
+                label Email
+                input.form-control(name="email", type='text', value='' + trainer.email)
+
+                label Phone number
+                input.form-control(name="phonenumber", type='text', value='' + trainer.phonenumber)
+                
+            button.btn.btn-success Update 

@@ -1,19 +1,19 @@
 extends ../layouts/trainerMenu
 block content
-    h1 Main Featured
-    .card.mt-4
-        .card-header
-            | Featured
-        .card-body
-            h5.card-title Create acout
-            p.card-text Add new accounts for staff, trainer and trainee
-            a.btn.btn-primary(href='#') Go
-    .card.mt-4
-        .card-header
-            | Featured
-        .card-body
-            h5.card-title Mangeger acount
-            p.card-text View list of manager, employee, trainer and trainee accounts
-            a.btn.btn-primary(href='#') View
+
+    h1 List Trainer with Course
+    table.table 
+        tr 
+            th Course
+            th Trainer Name
+            th Action
+        each view in views
+            tr
+                td
+                    a(href='/trainer/viewTopic/' + view.courseName + ' | ' + view.trainer)= view.courseName
+                td= view.trainer
+                td
+                    a.btn.btn-success(href='/trainer/listTrainee/' + view.courseName + ' | ' + view.trainer) View all trainee
+    
 
 

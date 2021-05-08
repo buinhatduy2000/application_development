@@ -1,0 +1,15 @@
+extends ../layouts/adminMenu
+block content
+
+    h1 List Trainee with Course
+    table.table 
+        tr 
+            th Trainee Name
+            th Action
+        each view in views
+            tr
+                td= view.trainee
+                td 
+                    a.btn.btn-danger.ml-4(href='/admin/deleteTrainee/'+ view.id) Delete 
+
+    a.btn.btn-primary(href = '/admin/addTraineeToCourse') Add new Trainee to Course 

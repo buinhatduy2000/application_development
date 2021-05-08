@@ -1,8 +1,18 @@
-var low = require('lowdb');
-var FileSync = require('lowdb/adapters/FileSync');
-var adapters = new FileSync('db.json');
-var db = low(adapters);
-db.defaults({ users: [], accounts:[], courseCategory:[], Course:[], topic:[], trainerToCourse:[], traineeToCourse:[] })
-    .write();
+var mongoose = require('mongoose');
 
-module.exports = db;
+async function connect() {
+    try {
+        await mongoose.connect('mongodb+srv://an:an752001@mycluster.9undu.mongodb.net/EducationSystem', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            useCreateIndex: true
+        });
+        console.log('connect success')
+    }
+    catch {
+        console.log('connect failed')
+    }
+}
+
+module.exports = { connect };

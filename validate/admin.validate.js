@@ -1,10 +1,15 @@
-var db = require("../db");
-var shortid = require('shortid');
+var Account = require("../models/account.model");
+var Course = require("../models/course.model");
+var CourseCategory = require("../models/courseCategory.model")
+var Topic = require("../models/topic.model");
+var TraineeToCourse = require("../models/traineeToCourse.model");
+var TrainerToCourse = require("../models/trainerToCourse.model");
 module.exports = {
-    postCreateAccount: function (req, res, next) {
-        req.body.id = shortid.generate();
-
-        var account = db.get('accounts').find({ username: req.body.username }).value();
+    postCreateAccountAdmin: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
         var error = [];
         if (!req.body.name) {
             error.push('Name is required!')
@@ -18,11 +23,8 @@ module.exports = {
         if (!req.body.password) {
             error.push('Password is required!')
         }
-        if (!req.body.role) {
-            error.push('Role is required!')
-        }
         if (error.length) {
-            res.render('admin/createAccount', {
+            res.render('admin/createAccountAdmin', {
                 errors: error,
                 values: req.body
             });
@@ -30,9 +32,90 @@ module.exports = {
         }
         next();
     },
-    postCreateCourseCategory: function (req, res, next) {
+    postCreateAccountStaff: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
+        var error = [];
+        if (!req.body.name) {
+            error.push('Name is required!')
+        }
+        if (!req.body.username) {
+            error.push('Username is required!')
+        }
+        if (account) {
+            error.push('Tai khoan da ton tai')
+        }
+        if (!req.body.password) {
+            error.push('Password is required!')
+        }
+        if (error.length) {
+            res.render('admin/createAccountStaff', {
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateAccountTrainer: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
+        var error = [];
+        if (!req.body.name) {
+            error.push('Name is required!')
+        }
+        if (!req.body.username) {
+            error.push('Username is required!')
+        }
+        if (account) {
+            error.push('Tai khoan da ton tai')
+        }
+        if (!req.body.password) {
+            error.push('Password is required!')
+        }
+        if (error.length) {
+            res.render('admin/createAccountTrainer', {
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateAccountTrainee: async function (req, res, next) {
+        var username= req.body.username
+        var account = await Account.findOne({ username: username });
+        console.log(account);
+        console.log(username);
+        var error = [];
+        if (!req.body.name) {
+            error.push('Name is required!')
+        }
+        if (!req.body.username) {
+            error.push('Username is required!')
+        }
+        if (account) {
+            error.push('Tai khoan da ton tai')
+        }
+        if (!req.body.password) {
+            error.push('Password is required!')
+        }
+        if (error.length) {
+            res.render('admin/createAccountTrainee', {
+                errors: error,
+                values: req.body
+            });
+            return;
+        }
+        next();
+    },
+    postCreateCourseCategory: async function (req, res, next) {
 
-        var category = db.get('courseCategory').find({ category: req.body.category }).value();
+        var category = await CourseCategory.findOne({ category: req.body.category });
         var error = [];
         if (!req.body.category) {
             error.push('Category name is required!')
@@ -47,9 +130,10 @@ module.exports = {
             });
             return;
         }
+        console.log(category);
         next();
     },
-    postCreateCourse: function (req, res, next) {
+    postCreateCourse: async function (req, res, next) {
         var error = [];
         if (!req.body.courseName) {
             error.push('Name of Course is required !')
@@ -58,7 +142,7 @@ module.exports = {
             error.push('Course Category is required !')
         }
         if (error.length) {
-            var categorys = db.get('courseCategory').value();
+            var categorys = await CourseCategory.find({})
             res.render('admin/createCourse', {
                 categorys: categorys,
                 errors: error,
