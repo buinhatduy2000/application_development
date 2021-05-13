@@ -9,13 +9,13 @@ block content
         form(action="/admin/createAccountAdmin" method="POST")
             .form-group 
                 label Name
-                input.form-control(name="name", type='text', value= values ? values.username : '') 
+                input.form-control(name="name", type='text', value= values ? values.username : '' required='') 
 
                 label User Name
-                input.form-control(name="username", type='text', value= values ? values.username : '') 
+                input.form-control(name="username", type='text', value= values ? values.username : '' required='') 
 
                 label Password
-                input.form-control(name="password", type='password', value= values ? values.password : '')
+                input.form-control(name="password", type='password', value= values ? values.password : '' required='')
 
                 label Date of birth
                 input.form-control(name="dateofbirth", type='date', value='')

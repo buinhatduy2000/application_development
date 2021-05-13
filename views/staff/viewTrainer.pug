@@ -7,14 +7,11 @@ block content
             th Course
             th Trainer Name
             th Action
-            th Action
         each view in viewTrainers
             tr
                 td
                     a(href='/staff/listTrainee/' + view.courseName + ' | ' + view.trainer)= view.courseName
                 td= view.trainer
-                td
-                    a.btn.btn-success(href='#') Update
                 td 
                     a.btn.btn-danger.ml-4(href='/staff/deleteTrainer/'+ view.id) Delete 
 

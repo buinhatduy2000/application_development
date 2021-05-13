@@ -85,7 +85,6 @@ module.exports = {
 
     postUpdateAccountAdmin: async function (req, res) {
         var username = req.params.username;
-
         await Account.updateOne({username: username}, req.body)
         await Admin.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
@@ -107,8 +106,6 @@ module.exports = {
         var username = req.params.username;
         await Account.updateOne({username: username}, req.body)
         await Staff.updateOne({username: username}, req.body)
-
-        await Account.updateOne({username: username}, req.body)
         res.redirect('/admin/viewAccount');
 
     },
@@ -336,6 +333,7 @@ module.exports = {
         const trainerToCourse = new TrainerToCourse(req.body);
         trainerToCourse.save();
         res.redirect('viewTrainer');
+        console.log(req.body)
     },
     deleteTrainer: async function (req, res) {
         var id = req.params.id;

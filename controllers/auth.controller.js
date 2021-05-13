@@ -14,7 +14,7 @@ module.exports = {
         if (!account) {
             res.render('auth/login', {
                 errors: [
-                    'Khong ton tai account nay'
+                    'Account does not exist'
                 ],
                 values: req.body
             });
@@ -24,7 +24,7 @@ module.exports = {
         if (account.password !== password) {
             res.render('auth/login', {
                 errors: [
-                    'Mat khau khong dung'
+                    'Incorrect password'
                 ],
                 values: req.body
             });

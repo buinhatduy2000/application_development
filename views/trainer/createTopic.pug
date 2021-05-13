@@ -10,7 +10,7 @@ block content
         form(action="/trainer/createTopic/:course" method="POST")
             .form-group 
                 label Topic Name
-                input.form-control(name="topicName", type='text', value= values ? values.code : '')
+                input.form-control(name="topicName", type='text', value= values ? values.code : '' required='')
                 label Topic detail
                 input.form-control(name="topicDetail", type='text', value= '')
                 input(name="courseName", type='hidden', value='' + course)
