@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookiePaser = require('cookie-parser');
+var methodOverride = require('method-override')
 
 var authRoutes = require('./routes/auth.route');
 var traineeRoutes = require('./routes/trainee.route');
@@ -16,6 +17,8 @@ db.connect();
 var app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
+
+app.use(methodOverride('_method'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

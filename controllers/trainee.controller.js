@@ -23,7 +23,7 @@ module.exports = {
         })
     },
 
-    postUpdateInformation: async function (req, res) {
+    putUpdateInformation: async function (req, res) {
         var username = req.params.username;
 
         await Account.updateOne({username: username}, req.body);

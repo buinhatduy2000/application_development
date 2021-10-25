@@ -28,19 +28,19 @@ router.get('/deleteAccount/:username', controller.deleteAccount);
 
 router.get('/updateAccountAdmin/:username', controller.getUpdateAccountAdmin);
 
-router.post('/updateAccountAdmin/:username', controller.postUpdateAccountAdmin);
+router.put('/updateAccountAdmin/:username', controller.putUpdateAccountAdmin);
 
 router.get('/updateAccountStaff/:username', controller.getUpdateAccountStaff);
 
-router.post('/updateAccountStaff/:username', controller.postUpdateAccountStaff);
+router.put('/updateAccountStaff/:username', controller.putUpdateAccountStaff);
 
 router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
 
-router.post('/updateAccountTrainer/:username', controller.postUpdateAccountTrainer);
+router.put('/updateAccountTrainer/:username', controller.putUpdateAccountTrainer);
 
 router.get('/updateAccountTrainee/:username', controller.getUpdateAccountTrainee);
 
-router.post('/updateAccountTrainee/:username', controller.postUpdateAccountTrainee);
+router.put('/updateAccountTrainee/:username', controller.putUpdateAccountTrainee);
 
 
 //Course Category
@@ -54,7 +54,7 @@ router.get('/deleteCourseCategory/:id', controller.deleteCourseCategory);
 
 router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
 
-router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.POSTupdateCourseCategory);
+router.put('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.putUpdateCourseCategory);
 
 
 //Course
@@ -70,7 +70,7 @@ router.get('/deleteCourse/:id', controller.deleteCourse);
 
 router.get('/updateCourse/:id', controller.getUpdateCourse);
 
-router.post('/updateCourse/:id',validate.postCreateCourse, controller.postUpdateCourse);
+router.put('/updateCourse/:id',validate.postCreateCourse, controller.putUpdateCourse);
 
 //Topic
 router.get('/viewTopic/:course', controller.viewTopic);
@@ -83,7 +83,7 @@ router.get('/deleteTopic/:id', controller.deleteTopic);
 
 router.get('/updateTopic/:id', controller.getUpdateTopic);
 
-router.post('/updateTopic/:id', controller.postUpdateTopic);
+router.put('/updateTopic/:id', controller.putUpdateTopic);
 
 // Trainer to Course
 router.get('/viewTrainer', controller.viewTrainerToCourse);

@@ -4,7 +4,7 @@ var controller = require('../controllers/trainee.controller');
 
 router.get('/updateInformation/:username', controller.getUpdateInformation)
 
-router.post('/updateInformation/:username', controller.postUpdateInformation)
+router.put('/updateInformation/:username', controller.putUpdateInformation)
 
 //Topic
 router.get('/viewTopic/:course', controller.viewTopic);

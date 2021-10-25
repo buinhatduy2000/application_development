@@ -7,7 +7,7 @@ block content
             .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/updateCourse/" + course.id method="POST")
+        form(action="/admin/updateCourse/" + course.id + "?_method=PUT" method="POST")
             .form-group 
                 label Course name
                 input.form-control(name="courseName", type='text', value= values ? values.code : '' + course.courseName)

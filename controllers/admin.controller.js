@@ -83,7 +83,7 @@ module.exports = {
         });
     },
 
-    postUpdateAccountAdmin: async function (req, res) {
+    putUpdateAccountAdmin: async function (req, res) {
         var username = req.params.username;
         await Account.updateOne({username: username}, req.body)
         await Admin.updateOne({username: username}, req.body)
@@ -102,7 +102,7 @@ module.exports = {
         });
     },
 
-    postUpdateAccountStaff: async function (req, res) {
+    putUpdateAccountStaff: async function (req, res) {
         var username = req.params.username;
         await Account.updateOne({username: username}, req.body)
         await Staff.updateOne({username: username}, req.body)
@@ -121,7 +121,7 @@ module.exports = {
         });
     },
 
-    postUpdateAccountTrainer: async function (req, res) {
+    putUpdateAccountTrainer: async function (req, res) {
         var username = req.params.username;
         await Account.updateOne({username: username}, req.body)
         await Trainer.updateOne({username: username}, req.body)
@@ -143,7 +143,7 @@ module.exports = {
         });
     },
 
-    postUpdateAccountTrainee: async function (req, res) {
+    putUpdateAccountTrainee: async function (req, res) {
         var username = req.params.username;
         await Account.updateOne({username: username}, req.body)
         await Trainee.updateOne({username: username}, req.body)
@@ -198,7 +198,7 @@ module.exports = {
             courseCategorys: courseCategory
         });
     },
-    POSTupdateCourseCategory: async function (req, res) {
+    putUpdateCourseCategory: async function (req, res) {
         var id = req.params.id;
         var category = req.body.category;
         var ObjectID = require('mongodb').ObjectID(id);
@@ -256,7 +256,7 @@ module.exports = {
             course: course
         });
     },
-    postUpdateCourse: async function (req, res) {
+    putUpdateCourse: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };
@@ -305,7 +305,7 @@ module.exports = {
         });
     },
 
-    postUpdateTopic: async function (req, res) {
+    putUpdateTopic: async function (req, res) {
         var id = req.params.id;
         var ObjectID = require('mongodb').ObjectID(id);
         let condition = { '_id': ObjectID };

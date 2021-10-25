@@ -4,7 +4,7 @@ var controller = require('../controllers/trainer.controller');
 
 router.get('/updateInformation/:username', controller.getUpdateInformation)
 
-router.post('/updateInformation/:username', controller.postUpdateInformation)
+router.put('/updateInformation/:username', controller.putUpdateInformation)
 
 router.get('/listTrainee/:course', controller.listTrainee);
 
@@ -18,7 +18,7 @@ router.get('/deleteTopic/:id', controller.deleteTopic);
 
 router.get('/updateTopic/:id', controller.getUpdateTopic);
 
-router.post('/updateTopic/:id', controller.postUpdateTopic);
+router.post('/updateTopic/:id', controller.putUpdateTopic);
 
 router.get('/', controller.index);
 

@@ -7,11 +7,11 @@ block content
     //-         .alert.alert-danger= error
 
     .align-items-center
-        form(action="/admin/updateAccountTrainer/" + account.username method="POST")
+        form(action="/admin/updateAccountTrainer/" + account.username + "?_method=PUT" method="POST")
             .form-group 
                 label Name
                 input.form-control(name="name", type='text', value='' + account.name required='') 
-
+ 
                 label User Name
                 input.form-control(name="username", type='text', value='' + account.username required='') 
 

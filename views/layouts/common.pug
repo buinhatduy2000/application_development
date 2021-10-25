@@ -16,10 +16,6 @@ html
                         | Home 
                         span.sr-only (current)
                 li.nav-item
-                    a.nav-link(href='#') Features
-                li.nav-item
-                    a.nav-link(href='#') Pricing
-                li.nav-item
                 if account
                     p.nav-link(href='#')= "Hello " + account.name
                     form(action="auth/logout" method="GET")

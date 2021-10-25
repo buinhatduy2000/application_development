@@ -3,7 +3,7 @@ block content
     h1 Update account Staff
     
     .align-items-center
-        form(action="/admin/updateAccountStaff/" + account.username method="POST")
+        form(action="/admin/updateAccountStaff/" + account.username + "?_method=PUT" method="POST")
             .form-group 
                 label Name
                 input.form-control(name="name", type='text', value="" + account.name required='' ) 

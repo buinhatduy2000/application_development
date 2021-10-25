@@ -17,18 +17,18 @@ router.post('/createAccountTrainee', validate.postCreateAccountTrainee, controll
 
 router.get('/updateInformation/:username', controller.getUpdateInformation)
 
-router.post('/updateInformation/:username', controller.postUpdateInformation)
+router.post('/updateInformation/:username', controller.putUpdateInformation)
 
 
 router.get('/deleteAccount/:username', controller.deleteAccount);
 
 router.get('/updateAccountTrainer/:username', controller.getUpdateAccountTrainer);
 
-router.post('/updateAccountTrainer/:username', controller.postUpdateAccountTrainer);
+router.post('/updateAccountTrainer/:username', controller.putUpdateAccountTrainer);
 
 router.get('/updateAccountTrainee/:username', controller.getUpdateAccountTrainee);
 
-router.post('/updateAccountTrainee/:username', controller.postUpdateAccountTrainee);
+router.post('/updateAccountTrainee/:username', controller.putUpdateAccountTrainee);
 
 
 //Course Category
@@ -42,7 +42,7 @@ router.get('/deleteCourseCategory/:id', controller.deleteCourseCategory);
 
 router.get('/updateCourseCategory/:id', controller.updateCourseCategory);
 
-router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.POSTupdateCourseCategory);
+router.post('/updateCourseCategory/:id',validate.postCreateCourseCategory, controller.putUpdateCourseCategory);
 
 
 //Course
@@ -58,7 +58,7 @@ router.get('/deleteCourse/:id', controller.deleteCourse);
 
 router.get('/updateCourse/:id', controller.getUpdateCourse);
 
-router.post('/updateCourse/:id',validate.postCreateCourse, controller.postUpdateCourse);
+router.post('/updateCourse/:id',validate.postCreateCourse, controller.putUpdateCourse);
 
 //Topic
 router.get('/viewTopic/:course', controller.viewTopic);
@@ -71,7 +71,7 @@ router.get('/deleteTopic/:id', controller.deleteTopic);
 
 router.get('/updateTopic/:id', controller.getUpdateTopic);
 
-router.post('/updateTopic/:id', controller.postUpdateTopic);
+router.post('/updateTopic/:id', controller.putUpdateTopic);
 
 // Trainer to Course
 router.get('/viewTrainer', controller.viewTrainerToCourse);
